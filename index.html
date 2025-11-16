@@ -407,8 +407,6 @@
         }
         .lang-menu.active {
             opacity: 1;
-            transform: translateY(0);
-            pointer-events: all;
         }
         .lang-option {
             display: flex;
@@ -426,9 +424,25 @@
             background: rgba(224, 82, 40, 0.1);
             font-weight: 600;
         }
+        body[data-lang^="zh"] .header-brand-line,
+        body[data-lang^="zh"] .header-tagline {
+            white-space: nowrap;
+        }
+        body[data-lang^="zh"] .header-enter-btn span {
+            white-space: nowrap;
+        }
+        /* Fund button - align size with lang button */
+        .fund-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem; /* same as .lang-btn */
+            border-radius: 999px;
+            /* remove fixed height to match padding-based height of lang-btn */
+        }
     </style>
 </head>
-<body class="min-h-screen stripe-background text-gray-900">
+<body class="min-h-screen stripe-background text-gray-900" data-lang="zh-CN">
     <div id="app">
         <!-- Content will be loaded here -->
         <div class="flex items-center justify-center min-h-screen">
@@ -582,7 +596,10 @@ window.i18n = (() => {
             footerCopyright: '© 2025 Maollar 喵乐商城 · 消费即投资',
             footerItem1: '喵刀基金 · 透明审计',
             footerItem2: 'Solana 链上记账',
-            footerItem3: '阿里云 & Cloudflare 基础设施'
+            footerItem3: '阿里云 & Cloudflare 基础设施',
+            viewFundBtn: '喵币行情',
+            viewFundL1: '查看喵币',
+            viewFundL2: '实时行情'
         },
         
         en: {
@@ -712,7 +729,10 @@ window.i18n = (() => {
             footerCopyright: '© 2025 Maollar · Shopping as Investment',
             footerItem1: 'Meow Fund · Transparent Auditing',
             footerItem2: 'Solana On-Chain Ledger',
-            footerItem3: 'Alibaba Cloud & Cloudflare Infrastructure'
+            footerItem3: 'Alibaba Cloud & Cloudflare Infrastructure',
+            viewFundBtn: 'MEOW Market',
+            viewFundL1: 'View MEOW',
+            viewFundL2: 'Live Market'
         },
         ja: {
             lang: 'ja-JP',
@@ -827,7 +847,10 @@ window.i18n = (() => {
             footerCopyright: '© 2025 Maollar · ショッピングは投資',
             footerItem1: 'Meowファンド · 透明な監査',
             footerItem2: 'Solanaオンチェーン台帳',
-            footerItem3: 'Alibaba Cloud & Cloudflareインフラ'
+            footerItem3: 'Alibaba Cloud & Cloudflareインフラ',
+            viewFundBtn: '喵币行情',
+            viewFundL1: '查看喵币',
+            viewFundL2: '实时行情'
         },
         ko: {
             lang: 'ko-KR',
@@ -941,7 +964,10 @@ window.i18n = (() => {
             footerCopyright: '© 2025 Maollar · ショッピングは投資',
             footerItem1: 'Meowファンド · 透明な監査',
             footerItem2: 'Solanaオンチェーン台帳',
-            footerItem3: 'Alibaba Cloud & Cloudflareインフラ'
+            footerItem3: 'Alibaba Cloud & Cloudflareインフラ',
+            viewFundBtn: '喵币行情',
+            viewFundL1: '查看喵币',
+            viewFundL2: '实时行情'
         },
         fr: {
             lang: 'fr',
@@ -1055,7 +1081,10 @@ window.i18n = (() => {
             footerCopyright: "© 2025 Maollar · Consommer, c'est investir",
             footerItem1: 'Fonds Meow · Audit transparent',
             footerItem2: 'Grand livre Solana',
-            footerItem3: 'Infrastructure Alibaba Cloud & Cloudflare'
+            footerItem3: 'Infrastructure Alibaba Cloud & Cloudflare',
+            viewFundBtn: 'MEOW Market',
+            viewFundL1: 'View MEOW',
+            viewFundL2: 'Live Market'
         },
         es: {
             lang: 'es',
@@ -1169,7 +1198,10 @@ window.i18n = (() => {
             footerCopyright: '© 2025 Maollar · Comprar es invertir',
             footerItem1: 'Fondo Meow · Auditoría transparente',
             footerItem2: 'Libro mayor en Solana',
-            footerItem3: 'Infraestructura Alibaba Cloud & Cloudflare'
+            footerItem3: 'Infraestructura Alibaba Cloud & Cloudflare',
+            viewFundBtn: 'View MEOW realtime market',
+            viewFundL1: 'View MEOW',
+            viewFundL2: 'realtime market'
         },
         ar: {
             lang: 'ar',
@@ -1283,7 +1315,10 @@ window.i18n = (() => {
             footerCopyright: '© 2025 ماولار · التسوّق استثمار',
             footerItem1: 'صندوق Meow · تدقيق شفاف',
             footerItem2: 'سجل Solana على السلسلة',
-            footerItem3: 'بنية Alibaba Cloud وCloudflare'
+            footerItem3: 'بنية Alibaba Cloud وCloudflare',
+            viewFundBtn: 'View MEOW realtime market',
+            viewFundL1: 'View MEOW',
+            viewFundL2: 'realtime market'
         },
         th: {
             lang: 'th',
@@ -1397,7 +1432,10 @@ window.i18n = (() => {
             footerCopyright: '© 2025 Maollar · การใช้จ่ายคือการลงทุน',
             footerItem1: 'กองทุน Meow · ตรวจสอบได้โปร่งใส',
             footerItem2: 'บัญชีบล็อกเชน Solana',
-            footerItem3: 'โครงสร้างพื้นฐาน Alibaba Cloud & Cloudflare'
+            footerItem3: 'โครงสร้างพื้นฐาน Alibaba Cloud & Cloudflare',
+            viewFundBtn: 'View MEOW realtime market',
+            viewFundL1: 'View MEOW',
+            viewFundL2: 'Live Market'
         },
         vi: {
             lang: 'vi',
@@ -1511,7 +1549,10 @@ window.i18n = (() => {
             footerCopyright: '© 2025 Maollar · Mua sắm là đầu tư',
             footerItem1: 'Quỹ Meow · Kiểm toán minh bạch',
             footerItem2: 'Sổ cái trên Solana',
-            footerItem3: 'Hạ tầng Alibaba Cloud & Cloudflare'
+            footerItem3: 'Hạ tầng Alibaba Cloud & Cloudflare',
+            viewFundBtn: 'View MEOW realtime market',
+            viewFundL1: 'View MEOW',
+            viewFundL2: 'realtime market'
         }
     };
     
@@ -1554,15 +1595,15 @@ window.i18n = (() => {
             <div class="flex items-center gap-3">
                 <img src="https://pub-52cfa058efcc498eb28c64d7af72cf06.r2.dev/logo.png" alt="Maollar logo" class="h-12 w-12 rounded-full border-2 border-white shadow-md">
                 <div>
-                    <p class="text-sm font-semibold text-amber-600 uppercase tracking-wide">${t('brandName')}</p>
-                    <h1 class="text-xl font-bold text-gray-900">${t('tagline')}</h1>
+                    <p class="header-brand-line text-sm font-semibold text-amber-600 uppercase tracking-wide">${t('brandName')}</p>
+                    <h1 class="header-brand-line header-tagline text-xl font-bold text-gray-900">${t('tagline')}</h1>
                 </div>
             </div>
-            <a href="https://shop.maollar.com" target="_blank" rel="noopener noreferrer" class="hidden items-center gap-2 rounded-full border border-black/5 bg-white px-5 py-2 text-sm font-semibold text-gray-800 shadow-md shadow-amber-100 transition hover:border-amber-400 hover:text-amber-600 md:inline-flex">
+            <a href="https://shop.maollar.com" target="_blank" rel="noopener noreferrer" class="header-enter-btn hidden items-center gap-2 rounded-full border border-black/5 bg-white px-5 py-2 text-sm font-semibold text-gray-800 shadow-md shadow-amber-100 transition hover:border-amber-400 hover:text-amber-600 md:inline-flex">
                 <span>${t('enterShop')}</span>
                 <span class="text-lg">↗</span>
             </a>
-            <a href="https://m.maollar.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-4 py-2 text-sm font-semibold text-gray-800 shadow-md shadow-amber-100 transition hover:border-amber-400 hover:text-amber-600 md:hidden">
+            <a href="https://m.maollar.com" target="_blank" rel="noopener noreferrer" class="header-enter-btn inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-4 py-2 text-sm font-semibold text-gray-800 shadow-md shadow-amber-100 transition hover:border-amber-400 hover:text-amber-600 md:hidden">
                 <span>${t('enterShop')}</span>
                 <span class="text-lg">↗</span>
             </a>
@@ -1872,6 +1913,7 @@ window.i18n = (() => {
         
         // 更新字体
         document.body.style.fontFamily = langData.fonts;
+        document.body.setAttribute('data-lang', langData.lang || currentLang);
         
         // 更新页面标题
         document.getElementById('page-title').textContent = langData.title;
@@ -1892,6 +1934,22 @@ window.i18n = (() => {
         const url = new URL(window.location);
         url.searchParams.set('lang', lang);
         window.history.replaceState({}, '', url);
+        
+        // 设置左下角实时行情按钮文案
+        const t = (k) => translations[lang] && translations[lang][k] ? translations[lang][k] : null;
+        const fundBtn = document.getElementById('fund-button-text');
+        if (fundBtn) {
+            fundBtn.textContent = t('viewFundBtn') || '喵币行情';
+        }
+        
+        // 点击外部关闭语言菜单
+        document.addEventListener('click', (e) => {
+            const langSelector = document.querySelector('.lang-selector');
+            const langMenu = document.getElementById('lang-menu');
+            if (!langSelector.contains(e.target) && langMenu.classList.contains('active')) {
+                langMenu.classList.remove('active');
+            }
+        });
     }
     
     // 初始化动画
@@ -2012,6 +2070,13 @@ document.addEventListener('DOMContentLoaded', () => {
     window.i18n.init();
 });
     </script>
+
+    <!-- Realtime Fund Button (bottom-left) -->
+    <a href="https://fund.maollar.com" target="_blank" rel="noopener noreferrer"
+       class="fixed left-8 bottom-8 z-50 bg-gradient-to-r from-amber-600 to-orange-600 text-white font-semibold shadow-2xl ring-1 ring-white/40 hover:from-amber-700 hover:to-orange-700 transition fund-btn border-2 border-transparent">
+        <span class="text-xl leading-none">📈</span>
+        <span id="fund-button-text" class="text-base sm:text-lg leading-none">喵币行情</span>
+    </a>
 </body>
 </html>
 
