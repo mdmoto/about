@@ -1,2082 +1,320 @@
 <!DOCTYPE html>
-<html lang="zh-CN" id="html-root">
+<html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">喵乐商城 · 消费即投资</title>
+    <title>About Mao Mall | Decentralized Supply Chain Protocol</title>
+    <meta name="description"
+        content="Mao Mall is a non-profit foundation powering the autonomous economy through a decentralized supply chain protocol.">
+
+    <!-- SEO JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Mao Mall",
+      "url": "https://maollar.com",
+      "logo": "https://maollar.com/logo.png",
+      "description": "The decentralized supply chain protocol native to the AI Era."
+    }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/png" href="https://pub-52cfa058efcc498eb28c64d7af72cf06.r2.dev/logo.png">
-    <link rel="apple-touch-icon" href="https://pub-52cfa058efcc498eb28c64d7af72cf06.r2.dev/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'matte-black': '#0d0d0d',
+                        'neon-cyan': '#00FFCC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1.5s ease-out forwards',
+                        'bounce-slow': 'bounce 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        :root {
-            color-scheme: light;
-            --primary: #E05228;
-            --primary-dark: #C9431F;
-            --bg-soft: #fbf7f2;
-            --text-main: #2f3133;
-            --text-muted: #5f6770;
-            --card-shadow: 0 24px 60px rgba(224, 82, 40, 0.12);
-        }
         body {
-            font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
-            background: var(--bg-soft);
-            color: var(--text-main);
-        }
-        h1, h2, h3 {
-            font-weight: 700;
-            letter-spacing: 0.01em;
-        }
-        .grid-title-spacing p:first-child {
-            margin-bottom: 0.75rem;
-        }
-        .section-card {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 28px;
-            box-shadow: var(--card-shadow);
-            padding: clamp(2.2rem, 4vw, 3.4rem);
-            backdrop-filter: blur(16px);
-        }
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.45rem 1.2rem;
-            border-radius: 999px;
-            background: linear-gradient(135deg, rgba(224,82,40,0.12), rgba(224,82,40,0.04));
-            color: var(--primary);
-            font-weight: 600;
-            backdrop-filter: blur(12px);
-        }
-        .stripe-background {
-            position: relative;
-            background: var(--bg-soft);
+            background-color: #0d0d0d;
+            color: white;
             overflow-x: hidden;
         }
-        .stripe-background::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background: url('https://pub-52cfa058efcc498eb28c64d7af72cf06.r2.dev/logo.png') center no-repeat;
-            background-size: min(1200px, 90vw);
-            opacity: 0.08;
-            filter: grayscale(1);
-            pointer-events: none;
-            z-index: -2;
-        }
-        .stripe-background::after {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background:
-                radial-gradient(circle at 12% 18%, rgba(224, 82, 40, 0.08), transparent 65%),
-                radial-gradient(circle at 82% 22%, rgba(255, 176, 59, 0.08), transparent 70%),
-                radial-gradient(circle at 30% 82%, rgba(224, 82, 40, 0.06), transparent 65%);
-            pointer-events: none;
-            z-index: -3;
-        }
-        details summary::-webkit-details-marker {
-            display: none;
-        }
-        table {
-            border-collapse: separate;
-            border-spacing: 0;
-        }
-        .meow-table thead th:first-child { border-top-left-radius: 18px; }
-        .meow-table thead th:last-child { border-top-right-radius: 18px; }
-        .meow-table tbody tr:last-child td:first-child { border-bottom-left-radius: 18px; }
-        .meow-table tbody tr:last-child td:last-child { border-bottom-right-radius: 18px; }
-        .meow-table th, .meow-table td {
-            border-bottom: 1px solid rgba(224, 82, 40, 0.12);
-            white-space: normal;
-            word-break: break-word;
-        }
-        .meow-table tbody tr:nth-child(odd) {
-            background: rgba(224, 82, 40, 0.04);
-        }
-        .meow-table tbody tr:nth-child(even) {
-            background: rgba(255, 255, 255, 0.75);
-        }
-        .section-card .bg-white,
-        .section-card .bg-white\/95,
-        .section-card .bg-white\/90,
-        .section-card [class*="bg-white"] {
-            background-color: rgba(255, 255, 255, 0.7) !important;
-            backdrop-filter: blur(12px);
-        }
-        .brand-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        .brand-card .brand-heading {
-            display: flex;
-            align-items: center;
-            min-height: clamp(3.25rem, 6vw, 4.5rem);
-            margin: 0;
-        }
-        .brand-card .brand-note {
-            margin-top: 0.75rem;
-            margin-bottom: 0;
-        }
-        .hero-headline {
-            font-size: clamp(1.4rem, 2vw, 2.1rem);
-            line-height: 1.36;
-            letter-spacing: 0.024em;
-        }
-        .hero-headline span {
-            display: block;
-        }
-        .hero-headline .hero-line + .hero-line {
-            margin-top: 0.5rem;
-        }
-        @media (min-width: 768px) {
-            .hero-headline {
-                font-size: clamp(1.8rem, 2.2vw, 2.4rem);
-                line-height: 1.3;
-            }
-        }
-        @media (max-width: 768px) {
-            .meow-table th,
-            .meow-table td {
-                padding: 0.45rem 0.4rem !important;
-                font-size: 0.75rem !important;
-            }
-        }
-        @media (max-width: 960px) {
-            .section-card {
-                padding: clamp(1.8rem, 6vw, 2.4rem);
-            }
-            h2 {
-                font-size: clamp(1.8rem, 5vw, 2.6rem);
-            }
-        }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        @keyframes shimmer {
-            0% { background-position: -200% center; }
-            100% { background-position: 200% center; }
-        }
-        
-        .scroll-animate { opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
-        .scroll-animate-delay-1 { animation-delay: 0.1s; }
-        .scroll-animate-delay-2 { animation-delay: 0.2s; }
-        .scroll-animate-delay-3 { animation-delay: 0.3s; }
-        
-        .btn-primary {
-            animation: pulse 3s ease-in-out infinite;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-        }
-        .btn-primary:hover {
-            animation: none;
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(224, 82, 40, 0.4);
-        }
-        
-        .btn-download {
-            background: linear-gradient(135deg, #E05228 0%, #C9431F 100%);
-            color: #ffffff !important;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-download::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-        .btn-download:hover::before { left: 100%; }
-        .btn-download:hover {
-            background: linear-gradient(135deg, #C9431F 0%, #B03618 100%);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(224, 82, 40, 0.5);
-        }
-        
-        .meow-table tbody tr {
-            transition: all 0.3s ease;
-        }
-        .meow-table tbody tr:hover {
-            background: rgba(224, 82, 40, 0.12) !important;
-            transform: scale(1.01);
-            box-shadow: 0 4px 12px rgba(224, 82, 40, 0.15);
-        }
-        
-        .badge-new::after {
-            content: "NEW";
-            margin-left: 0.5rem;
-            padding: 0.15rem 0.4rem;
-            border-radius: 4px;
-            background: linear-gradient(90deg, #E05228, #FFB03B, #E05228);
-            background-size: 200% auto;
-            color: white;
-            font-size: 0.65rem;
-            font-weight: 700;
-            animation: shimmer 2s linear infinite;
-        }
-        
-        .hover-lift {
-            transition: all 0.3s ease;
-        }
-        .hover-lift:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 32px 64px rgba(224, 82, 40, 0.2);
-        }
-        
-        .decorative-line {
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        .decorative-line::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 60%;
-            background: linear-gradient(180deg, var(--primary), #FFB03B);
-            border-radius: 2px;
-        }
-        
-        .dot-pattern {
-            position: relative;
-        }
-        .dot-pattern::before {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            background-image: radial-gradient(circle, rgba(224, 82, 40, 0.15) 2px, transparent 2px);
-            background-size: 12px 12px;
-            border-radius: 50%;
-            pointer-events: none;
-        }
-        .dot-pattern-tl::before { top: -20px; left: -20px; }
-        .dot-pattern-tr::before { top: -20px; right: -20px; }
-        .dot-pattern-bl::before { bottom: -20px; left: -20px; }
-        .dot-pattern-br::before { bottom: -20px; right: -20px; }
-        
-        .wave-decoration {
-            position: relative;
-        }
-        .wave-decoration::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
-            border-radius: 2px;
-        }
-        
-        .corner-accent {
-            position: relative;
-        }
-        .corner-accent::before {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: -8px;
-            width: 24px;
-            height: 24px;
-            border-top: 3px solid var(--primary);
-            border-left: 3px solid var(--primary);
-            border-radius: 4px 0 0 0;
-            opacity: 0.3;
-        }
-        .corner-accent::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            right: -8px;
-            width: 24px;
-            height: 24px;
-            border-bottom: 3px solid #FFB03B;
-            border-right: 3px solid #FFB03B;
-            border-radius: 0 0 4px 0;
-            opacity: 0.3;
-        }
-        
-        .number-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), #FFB03B);
-            color: white;
-            font-weight: 700;
-            font-size: 0.875rem;
-            box-shadow: 0 4px 12px rgba(224, 82, 40, 0.3);
-            flex-shrink: 0;
-        }
-        
-        .number-badge-sm {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 1.5rem;
-            height: 1.5rem;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), #FFB03B);
-            color: white;
-            font-weight: 700;
-            font-size: 0.75rem;
-            box-shadow: 0 2px 8px rgba(224, 82, 40, 0.25);
-            flex-shrink: 0;
-        }
-        
-        .icon-decorated {
-            position: relative;
-            display: inline-flex;
-        }
-        .icon-decorated::after {
-            content: '✦';
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            color: #FFB03B;
-            font-size: 0.75rem;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        .text-gradient {
-            background: linear-gradient(135deg, var(--primary) 0%, #FFB03B 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Language selector */
-        .lang-selector {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 50;
-        }
-        .lang-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.25rem;
-            background: white;
-            border: 2px solid rgba(224, 82, 40, 0.2);
-            border-radius: 999px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .lang-btn:hover {
-            border-color: var(--primary);
-            box-shadow: 0 6px 20px rgba(224, 82, 40, 0.2);
-        }
-        .lang-menu {
-            position: absolute;
-            bottom: 100%;
-            right: 0;
-            margin-bottom: 0.5rem;
-            background: white;
-            border: 2px solid rgba(224, 82, 40, 0.1);
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(10px);
-            pointer-events: none;
-            transition: all 0.3s ease;
-        }
-        .lang-menu.active {
-            opacity: 1;
-        }
-        .lang-option {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1.5rem;
-            cursor: pointer;
-            transition: background 0.2s ease;
-            white-space: nowrap;
-        }
-        .lang-option:hover {
-            background: rgba(224, 82, 40, 0.05);
-        }
-        .lang-option.active {
-            background: rgba(224, 82, 40, 0.1);
-            font-weight: 600;
-        }
-        body[data-lang^="zh"] .header-brand-line,
-        body[data-lang^="zh"] .header-tagline {
-            white-space: nowrap;
-        }
-        body[data-lang^="zh"] .header-enter-btn span {
-            white-space: nowrap;
-        }
-        /* Fund button - align size with lang button */
-        .fund-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.25rem; /* same as .lang-btn */
-            border-radius: 999px;
-            /* remove fixed height to match padding-based height of lang-btn */
+
+        .chinese-subtext {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            letter-spacing: 0.1em;
         }
     </style>
 </head>
-<body class="min-h-screen stripe-background text-gray-900" data-lang="zh-CN">
-    <div id="app">
-        <!-- Content will be loaded here -->
-        <div class="flex items-center justify-center min-h-screen">
-            <div class="text-center">
-                <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
-                <p class="mt-4 text-gray-600">加载中...</p>
-            </div>
-        </div>
-    </div>
 
-    <!-- Language Selector -->
-    <div class="lang-selector">
-        <div class="lang-btn" onclick="window.i18n.toggleLangMenu()">
-            <span>🌐</span>
-            <span id="current-lang">中文</span>
-        </div>
-        <div class="lang-menu" id="lang-menu">
-            <!-- Will be populated by JavaScript -->
-        </div>
-    </div>
+<body class="bg-matte-black">
 
-    <script>
-// 国际化系统
-window.i18n = (() => {
-    // 语言数据（先定义中英文，其他语言可以后续添加）
-    const translations = {
-        zh: {
-            lang: 'zh-CN',
-            dir: 'ltr',
-            name: '中文',
-            flag: '🇨🇳',
-            fonts: '"PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif',
-            
-            title: '喵乐商城 · 消费即投资',
-            brandName: 'Maollar',
-            tagline: '喵乐商城 · 消费即投资',
-            enterShop: '进入商城',
-            
-            heroBadge: '全球电商 · WEB3算法',
-            heroTitle1: '每一次消费',
-            heroTitle2: '都是持续增值的投资',
-            heroTitle3: '越早入场　收益越高',
-            heroDesc: '喵乐把"平台利润 + 品牌补贴"直接返还给消费者，让购物像挖矿一样持续产出收益。',
-            
-            heroCard1Title: '去中心化',
-            heroCard1Desc: '无股东 无暗箱 数据公开 管理透明',
-            heroCard2Title: '品质为上',
-            heroCard2Desc: '日系标准把控平台产品',
-            heroCard3Title: '消费赚钱',
-            heroCard3Desc: '平台非盈利，收益全部共享',
-            
-            heroCta1: '立即加入内测',
-            heroCta2: '查看常见问题',
-            
-            sidebarTitle: '为什么越早加入越赚？',
-            sidebarPoint1Title: '收益线性增长：',
-            sidebarPoint1Desc: '每笔订单的 10% 会锁定进入喵刀基金，持续增大收益池。',
-            sidebarPoint2Title: '喵币获取难度递增：',
-            sidebarPoint2Desc: '兑换比例从 1:1000 递减到 1000:1，档位越靠前，喵币越稀缺，差距最高可达',
-            sidebarPoint2Highlight: '100 万倍',
-            sidebarPoint2Suffix: '。',
-            sidebarPoint3Title: '价值锚定明确：',
-            sidebarPoint3Desc: '喵币价值 = 基金总额 ÷ 喵币总数，基金扩张越快，价值加速度上涨越明显。',
-            
-            tokenBadge: '奖励早期用户',
-            tokenTitle: '喵币增长预测',
-            tokenDesc: '下表展示基于喵乐商城销售额的喵币增长预测。内测期参与的消费者在第 24 个月可获 3-5 倍回报，第 36 个月可获 44 倍回报，之后随商城扩张持续递增。',
-            
-            tableHeader1: '销售额 (百万)',
-            tableHeader2: '喵刀基金 (百万)',
-            tableHeader3: '每 1 元赠喵币 (个)',
-            tableHeader4: '喵币总数 (百万)',
-            tableHeader5: '喵币价值 (元)',
-            tableHeader6: '达成时间 (月)',
-            
-            howBadge: '三步看懂喵乐',
-            howTitle: '消费 · 分润 · 增值',
-            howStep1Title: '消费',
-            howStep1Desc: '在喵乐商城使用人民币、美元、日元等法币购物，体验与主流电商完全一致。',
-            howStep2Title: '分润',
-            howStep2Desc: '喵乐坚持 15% 毛利率，其中 10% 自动注入喵刀基金，并按照用户所在档位发放喵币。',
-            howStep3Title: '增值',
-            howStep3Desc: '喵币与基金 1:1 挂钩，可抵扣、提现或参与平台治理，收益随基金扩张持续增长。',
-            howFooter: '我们把"电商利润 + 品牌补贴"转化为用户资产，让消费持续产生收益。',
-            
-            trustBadge: '信任与安全',
-            trustTitle: '透明结构 · 真金白银 · 客户即老板',
-            trustCard1Title: '透明结构',
-            trustCard1Point1: '✓ 毛利率公开：统一 15%，其中 10% 注入喵刀基金，5% 覆盖税费、履约与运营成本。',
-            trustCard1Point2: '✓ 基金将在新加坡合法注册，账目可审计并长期公开。',
-            trustCard1Point3: '✓ 收益来源明确：真实销售毛利 + 品牌合作补贴。',
-            trustCard2Title: '资金安全',
-            trustCard2Point1: '✓ 喵币对应基金中的真实法币，可按规则随时申请提现。',
-            trustCard2Point2: '✓ 发放与交易记录上链，公开透明、不可篡改。',
-            trustCard2Point3: '✓ 平台为非营利结构，由所有喵币持有者共同所有。',
-            
-            weAreNotTitle: '我们不是',
-            weAreNotPoint1: '✘ 资金盘 / 空气币 / 拉人头返利',
-            weAreNotPoint2: '✘ 要求预充值或充值后才能提现',
-            weAreNotPoint3: '✘ 无真实商品支撑的短期炒作',
-            weAreTitle: '我们是',
-            weArePoint1: '✔ 真实贸易电商 + 链上记账',
-            weArePoint2: '✔ 透明利润返还 + 可审计基金',
-            weArePoint3: '✔ 用户共治、人人平等的长期生态',
-            
-            whoBadge: '我们是谁',
-            whoTitle: '我们是全球首个非赢利电商平台',
-            whoCard1Label: '经营性质',
-            whoCard1Title: '0盈利',
-            whoCard1Desc: '当世界追求利润，就没有人能打败我们',
-            whoCard2Label: '钱从哪来',
-            whoCard2Title: '平台发起人',
-            whoCard2Desc: '启动资金由发起人投入星星之火，望客户能成为燎原之燚',
-            whoCard3Label: '老板是谁',
-            whoCard3Title: '没有老板',
-            whoCard3Desc: '平台没有实际控制人，就算持币第一的用户也无权擅自改变公司性质',
-            whoCard4Label: '平台宗旨',
-            whoCard4Title: '为所有消费者创造价值',
-            whoCard4Desc: '消费者既是平台所有者又是客户，保证消费者的利益最大化是平台的目标',
-            whoFooter: '为每一位消费者提供最具品质的好价产品，促进销量的增长，增加基金数量，保证股东权益，从未如此统一。',
-            
-            bizBadge: '商业模式概览',
-            bizTitle: '平台收益？消费者赚钱？',
-            bizCard1Title: '平台收入',
-            bizCard1Point1: '• 统一 15% 毛利率（参考 Costco），不靠信息差和劣质商品赚快钱。',
-            bizCard1Point2: '• 其中 5% 用于运营、税费、履约成本。',
-            bizCard1Point3: '• 锁定 10% 注入喵刀基金，直接返还给消费者。',
-            bizCard1Point4: '• 品牌营销合作、增值服务等衍生收入确保平台健康运转。',
-            bizCard2Title: '用户收益',
-            bizCard2Point1: '• 获得喵币 = 喵刀基金份额，可抵扣、提现、参与二级市场交易。',
-            bizCard2Point2: '• 越早参与、消费越多，基金奖励越高，享受更大倍数的复利增长。',
-            bizCard2Point3: '• 平台最终归消费者共同所有，喵乐团队负责托管与执行。',
-            
-            faqBadge: '常见问题',
-            faqTitle: '第一次接触喵币，最关心问题都在这里',
-            faq1Question: '喵币是不是虚拟币？会不会归零？',
-            faq1Answer: '喵币对应基金中的真实法币，可按比例申请提现。基金资产来自真实销售和品牌补贴，账本可审计。只要持有喵币，就可以按规则兑换真金白银。',
-            faq2Question: '为什么早期收益更高？',
-            faq2Answer: '内测期喵币发行量固定，基金增长更快，导致单位喵币价值曲线加速度上涨；越早加入越受益。',
-            faq3Question: '需要拉人或充值吗？',
-            faq3Answer: '不需要。我们不是资金盘，也不靠人头奖励。收益全部来自真实订单毛利返还，不额外收费。',
-            faq4Question: '如果平台出问题怎么办？',
-            faq4Answer: '喵币与基金独立存在，计划托管在受监管金融机构。即便商城停运，基金资产仍归喵币持有者所有，可按规则提现。',
-            
-            ctaBadge: '诚邀光顾',
-            ctaTitle: '消费即投资，让购物成为长期资产',
-            ctaDesc: '越早入场越容易获得数倍回报。立即下载 App 或与我们联系，抢占早鸟档位。',
-            ctaBtn1: '下载入口',
-            ctaBtn2: '联系我们：ss@maollar.com',
-            
-            footerCopyright: '© 2025 Maollar 喵乐商城 · 消费即投资',
-            footerItem1: '喵刀基金 · 透明审计',
-            footerItem2: 'Solana 链上记账',
-            footerItem3: '阿里云 & Cloudflare 基础设施',
-            viewFundBtn: '喵币行情',
-            viewFundL1: '查看喵币',
-            viewFundL2: '实时行情'
-        },
-        
-        en: {
-            lang: 'en',
-            dir: 'ltr',
-            name: 'English',
-            flag: '🇬🇧',
-            fonts: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-            
-            title: 'Maollar · Shopping as Investment',
-            brandName: 'Maollar',
-            tagline: 'Shopping as Investment',
-            enterShop: 'Enter Shop',
-            
-            heroBadge: 'Global E-commerce · WEB3 Algorithm',
-            heroTitle1: 'Every Purchase',
-            heroTitle2: 'Is a Continuous Value Investment',
-            heroTitle3: 'Earlier Entry, Higher Returns',
-            heroDesc: 'Maollar returns "platform profits + brand subsidies" directly to consumers, making shopping generate continuous rewards like mining.',
-            
-            heroCard1Title: 'Decentralized',
-            heroCard1Desc: "Sans actionnaires ni zones d'ombre, données et gestion transparentes",
-            heroCard2Title: 'Quality First',
-            heroCard2Desc: 'Japanese standards for all platform products',
-            heroCard3Title: 'Earn While Shopping',
-            heroCard3Desc: 'Non-profit platform, all profits shared',
-            
-            heroCta1: 'Join Beta Now',
-            heroCta2: 'View FAQ',
-            
-            sidebarTitle: 'Why Join Early?',
-            sidebarPoint1Title: 'Linear Revenue Growth:',
-            sidebarPoint1Desc: '10% of each order is locked into the Meow Fund, continuously expanding the reward pool.',
-            sidebarPoint2Title: 'Rising token scarcity:',
-            sidebarPoint2Desc: 'Exchange ratio decreases from 1:1000 to 1000:1; earlier tiers make tokens scarcer, with a gap up to',
-            sidebarPoint2Highlight: '1,000,000',
-            sidebarPoint2Suffix: ' times.',
-            sidebarPoint3Title: 'Clear Value Anchoring:',
-            sidebarPoint3Desc: 'MeowCoin value = Fund total ÷ Token supply. Faster fund growth means accelerated value appreciation.',
-            
-            tokenBadge: 'Early Bird Rewards',
-            tokenTitle: 'MeowCoin Growth Projection',
-            tokenDesc: 'The table below shows MeowCoin growth projections based on Maollar\'s sales volume. Beta participants can expect 3-5x returns by month 24, 44x by month 36, and continuing growth as the platform scales.',
-            
-            tableHeader1: 'Sales (M)',
-            tableHeader2: 'Fund (M)',
-            tableHeader3: 'Tokens/1¥',
-            tableHeader4: 'Total Supply (M)',
-            tableHeader5: 'Token Value (¥)',
-            tableHeader6: 'Timeline (Mo)',
-            
-            howBadge: 'Understanding Maollar in 3 Steps',
-            howTitle: 'Shop · Share · Appreciate',
-            howStep1Title: 'Shop',
-            howStep1Desc: 'Use fiat currencies (CNY, USD, JPY, etc.) at Maollar, with the same experience as mainstream e-commerce platforms.',
-            howStep2Title: 'Share',
-            howStep2Desc: 'Maollar maintains a 15% margin. 10% automatically goes to the Meow Fund, distributing MeowCoins based on tier levels.',
-            howStep3Title: 'Appreciate',
-            howStep3Desc: 'MeowCoins are pegged 1:1 to the fund. Use them for discounts, withdrawals, or platform governance while value grows with fund expansion.',
-            howFooter: 'We convert "e-commerce profits + brand subsidies" into user assets, making shopping generate continuous returns.',
-            
-            trustBadge: 'Trust & Security',
-            trustTitle: 'Transparent · Real Value · Customer-Owned',
-            trustCard1Title: 'Transparent Structure',
-            trustCard1Point1: '✓ Public margins: Fixed 15%, with 10% to Meow Fund, 5% covering taxes, fulfillment & operations.',
-            trustCard1Point2: '✓ Fund will be legally registered in Singapore, with auditable and publicly accessible accounts.',
-            trustCard1Point3: '✓ Clear revenue sources: Real sales margins + brand partnership subsidies.',
-            trustCard2Title: 'Fund Security',
-            trustCard2Point1: '✓ MeowCoins are backed by real fiat in the fund, withdrawable anytime per rules.',
-            trustCard2Point2: '✓ Issuance and transaction records on-chain: public, transparent, immutable.',
-            trustCard2Point3: '✓ Platform operates as a non-profit, jointly owned by all MeowCoin holders.',
-            
-            weAreNotTitle: 'We Are NOT',
-            weAreNotPoint1: '✘ Ponzi scheme / vaporware / MLM referral scheme',
-            weAreNotPoint2: '✘ Requiring pre-deposit or deposit-to-withdraw schemes',
-            weAreNotPoint3: '✘ Short-term speculation with no real products',
-            weAreTitle: 'We ARE',
-            weArePoint1: '✔ Real e-commerce + blockchain ledger',
-            weArePoint2: '✔ Transparent profit-sharing + auditable fund',
-            weArePoint3: '✔ User-governed, equal-access, long-term ecosystem',
-            
-            whoBadge: 'Who We Are',
-            whoTitle: 'World\'s First Non-Profit E-commerce Platform',
-            whoCard1Label: 'Business Model',
-            whoCard1Title: 'Zero Profit',
-            whoCard1Desc: 'When the world seeks profit, no one can defeat us',
-            whoCard2Label: 'Funding Source',
-            whoCard2Title: 'Platform Founders',
-            whoCard2Desc: 'Seed funding from founders, hoping customers become the blazing wildfire',
-            whoCard3Label: 'Who\'s the Boss',
-            whoCard3Title: 'No Boss',
-            whoCard3Desc: 'Platform has no controller; even the largest holder cannot unilaterally change the company structure',
-            whoCard4Label: 'Platform Mission',
-            whoCard4Title: 'Create Value for All Consumers',
-            whoCard4Desc: 'Consumers are both owners and customers. Maximizing consumer benefits is the platform\'s goal',
-            whoFooter: 'Providing quality products at fair prices, driving sales growth, increasing fund size, and protecting shareholder interests—never been this aligned.',
-            
-            bizBadge: 'Business Model Overview',
-            bizTitle: 'Platform Revenue? User Earnings?',
-            bizCard1Title: 'Platform Income',
-            bizCard1Point1: '• Fixed 15% margin (Costco model), no quick profits from information asymmetry or low-quality goods.',
-            bizCard1Point2: '• 5 % covers operations, taxes, fulfillment costs.',
-            bizCard1Point3: '• 10 % locked into Meow Fund, directly returned to consumers.',
-            bizCard1Point4: '• Brand marketing partnerships and value-added services ensure platform sustainability.',
-            bizCard2Title: 'User Earnings',
-            bizCard2Point1: '• MeowCoins = Fund shares, usable for discounts, withdrawals, secondary market trading.',
-            bizCard2Point2: '• Earlier participation and higher spending means more fund rewards, enjoying compound growth multipliers.',
-            bizCard2Point3: '• Platform ultimately owned by consumers collectively, with Maollar team managing execution.',
-            
-            faqBadge: 'FAQ',
-            faqTitle: 'First Time Learning About MeowCoins? Your Questions Answered',
-            faq1Question: 'Are MeowCoins virtual currency? Will they go to zero?',
-            faq1Answer: 'MeowCoins are backed by real fiat in the fund and can be withdrawn proportionally. Fund assets come from real sales and brand subsidies, with auditable ledgers. As long as you hold MeowCoins, you can exchange them for real money per rules.',
-            faq2Question: 'Why are early rewards higher?',
-            faq2Answer: 'During beta, MeowCoin issuance is fixed while the fund grows faster, causing accelerated value appreciation per token. Earlier participants benefit more.',
-            faq3Question: 'Do I need to recruit others or pre-deposit?',
-            faq3Answer: 'No. We\'re not a Ponzi scheme or MLM. All rewards come from real order margins, with no additional fees.',
-            faq4Question: 'What if the platform shuts down?',
-            faq4Answer: 'MeowCoins and the fund exist independently, planned to be held in regulated financial institutions. Even if the marketplace shuts down, fund assets still belong to MeowCoin holders and can be withdrawn per rules.',
-            
-            ctaBadge: 'Join Us',
-            ctaTitle: 'Shopping as Investment: Turn Purchases into Long-Term Assets',
-            ctaDesc: 'Earlier entry means easier multi-fold returns. Download the app now or contact us to secure early-bird positions.',
-            ctaBtn1: 'Download',
-            ctaBtn2: 'Contact us: ss@maollar.com',
-            
-            footerCopyright: '© 2025 Maollar · Shopping as Investment',
-            footerItem1: 'Meow Fund · Transparent Auditing',
-            footerItem2: 'Solana On-Chain Ledger',
-            footerItem3: 'Alibaba Cloud & Cloudflare Infrastructure',
-            viewFundBtn: 'MEOW Market',
-            viewFundL1: 'View MEOW',
-            viewFundL2: 'Live Market'
-        },
-        ja: {
-            lang: 'ja-JP',
-            dir: 'ltr',
-            name: '日本語',
-            flag: '🇯🇵',
-            fonts: '"Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif',
-            title: 'Maollar · ショッピングは投資',
-            brandName: 'Maollar',
-            tagline: 'ショッピングは投資',
-            enterShop: 'ショップへ',
-            heroBadge: 'グローバルEC · Web3アルゴリズム',
-            heroTitle1: 'すべての購入が',
-            heroTitle2: '継続的に価値を生む投資',
-            heroTitle3: '早く参加するほどリターンが大きい',
-            heroDesc: 'Maollarは「プラットフォーム利益＋ブランド補助金」を消費者へ直接還元し、ショッピングを持続的な収益に変えます。',
-            heroCard1Title: '分散型',
-            heroCard1Desc: '株主もブラックボックスもなく、データと運営が透明',
-            heroCard2Title: '品質第一',
-            heroCard2Desc: 'すべての商品を日本レベルで管理',
-            heroCard3Title: '買い物で稼ぐ',
-            heroCard3Desc: '非営利構造で利益をユーザーと共有',
-            heroCta1: 'ベータに参加',
-            heroCta2: 'FAQを見る',
-            sidebarTitle: 'なぜ今すぐ参加？',
-            sidebarPoint1Title: '線形な収益成長：',
-            sidebarPoint1Desc: '各注文の10％がMeowファンドに蓄積され、報酬プールが拡大し続けます。',
-            sidebarPoint2Title: 'トークンの希少性：',
-            sidebarPoint2Desc: '交換比率は1:1000から1000:1まで低下し、早いステージほど希少性が高まり最大で',
-            sidebarPoint2Highlight: '100万倍',
-            sidebarPoint2Suffix: 'の差が生まれます。',
-            sidebarPoint3Title: '価値のアンカー：',
-            sidebarPoint3Desc: 'MeowCoin価値＝ファンド総額 ÷ トークン数。ファンド成長が速いほど価値上昇も加速します。',
-            tokenBadge: 'アーリーバード特典',
-            tokenTitle: 'MeowCoin成長予測',
-            tokenDesc: '下表はMaollarの売上に基づく予測です。ベータ参加者は24カ月で3〜5倍、36カ月で44倍のリターンを期待できます。',
-            tableHeader1: '売上 (百万)',
-            tableHeader2: 'ファンド (百万)',
-            tableHeader3: 'トークン/1¥',
-            tableHeader4: '総供給 (百万)',
-            tableHeader5: 'トークン価値 (¥)',
-            tableHeader6: '達成年 (月)',
-            howBadge: '3ステップで理解',
-            howTitle: '購入 · 分配 · 成長',
-            howStep1Title: '購入',
-            howStep1Desc: '人民元・米ドル・円などの法定通貨で主要ECと同じ体験ができます。',
-            howStep2Title: '分配',
-            howStep2Desc: '15％のマージンのうち10％を自動でファンドへ投入し、段位別にトークンを配布します。',
-            howStep3Title: '成長',
-            howStep3Desc: 'MeowCoinはファンドと1:1で連動し、割引・換金・ガバナンスに活用できます。',
-            howFooter: '「EC利益＋ブランド補助金」をユーザー資産へ転換し、消費が継続的なリターンを生みます。',
-            trustBadge: '信頼と安全性',
-            trustTitle: '透明な構造 · 実在の価値 · 顧客がオーナー',
-            trustCard1Title: '透明な構造',
-            trustCard1Point1: '✓ マージンは一律15％。10％をファンドへ、5％を税・履行・運営費に充当。',
-            trustCard1Point2: '✓ ファンドはシンガポールで合法登録し、監査と公開が可能。',
-            trustCard1Point3: '✓ 収益源は実売利益とブランド協業で明確。',
-            trustCard2Title: '資金の安全',
-            trustCard2Point1: '✓ MeowCoinは実通貨に裏付けられ、ルールに従って換金できます。',
-            trustCard2Point2: '✓ 発行と取引はオンチェーンに記録され改ざんできません。',
-            trustCard2Point3: '✓ 非営利構造で全保有者が共同オーナーです。',
-            weAreNotTitle: '私たちはこうではありません',
-            weAreNotPoint1: '✘ ポンジや草コイン、マルチ商法',
-            weAreNotPoint2: '✘ 前払いを強制する仕組み',
-            weAreNotPoint3: '✘ 実体のない短期投機',
-            weAreTitle: '私たちはこうです',
-            weArePoint1: '✔ 実ビジネス＋ブロックチェーン台帳',
-            weArePoint2: '✔ 透明な利益還元と監査可能なファンド',
-            weArePoint3: '✔ ユーザー共治の長期エコシステム',
-            whoBadge: '私たちについて',
-            whoTitle: '世界初の非営利型ECプラットフォーム',
-            whoCard1Label: 'ビジネスモデル',
-            whoCard1Title: 'ゼロ利益',
-            whoCard1Desc: '世界が利益を追うほど私たちの優位性が際立ちます。',
-            whoCard2Label: '資金源',
-            whoCard2Title: 'プラットフォーム創業者',
-            whoCard2Desc: '創業者のシード資金が火種になり、顧客が炎へと育てます。',
-            whoCard3Label: '誰がボス？',
-            whoCard3Title: 'ボスはいません',
-            whoCard3Desc: '支配的な所有者はおらず、最大保有者でも構造を一方的に変えられません。',
-            whoCard4Label: '使命',
-            whoCard4Title: '消費者全員に価値を',
-            whoCard4Desc: '消費者はオーナーであり顧客。利益最大化が私たちの使命です。',
-            whoFooter: '高品質な商品を適正価格で提供し、売上拡大・ファンド成長・権益保護を同時に達成します。',
-            
-            bizBadge: '商业模式概览',
-            bizTitle: '平台收益？消费者赚钱？',
-            bizCard1Title: '平台收入',
-            bizCard1Point1: '• Costco型の15％固定マージンで情報優位に依存しません。',
-            bizCard1Point2: '• 5％を運営・税金・履行コストに充当します。',
-            bizCard1Point3: '• 10％をMeowファンドにロックし利用者へ還元します。',
-            bizCard1Point4: '• ブランド協業や付加価値サービスが持続性を支えます。',
-            bizCard2Title: 'ユーザー収益',
-            bizCard2Point1: '• MeowCoin＝ファンド持分で、割引・換金・二次取引に使えます。',
-            bizCard2Point2: '• 早く参加し多く消費するほど複利リターンが大きくなります。',
-            bizCard2Point3: '• 最終的にプラットフォームは消費者全体の所有となり、Maollarが運営を担当します。',
-            faqBadge: 'FAQ',
-            faqTitle: 'MeowCoinを初めて知った方へ',
-            faq1Question: 'MeowCoinは仮想通貨？価値がゼロになりますか？',
-            faq1Answer: 'ファンド内の実通貨で裏付けられ比例換金できます。収益源は実売利益とブランド補助金で帳簿も監査可能です。',
-            faq2Question: 'なぜ早期参加が有利なのですか？',
-            faq2Answer: 'ベータ期間は発行量が固定される一方でファンドが急成長するため、トークン価値が加速的に上がります。',
-            faq3Question: '勧誘や事前入金は必要ですか？',
-            faq3Answer: '必要ありません。PonziでもMLMでもなく、利益は実際の注文から生まれます。',
-            faq4Question: 'プラットフォームが停止したらどうなりますか？',
-            faq4Answer: 'ファンドは分離管理され、規制下の金融機関に預託されるため、保有者はルールどおり換金できます。',
-            ctaBadge: '参加を歓迎',
-            ctaTitle: 'ショッピングを投資に変えよう',
-            ctaDesc: '早く参加するほど複利効果を得やすくなります。今すぐアプリを入手するか、お問い合わせください。',
-            ctaBtn1: 'アプリをダウンロード',
-            ctaBtn2: 'お問い合わせ：ss@maollar.com',
-            footerCopyright: '© 2025 Maollar · ショッピングは投資',
-            footerItem1: 'Meowファンド · 透明な監査',
-            footerItem2: 'Solanaオンチェーン台帳',
-            footerItem3: 'Alibaba Cloud & Cloudflareインフラ',
-            viewFundBtn: '喵币行情',
-            viewFundL1: '查看喵币',
-            viewFundL2: '实时行情'
-        },
-        ko: {
-            lang: 'ko-KR',
-            dir: 'ltr',
-            name: '한국어',
-            flag: '🇰🇷',
-            fonts: '"Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif',
-            title: 'Maollar · 소비가 투자',
-            brandName: 'Maollar',
-            tagline: '소비가 투자',
-            enterShop: '쇼핑몰 입장',
-            heroBadge: '글로벌 이커머스 · Web3 알고리즘',
-            heroTitle1: '모든 소비가',
-            heroTitle2: '가치를 쌓는 투자',
-            heroTitle3: '먼저 들어오면 더 많이 번다',
-            heroDesc: 'Maollar는 "플랫폼 이익 + 브랜드 보조금"을 소비자에게 직접 돌려주어 쇼핑을 지속적인 수익원으로 바꿉니다.',
-            heroCard1Title: '탈중앙화',
-            heroCard1Desc: '주주와 블랙박스 없이 데이터와 운영이 투명',
-            heroCard2Title: '품질 우선',
-            heroCard2Desc: '모든 상품을 일본 수준으로 관리',
-            heroCard3Title: '소비하며 수익',
-            heroCard3Desc: '비영리 구조로 이익을 이용자와 공유',
-            heroCta1: '베타 참여하기',
-            heroCta2: 'FAQ 보기',
-            sidebarTitle: '왜 지금 참여해야 할까요?',
-            sidebarPoint1Title: '선형 수익 성장:',
-            sidebarPoint1Desc: '각 주문의 10%가 Meow펀드에 적립되어 보상 풀이 계속 커집니다.',
-            sidebarPoint2Title: '토큰 희소성 증가:',
-            sidebarPoint2Desc: '교환 비율은 1:1000에서 1000:1로 낮아지며, 초기 티어일수록 토큰이 희소해져 최대',
-            sidebarPoint2Highlight: '100만 배',
-            sidebarPoint2Suffix: '의 격차가 발생합니다.',
-            sidebarPoint3Title: '명확한 가치 기준:',
-            sidebarPoint3Desc: 'MeowCoin 가치 = 펀드 총액 ÷ 토큰 수량. 펀드가 빠르게 커질수록 가치 상승이 가속됩니다.',
-            tokenBadge: '얼리버드 혜택',
-            tokenTitle: 'MeowCoin 성장 전망',
-            tokenDesc: '아래 표는 Maollar 매출에 따른 MeowCoin 성장 예측입니다. 베타 참여자는 24개월에 3~5배, 36개월에 44배의 수익을 기대할 수 있습니다.',
-            tableHeader1: '매출 (백만)',
-            tableHeader2: '펀드 (백만)',
-            tableHeader3: '토큰/1¥',
-            tableHeader4: '총 공급 (백만)',
-            tableHeader5: '토큰 가치 (¥)',
-            tableHeader6: '기간 (개월)',
-            howBadge: '3단계로 이해하기',
-            howTitle: '소비 · 분배 · 성장',
-            howStep1Title: '소비',
-            howStep1Desc: 'Maollar에서 원화·달러·엔화 등 법정화폐로 주요 이커머스와 동일한 경험을 제공합니다.',
-            howStep2Title: '분배',
-            howStep2Desc: '15% 마진 중 10%를 자동으로 Meow펀드에 적립해 티어별로 토큰을 배포합니다.',
-            howStep3Title: '성장',
-            howStep3Desc: 'MeowCoin은 펀드와 1:1로 연동되어 할인·출금·거버넌스에 사용할 수 있고 가치가 꾸준히 오릅니다.',
-            howFooter: '"이커머스 이익 + 브랜드 보조금"을 사용자 자산으로 전환해 소비가 계속 수익을 만들게 합니다.',
-            trustBadge: '신뢰와 안전',
-            trustTitle: '투명 구조 · 실질 가치 · 고객이 오너',
-            trustCard1Title: '투명 구조',
-            trustCard1Point1: '✓ 마진 15% 고정, 10%는 펀드로, 5%는 세금·운영·이행 비용으로 사용.',
-            trustCard1Point2: '✓ 펀드는 싱가포르에서 합법 등록되어 감사와 공개 열람이 가능합니다.',
-            trustCard1Point3: '✓ 수익원은 실매출 마진과 브랜드 보조금으로 명확합니다.',
-            trustCard2Title: '자금 안전',
-            trustCard2Point1: '✓ MeowCoin은 실제 법정화폐에 연동되어 규칙에 따라 언제든지 인출할 수 있습니다.',
-            trustCard2Point2: '✓ 발행과 거래 기록은 온체인으로 공개되어 조작이 불가능합니다.',
-            trustCard2Point3: '✓ 비영리 구조로 모든 토큰 보유자가 공동 소유합니다.',
-            weAreNotTitle: '우리는 이런 곳이 아닙니다',
-            weAreNotPoint1: '✘ 폰지·러그풀·다단계 추천',
-            weAreNotPoint2: '✘ 선입금을 강제하거나 입금 후 출금시키는 구조',
-            weAreNotPoint3: '✘ 실물 없는 단기 투기',
-            weAreTitle: '우리는 이런 곳입니다',
-            weArePoint1: '✔ 실제 커머스와 블록체인 원장',
-            weArePoint2: '✔ 투명한 이익 공유와 감사 가능한 펀드',
-            weArePoint3: '✔ 이용자가 함께 만들어가는 장기 생태계',
-            whoBadge: '우리는 누구인가',
-            whoTitle: '세계 최초 비영리 이커머스 플랫폼',
-            whoCard1Label: '사업 모델',
-            whoCard1Title: '영리 추구 없음',
-            whoCard1Desc: '세상이 이익을 좇을수록 우리의 강점이 드러납니다.',
-            whoCard2Label: '자금 출처',
-            whoCard2Title: '플랫폼 발기인',
-            whoCard2Desc: '창업자의 시드 자금이 불씨가 되어 고객이 불길로 키웁니다.',
-            whoCard3Label: '보스는 누구?',
-            whoCard3Title: '보스 없음',
-            whoCard3Desc: '支配的な所有者はおらず、最大保有者でも構造を一方的に変えられません。',
-            whoCard4Label: '使命',
-            whoCard4Title: '消費者全員に価値を',
-            whoCard4Desc: '消費者はオーナーであり顧客。利益最大化が私たちの使命です。',
-            whoFooter: '高品質な商品を適正価格で提供し、売上拡大・ファンド成長・権益保護を同時に達成します。',
-            bizBadge: 'ビジネスモデル',
-            bizTitle: 'プラットフォームの収益とユーザー収益',
-            bizCard1Title: 'プラットフォームの収益',
-            bizCard1Point1: '• 15% 固定マージン (Costcoモデル) で情報優位に依存しません。',
-            bizCard1Point2: '• 5% は運営・税金・履行コストに充当します。',
-            bizCard1Point3: '• 10% をMeowファンドにロックし利用者へ還元します。',
-            bizCard1Point4: '• ブランド協業や付加価値サービスが持続性を支えます。',
-            bizCard2Title: 'ユーザー収益',
-            bizCard2Point1: '• MeowCoin = ファンド持分で、割引・換金・二次取引に使えます。',
-            bizCard2Point2: '• 早く参加し多く消費するほど複利リターンが大きくなります。',
-            bizCard2Point3: '• 最終的にプラットフォームは消費者全体の所有となり、Maollarが運営を担当します。',
-            faqBadge: 'FAQ',
-            faqTitle: 'MeowCoinについて',
-            faq1Question: 'MeowCoinは仮想通貨ですか？価値がゼロになりますか？',
-            faq1Answer: 'ファンド内の実通貨で裏付けられ比例換金できます。収益源は実売利益とブランド補助金で帳簿も監査可能です。',
-            faq2Question: 'なぜ早期参加が有利なのですか？',
-            faq2Answer: 'ベータ期間は発行量が固定される一方でファンドが急成長するため、トークン価値が加速的に上がります。',
-            faq3Question: '勧誘や事前入金は必要ですか？',
-            faq3Answer: '必要ありません。PonziでもMLMでもなく、利益は実際の注文から生まれます。',
-            faq4Question: 'プラットフォームが停止したらどうなりますか？',
-            faq4Answer: 'ファンドは分離管理され、規制下の金融機関に預託されるため、保有者はルールどおり換金できます。',
-            ctaBadge: '今すぐ参加',
-            ctaTitle: 'ショッピングを投資に変えよう',
-            ctaDesc: '早く参加するほど複利効果を得やすくなります。今すぐアプリを入手するか、お問い合わせください。',
-            ctaBtn1: 'アプリをダウンロード',
-            ctaBtn2: 'お問い合わせ：ss@maollar.com',
-            footerCopyright: '© 2025 Maollar · ショッピングは投資',
-            footerItem1: 'Meowファンド · 透明な監査',
-            footerItem2: 'Solanaオンチェーン台帳',
-            footerItem3: 'Alibaba Cloud & Cloudflareインフラ',
-            viewFundBtn: '喵币行情',
-            viewFundL1: '查看喵币',
-            viewFundL2: '实时行情'
-        },
-        fr: {
-            lang: 'fr',
-            dir: 'ltr',
-            name: 'Français',
-            flag: '🇫🇷',
-            fonts: '"SF Pro Display", "Helvetica Neue", Arial, sans-serif',
-            title: "Maollar · Consommer, c'est investir",
-            brandName: 'Maollar',
-            tagline: "Consommer, c'est investir",
-            enterShop: 'Entrer dans la boutique',
-            heroBadge: 'E-commerce mondial · Algorithme Web3',
-            heroTitle1: 'Chaque achat',
-            heroTitle2: 'est un investissement qui se valorise',
-            heroTitle3: 'Entrer tôt, gagner davantage',
-            heroDesc: 'Maollar redistribue directement « bénéfices de plateforme + subventions des marques » aux consommateurs, transformant les achats en revenus continus comme le minage.',
-            heroCard1Title: 'Décentralisé',
-            heroCard1Desc: "Sans actionnaires ni zones d'ombre, données et gestion transparentes",
-            heroCard2Title: 'Qualité premium',
-            heroCard2Desc: 'Des standards japonais pour chaque produit',
-            heroCard3Title: 'Acheter et gagner',
-            heroCard3Desc: 'Plateforme non lucrative, profits partagés',
-            heroCta1: 'Rejoindre la bêta',
-            heroCta2: 'Voir la FAQ',
-            sidebarTitle: 'Pourquoi rejoindre maintenant ?',
-            sidebarPoint1Title: 'Croissance linéaire du rendement :',
-            sidebarPoint1Desc: '10 % de chaque commande sont verrouillés dans le Meow Fund, élargissant sans cesse la réserve de gains.',
-            sidebarPoint2Title: 'Rareté accrue du token :',
-            sidebarPoint2Desc: "Le ratio de conversion passe de 1:1000 à 1000:1 ; plus on est tôt, plus le token est rare, avec un écart jusqu'à",
-            sidebarPoint2Highlight: 'x1 000 000',
-            sidebarPoint2Suffix: ' fois.',
-            sidebarPoint3Title: 'Valeur ancrée clairement :',
-            sidebarPoint3Desc: "Valeur du MeowCoin = total du fonds ÷ quantité de tokens. Une croissance rapide du fonds accélère l'appréciation.",
-            tokenBadge: 'Prime aux pionniers',
-            tokenTitle: 'Projection de croissance du MeowCoin',
-            tokenDesc: "La table ci-dessous présente les projections de croissance du MeowCoin en fonction du chiffre d'affaires de Maollar. Les pionniers peuvent viser 3–5× en 24 mois, 44× en 36 mois et continuer à croître.",
-            tableHeader1: "Chiffre d'affaires (M)",
-            tableHeader2: 'Fonds (M)',
-            tableHeader3: 'Tokens/1¥',
-            tableHeader4: 'Offre totale (M)',
-            tableHeader5: 'Valeur du token (¥)',
-            tableHeader6: 'Échéance (mois)',
-            howBadge: 'Maollar en 3 étapes',
-            howTitle: 'Acheter · Partager · Valoriser',
-            howStep1Title: 'Acheter',
-            howStep1Desc: 'Utilisez vos devises fiduciaires avec la même expérience que les plateformes leaders.',
-            howStep2Title: 'Partager',
-            howStep2Desc: 'Maollar garde une marge de 15 %. 10 % alimentent le Meow Fund pour distribuer des tokens par paliers.',
-            howStep3Title: 'Valoriser',
-            howStep3Desc: 'Les MeowCoins sont indexés 1:1 sur le fonds pour des réductions, retraits ou la gouvernance tout en prenant de la valeur.',
-            howFooter: 'Nous transformons « profits e-commerce + subventions de marque » en actifs utilisateurs afin que vos achats produisent un rendement régulier.',
-            trustBadge: 'Confiance & sécurité',
-            trustTitle: 'Structure transparente · Valeur réelle · Client propriétaire',
-            trustCard1Title: 'Structure transparente',
-            trustCard1Point1: '✓ Marge fixe de 15 % : 10 % vers le fonds, 5 % pour taxes, logistique et opérations.',
-            trustCard1Point2: '✓ Fonds enregistré légalement à Singapour, comptes auditables et publics.',
-            trustCard1Point3: '✓ Sources de revenus claires : marges réelles et subventions des marques.',
-            trustCard2Title: 'Sécurité du fonds',
-            trustCard2Point1: '✓ MeowCoin adossé à du fiat réel, retirable selon des règles transparentes.',
-            trustCard2Point2: '✓ Émissions et transactions consignées on-chain, publiques et infalsifiables.',
-            trustCard2Point3: '✓ Structure non lucrative co-détenue par tous les détenteurs.',
-            weAreNotTitle: 'Nous ne sommes pas',
-            weAreNotPoint1: '✘ Pyramide financière, token fantôme ou marketing agressif',
-            weAreNotPoint2: '✘ Systèmes imposant un prépaiement ou un retrait conditionnel',
-            weAreNotPoint3: '✘ Spéculation courte sans produits réels',
-            weAreTitle: 'Nous sommes',
-            weArePoint1: '✔ Commerce réel + registre blockchain',
-            weArePoint2: '✔ Partage de profit transparent et fonds auditable',
-            weArePoint3: '✔ Écosystème long terme gouverné par les utilisateurs',
-            whoBadge: 'Qui sommes-nous ?',
-            whoTitle: 'Le premier e-commerce non lucratif au monde',
-            whoCard1Label: 'Modèle économique',
-            whoCard1Title: 'Zéro profit',
-            whoCard1Desc: 'Quand le monde court après le profit, notre avantage se renforce.',
-            whoCard2Label: 'Source des fonds',
-            whoCard2Title: 'Fondateurs de la plateforme',
-            whoCard2Desc: 'Un capital de départ allumé par les fondateurs, transformé en brasier par les clients.',
-            whoCard3Label: 'Qui commande ?',
-            whoCard3Title: 'Personne',
-            whoCard3Desc: 'Aucun actionnaire dominant ; même le plus gros détenteur ne peut changer la structure seul.',
-            whoCard4Label: 'Mission',
-            whoCard4Title: 'Créer de la valeur pour chaque consommateur',
-            whoCard4Desc: 'Les consommateurs sont propriétaires et clients ; maximiser leur bénéfice est notre objectif.',
-            whoFooter: 'Produits qualitatifs et prix justes stimulent les ventes, agrandissent le fonds et protègent les détenteurs.',
-            bizBadge: 'Modèle économique',
-            bizTitle: 'Revenus plateforme · Gains utilisateurs',
-            bizCard1Title: 'Revenus plateforme',
-            bizCard1Point1: '• Marge fixe 15 % (modèle Costco), sans profiter de produits bas de gamme.',
-            bizCard1Point2: '• 5 % pour l\'opérationnel, les taxes, la logistique.',
-            bizCard1Point3: '• 10 % verrouillés dans le Meow Fund et redistribués.',
-            bizCard1Point4: '• Partenariats de marque et services premium assurent la pérennité.',
-            bizCard2Title: 'Gains utilisateurs',
-            bizCard2Point1: '• MeowCoin = part du fonds, utilisable pour réductions, retraits, trading.',
-            bizCard2Point2: '• Participer tôt et consommer davantage augmente l\'effet de levier composé.',
-            bizCard2Point3: '• La plateforme appartient collectivement aux consommateurs, Maollar assure l\'exécution.',
-            faqBadge: 'FAQ',
-            faqTitle: 'Première découverte de MeowCoin ?',
-            faq1Question: 'MeowCoin est-il seulement virtuel ? Peut-il tomber à zéro ?',
-            faq1Answer: 'Il est adossé à du fiat réel dans le fonds et échangeable proportionnellement. Les actifs viennent de ventes réelles et de subventions de marque.',
-            faq2Question: 'Pourquoi les pionniers gagnent-ils plus ?',
-            faq2Answer: 'Durant la bêta, l\'émission est fixe tandis que le fonds croît rapidement, accélérant la valeur du token.',
-            faq3Question: 'Faut-il parrainer ou prépayer ?',
-            faq3Answer: 'Non. Pas de Ponzi ni de MLM ; les gains proviennent des commandes réelles.',
-            faq4Question: 'Si la plateforme s\'arrête ?',
-            faq4Answer: 'Le fonds est séparé et détenu par des institutions régulées, garantissant le droit de retrait.',
-            ctaBadge: 'Rejoignez-nous',
-            ctaTitle: 'Consommer, c\'est investir : transformez vos achats en actif durable',
-            ctaDesc: 'Entrer tôt facilite la multiplication des gains. Téléchargez l\'application ou contactez-nous pour réserver votre place.',
-            ctaBtn1: 'Télécharger',
-            ctaBtn2: 'Contactez-nous : ss@maollar.com',
-            footerCopyright: "© 2025 Maollar · Consommer, c'est investir",
-            footerItem1: 'Fonds Meow · Audit transparent',
-            footerItem2: 'Grand livre Solana',
-            footerItem3: 'Infrastructure Alibaba Cloud & Cloudflare',
-            viewFundBtn: 'MEOW Market',
-            viewFundL1: 'View MEOW',
-            viewFundL2: 'Live Market'
-        },
-        es: {
-            lang: 'es',
-            dir: 'ltr',
-            name: 'Español',
-            flag: '🇪🇸',
-            fonts: '"SF Pro Display", "Helvetica Neue", Arial, sans-serif',
-            title: 'Maollar · Comprar es invertir',
-            brandName: 'Maollar',
-            tagline: 'Comprar es invertir',
-            enterShop: 'Entrar a la tienda',
-            heroBadge: 'E-commerce global · Algoritmo Web3',
-            heroTitle1: 'Cada compra',
-            heroTitle2: 'es una inversión de valor continuo',
-            heroTitle3: 'Entrar temprano multiplica tus ganancias',
-            heroDesc: 'Maollar devuelve "beneficios de la plataforma + subsidios de marca" directamente a los consumidores, convirtiendo las compras en ingresos constantes como la minería.',
-            heroCard1Title: 'Descentralizado',
-            heroCard1Desc: 'Sin accionistas ni cajas negras, datos y gestión transparentes',
-            heroCard2Title: 'Calidad superior',
-            heroCard2Desc: 'Estándares japoneses para cada producto',
-            heroCard3Title: 'Ganar comprando',
-            heroCard3Desc: 'Plataforma sin fines de lucro, beneficios compartidos',
-            heroCta1: 'Unirse a la beta',
-            heroCta2: 'Ver preguntas frecuentes',
-            sidebarTitle: '¿Por qué entrar ahora?',
-            sidebarPoint1Title: 'Crecimiento lineal del rendimiento:',
-            sidebarPoint1Desc: 'El 10 % de cada pedido se bloquea en el Fondo Meow, ampliando continuamente el pool de recompensas.',
-            sidebarPoint2Title: 'Token cada vez más escaso:',
-            sidebarPoint2Desc: 'La proporción baja de 1:1000 a 1000:1; cuanto más temprano el nivel, más escaso el token, con una diferencia de hasta',
-            sidebarPoint2Highlight: '1 000 000',
-            sidebarPoint2Suffix: ' veces.',
-            sidebarPoint3Title: 'Valor anclado con claridad:',
-            sidebarPoint3Desc: 'Valor de MeowCoin = total del fondo ÷ cantidad de tokens. Un fondo que crece rápido acelera la apreciación.',
-            tokenBadge: 'Recompensa para pioneros',
-            tokenTitle: 'Proyección de crecimiento de MeowCoin',
-            tokenDesc: 'La tabla muestra proyecciones basadas en las ventas de Maollar. Quienes entren en la beta pueden alcanzar 3–5× en 24 meses y 44× en 36 meses.',
-            tableHeader1: 'Ventas (M)',
-            tableHeader2: 'Fondo (M)',
-            tableHeader3: 'Tokens/1¥',
-            tableHeader4: 'Oferta total (M)',
-            tableHeader5: 'Valor del token (¥)',
-            tableHeader6: 'Plazo (meses)',
-            howBadge: 'Maollar en 3 pasos',
-            howTitle: 'Comprar · Compartir · Valorizar',
-            howStep1Title: 'Comprar',
-            howStep1Desc: 'Usa monedas fiduciarias como CNY, USD o JPY con la misma experiencia que los marketplaces líderes.',
-            howStep2Title: 'Compartir',
-            howStep2Desc: 'Maollar mantiene un margen del 15 %, de los cuales 10 % alimenta el Fondo Meow para repartir tokens por niveles.',
-            howStep3Title: 'Valorizar',
-            howStep3Desc: 'MeowCoin está ligado 1:1 al fondo y puede usarse para descuentos, retiros o gobernanza a medida que crece.',
-            howFooter: 'Convertimos "beneficios e-commerce + subsidios de marca" en activos del usuario para generar retorno constante.',
-            trustBadge: 'Confianza y seguridad',
-            trustTitle: 'Estructura transparente · Valor real · Cliente propietario',
-            trustCard1Title: 'Estructura transparente',
-            trustCard1Point1: '✓ Margen fijo de 15 %: 10 % al fondo, 5 % para operaciones, impuestos y logística.',
-            trustCard1Point2: '✓ Fondo registrado legalmente en Singapur, auditable y público.',
-            trustCard1Point3: '✓ Fuentes de ingreso claras: margen real de ventas y subsidios de marca.',
-            trustCard2Title: 'Seguridad del fondo',
-            trustCard2Point1: '✓ MeowCoin respaldado por efectivo real; se retira según reglas transparentes.',
-            trustCard2Point2: '✓ Emisiones y transacciones registradas on-chain, públicas e inmutables.',
-            trustCard2Point3: '✓ Estructura sin fines de lucro copropiedad de todos los holders.',
-            weAreNotTitle: 'No somos',
-            weAreNotPoint1: '✘ Esquema piramidal, token vacío o red de referidos agresiva',
-            weAreNotPoint2: '✘ Plataformas que obligan a recargar antes de retirar',
-            weAreNotPoint3: '✘ Especulación corta sin productos reales',
-            weAreTitle: 'Somos',
-            weArePoint1: '✔ Comercio real con registro blockchain',
-            weArePoint2: '✔ Beneficios transparentes y fondo auditable',
-            weArePoint3: '✔ Ecosistema a largo plazo gobernado por usuarios',
-            whoBadge: 'Quiénes somos',
-            whoTitle: 'El primer e-commerce sin fines de lucro del mundo',
-            whoCard1Label: 'Modelo de negocio',
-            whoCard1Title: 'Cero lucro',
-            whoCard1Desc: 'Cuando el mundo persigue el beneficio, nadie puede superarnos.',
-            whoCard2Label: 'Fuente de fondos',
-            whoCard2Title: 'Fundadores de la plataforma',
-            whoCard2Desc: 'Capital semilla de los fundadores que los clientes convierten en una gran fogata.',
-            whoCard3Label: 'Quién manda',
-            whoCard3Title: 'Sin jefes',
-            whoCard3Desc: 'No hay controlador; ni el mayor holder puede cambiar la estructura solo.',
-            whoCard4Label: 'Misión',
-            whoCard4Title: 'Crear valor a cada consumidor',
-            whoCard4Desc: 'Los consumidores son dueños y clientes; maximizar su beneficio es la meta.',
-            whoFooter: 'Productos de calidad a precio justo impulsan ventas, amplían el fondo y protegen a los titulares.',
-            bizBadge: 'Modelo de negocio',
-            bizTitle: 'Ingresos de la plataforma · Ganancias del usuario',
-            bizCard1Title: 'Ingresos de la plataforma',
-            bizCard1Point1: '• Margen fijo del 15 % (estilo Costco) sin explotar productos de baja calidad.',
-            bizCard1Point2: '• 5 % para operaciones, impuestos y logística.',
-            bizCard1Point3: '• 10 % bloqueado en el Fondo Meow y devuelto al usuario.',
-            bizCard1Point4: '• Alianzas de marca y servicios premium sostienen el modelo.',
-            bizCard2Title: 'Ganancias del usuario',
-            bizCard2Point1: '• MeowCoin = parte del fondo; sirve para descuentos, retiros y trading.',
-            bizCard2Point2: '• Participar temprano y consumir más aumenta la recompensa compuesta.',
-            bizCard2Point3: '• La plataforma pertenece colectivamente a los consumidores; Maollar ejecuta la operación.',
-            faqBadge: 'Preguntas frecuentes',
-            faqTitle: '¿Primera vez que oyes MeowCoin?',
-            faq1Question: '¿Es solo un token virtual? ¿Puede valer cero?',
-            faq1Answer: 'Está respaldado por dinero real en el fondo y se canjea proporcionalmente. Los recursos provienen de ventas reales y subsidios con registros auditables.',
-            faq2Question: '¿Por qué los pioneros ganan más?',
-            faq2Answer: 'Durante la beta la emisión es fija mientras el fondo crece rápido, lo que acelera el valor del token.',
-            faq3Question: '¿Debo invitar gente o depositar antes?',
-            faq3Answer: 'No. No somos Ponzi ni MLM; las ganancias provienen de pedidos reales.',
-            faq4Question: '¿Qué pasa si la plataforma cierra?',
-            faq4Answer: 'El fondo está segregado y custodiado por instituciones reguladas, garantizando el derecho al retiro.',
-            ctaBadge: 'Únete ahora',
-            ctaTitle: 'Comprar es invertir: convierte tus compras en un activo duradero',
-            ctaDesc: 'Entrar temprano facilita multiplicar los retornos. Descarga la app o contáctanos para asegurar tu plaza early bird.',
-            ctaBtn1: 'Descargar',
-            ctaBtn2: 'Contáctanos: ss@maollar.com',
-            footerCopyright: '© 2025 Maollar · Comprar es invertir',
-            footerItem1: 'Fondo Meow · Auditoría transparente',
-            footerItem2: 'Libro mayor en Solana',
-            footerItem3: 'Infraestructura Alibaba Cloud & Cloudflare',
-            viewFundBtn: 'View MEOW realtime market',
-            viewFundL1: 'View MEOW',
-            viewFundL2: 'realtime market'
-        },
-        ar: {
-            lang: 'ar',
-            dir: 'rtl',
-            name: 'العربية',
-            flag: '🇸🇦',
-            fonts: '"Tajawal", "Noto Kufi Arabic", "Arial", sans-serif',
-            title: 'ماولار · التسوّق استثمار',
-            brandName: 'ماولار',
-            tagline: 'التسوّق استثمار',
-            enterShop: 'دخول المتجر',
-            heroBadge: 'تجارة إلكترونية عالمية · خوارزمية Web3',
-            heroTitle1: 'كل عملية شراء',
-            heroTitle2: 'استثمار يولّد قيمة مستمرة',
-            heroTitle3: 'كلما انضممت مبكراً زادت العوائد',
-            heroDesc: 'ماولار يعيد «أرباح المنصة + دعم العلامات التجارية» مباشرة إلى المستهلكين، ليحوّل التسوق إلى مصدر أرباح دائم يشبه التعدين.',
-            heroCard1Title: 'لامركزي',
-            heroCard1Desc: 'بدون مساهمين أو غرف مغلقة، بيانات وإدارة شفافة',
-            heroCard2Title: 'جودة أولاً',
-            heroCard2Desc: 'معايير يابانية لكل المنتج على المنصة',
-            heroCard3Title: 'اربح أثناء التسوق',
-            heroCard3Desc: 'منصة غير ربحية، الأرباح موزعة على الجميع',
-            heroCta1: 'انضم إلى النسخة التجريبية',
-            heroCta2: 'الأسئلة الشائعة',
-            sidebarTitle: 'لماذا تنضم الآن؟',
-            sidebarPoint1Title: 'نمو خطي للعوائد:',
-            sidebarPoint1Desc: 'يتم إيداع 10٪ من كل طلب في صندوق Meow ما يوسّع حوض المكافآت باستمرار.',
-            sidebarPoint2Title: 'ندرة التوكن:',
-            sidebarPoint2Desc: 'تنخفض نسبة التحويل من 1:1000 إلى 1000:1، وكلما كان المستوى مبكراً أصبحت العملة أندر بفارق يصل إلى',
-            sidebarPoint2Highlight: '١٬٠٠٠٬٠٠٠',
-            sidebarPoint2Suffix: ' مرة.',
-            sidebarPoint3Title: 'قيمة ذات مرجعية واضحة:',
-            sidebarPoint3Desc: 'قيمة MeowCoin = إجمالي الصندوق ÷ عدد التوكن. توسّع الصندوق السريع يعني تسارع الارتفاع.',
-            tokenBadge: 'مكافأة الرواد',
-            tokenTitle: 'توقع نمو MeowCoin',
-            tokenDesc: 'يعرض الجدول توقع نمو MeowCoin استناداً إلى مبيعات ماولار. المشاركون الأوائل يمكنهم تحقيق 3–5 أضعاف خلال 24 شهراً و44 ضعفاً في 36 شهراً مع نمو مستمر.',
-            tableHeader1: 'المبيعات (مليون)',
-            tableHeader2: 'الصندوق (مليون)',
-            tableHeader3: 'توكن لكل ¥1',
-            tableHeader4: 'إجمالي التوكن (مليون)',
-            tableHeader5: 'قيمة التوكن (¥)',
-            tableHeader6: 'المدة (أشهر)',
-            howBadge: 'ماولار في ثلاث خطوات',
-            howTitle: 'تسوّق · شارك · نمِّ',
-            howStep1Title: 'تسوّق',
-            howStep1Desc: 'استخدم عملتك المحلية مع تجربة مماثلة لأكبر المتاجر الإلكترونية.',
-            howStep2Title: 'شارك',
-            howStep2Desc: 'ماولار يحافظ على هامش 15٪، و10٪ منه تذهب تلقائياً إلى صندوق Meow لتوزيع التوكن حسب المستوى.',
-            howStep3Title: 'نمِّ',
-            howStep3Desc: 'MeowCoin مرتبط بالصندوق بنسبة 1:1 ويمكن استخدامه للخصومات أو السحب أو الحوكمة بينما ترتفع قيمته.',
-            howFooter: 'نحوّل «أرباح التجارة الإلكترونية + دعم العلامات التجارية» إلى أصول للمستخدمين لخلق عوائد مستمرة.',
-            trustBadge: 'الثقة والأمان',
-            trustTitle: 'هيكل شفاف · قيمة حقيقية · العميل مالك',
-            trustCard1Title: 'هيكل شفاف',
-            trustCard1Point1: '✓ هامش ثابت 15٪: 10٪ للصندوق و5٪ للضرائب والتشغيل والتنفيذ.',
-            trustCard1Point2: '✓ الصندوق مسجل قانونياً في سنغافورة بحسابات قابلة للتدقيق ومكشوفة.',
-            trustCard1Point3: '✓ مصادر الدخل واضحة: أرباح بيع حقيقية ودعم العلامات.',
-            trustCard2Title: 'أمان الصندوق',
-            trustCard2Point1: '✓ MeowCoin مدعوم بعملات حقيقية ويمكن سحبه وفق قواعد شفافة.',
-            trustCard2Point2: '✓ السجلات على البلوكشين علنية وغير قابلة للتلاعب.',
-            trustCard2Point3: '✓ هيكل غير ربحي يملكه جميع حاملي التوكن.',
-            weAreNotTitle: 'لسنا',
-            weAreNotPoint1: '✘ مخطط بونزي أو عملة وهمية أو تسويق هرمي',
-            weAreNotPoint2: '✘ نظاماً يشترط الإيداع قبل السحب',
-            weAreNotPoint3: '✘ مضاربة قصيرة دون منتجات حقيقية',
-            weAreTitle: 'نحن',
-            weArePoint1: '✔ تجارة حقيقية مع سجل بلوكشين',
-            weArePoint2: '✔ مشاركة أرباح شفافة وصندوق قابل للتدقيق',
-            weArePoint3: '✔ منظومة طويلة الأجل يديرها المجتمع',
-            whoBadge: 'من نحن',
-            whoTitle: 'أول منصة تجارة إلكترونية غير ربحية في العالم',
-            whoCard1Label: 'النموذج',
-            whoCard1Title: 'صفر أرباح',
-            whoCard1Desc: 'حين يطارد الجميع الربح نبقى خارج المنافسة.',
-            whoCard2Label: 'مصدر التمويل',
-            whoCard2Title: 'مؤسسو المنصة',
-            whoCard2Desc: 'رأس مال تأسيسي يشعل الشرارة ليحوّله العملاء إلى لهب.',
-            whoCard3Label: 'من يملك القرار؟',
-            whoCard3Title: 'لا أحد',
-            whoCard3Desc: 'لا يوجد مالك متحكم؛ حتى أكبر حامل لا يغيّر الهيكل منفرداً.',
-            whoCard4Label: 'المهمة',
-            whoCard4Title: 'خلق قيمة لكل مستهلك',
-            whoCard4Desc: 'المستهلك مالك وزبون، وتعظيم مصلحته هو هدفنا.',
-            whoFooter: 'نقدم منتجات عالية الجودة بأسعار عادلة لنزيد المبيعات، ونضخم الصندوق ونحمي حقوق المالكين.',
-            bizBadge: 'نموذج العمل',
-            bizTitle: 'دخل المنصة · عائد المستخدم',
-            bizCard1Title: 'دخل المنصة',
-            bizCard1Point1: '• هامش ثابت 15٪ (نموذج كوستكو) دون الاعتماد على سلع رديئة.',
-            bizCard1Point2: '• 5٪ لتغطية التشغيل والضرائب والتنفيذ.',
-            bizCard1Point3: '• 10٪ تُقفل داخل صندوق Meow وتُعاد للمستهلكين.',
-            bizCard1Point4: '• شراكات العلامات والخدمات المضافة تضمن الاستدامة.',
-            bizCard2Title: 'عائد المستخدم',
-            bizCard2Point1: '• MeowCoin = حصة من الصندوق، تستخدم للخصومات أو السحب أو التداول.',
-            bizCard2Point2: '• الانضمام المبكر والإنفاق الأكبر يعنيان مكافآت مركبة أعلى.',
-            bizCard2Point3: '• المنصة مملوكة جماعياً للمستهلكين وفريق ماولار يدير التنفيذ.',
-            faqBadge: 'الأسئلة الشائعة',
-            faqTitle: 'هل هذه أول مرة تسمع عن MeowCoin؟',
-            faq1Question: 'هل MeowCoin مجرد عملة افتراضية؟ وهل يمكن أن تصبح بلا قيمة؟',
-            faq1Answer: 'هي مدعومة بعملات حقيقية داخل الصندوق ويمكن استبدالها بنسبة محددة. الأصول من مبيعات حقيقية ودعم العلامات مع حسابات قابلة للتدقيق.',
-            faq2Question: 'لماذا العوائد المبكرة أعلى؟',
-            faq2Answer: 'الإصدار ثابت أثناء النسخة التجريبية بينما ينمو الصندوق بسرعة، ما يرفع قيمة التوكن مبكراً.',
-            faq3Question: 'هل أحتاج لدعوة الآخرين أو الإيداع مسبقاً؟',
-            faq3Answer: 'لا. لسنا مخطط إحالة أو نظام إيداع قبل السحب؛ الأرباح كلها من طلبات حقيقية.',
-            faq4Question: 'ماذا لو توقفت المنصة؟',
-            faq4Answer: 'الصندوق منفصل وسيُحفظ في مؤسسات مالية منظمة، ما يضمن حق السحب لحاملي التوكن.',
-            ctaBadge: 'دعوة للانضمام',
-            ctaTitle: 'التسوّق استثمار: حوّل مشترياتك إلى أصول طويلة الأجل',
-            ctaDesc: 'الانضمام المبكر يجعل مضاعفة العوائد أسهل. حمّل التطبيق أو تواصل معنا لحجز مقعدك المبكر.',
-            ctaBtn1: 'تحميل التطبيق',
-            ctaBtn2: 'تواصل معنا: ss@maollar.com',
-            footerCopyright: '© 2025 ماولار · التسوّق استثمار',
-            footerItem1: 'صندوق Meow · تدقيق شفاف',
-            footerItem2: 'سجل Solana على السلسلة',
-            footerItem3: 'بنية Alibaba Cloud وCloudflare',
-            viewFundBtn: 'View MEOW realtime market',
-            viewFundL1: 'View MEOW',
-            viewFundL2: 'realtime market'
-        },
-        th: {
-            lang: 'th',
-            dir: 'ltr',
-            name: 'ภาษาไทย',
-            flag: '🇹🇭',
-            fonts: '"Sukhumvit Set", "Noto Sans Thai", sans-serif',
-            title: 'Maollar · การใช้จ่ายคือการลงทุน',
-            brandName: 'Maollar',
-            tagline: 'การใช้จ่ายคือการลงทุน',
-            enterShop: 'เข้าสู่ร้านค้า',
-            heroBadge: 'อีคอมเมิร์ซระดับโลก · อัลกอริทึม Web3',
-            heroTitle1: 'ทุกการซื้อ',
-            heroTitle2: 'คือการลงทุนที่เติบโตต่อเนื่อง',
-            heroTitle3: 'เข้าร่วมเร็ว ผลตอบแทนยิ่งสูง',
-            heroDesc: 'Maollar ส่งคืน "กำไรแพลตฟอร์ม + เงินสนับสนุนจากแบรนด์" ให้ผู้บริโภคโดยตรง ทำให้การช้อปปิ้งสร้างรายได้ต่อเนื่องเหมือนการขุดเหมือง',
-            heroCard1Title: 'ไร้ศูนย์กลาง',
-            heroCard1Desc: 'ไม่มีผู้ถือหุ้นหรือห้องลับ ข้อมูลและการบริหารโปร่งใส',
-            heroCard2Title: 'คุณภาพมาก่อน',
-            heroCard2Desc: 'มาตรฐานญี่ปุ่นกับสินค้าทุกชิ้น',
-            heroCard3Title: 'ช้อปแล้วได้กำไร',
-            heroCard3Desc: 'โครงสร้างไม่หวังกำไร แบ่งปันรายได้ทั้งหมด',
-            heroCta1: 'เข้าร่วมเบต้า',
-            heroCta2: 'ดูคำถามที่พบบ่อย',
-            sidebarTitle: 'ทำไมต้องเริ่มตอนนี้?',
-            sidebarPoint1Title: 'รายได้เติบโตเป็นเส้นตรง:',
-            sidebarPoint1Desc: '10% ของทุกคำสั่งซื้อถูกล็อกในกองทุน Meow ทำให้บ่อรางวัลขยายขึ้นเรื่อย ๆ',
-            sidebarPoint2Title: 'โทเค็นหายากขึ้น:',
-            sidebarPoint2Desc: 'อัตราแลกเปลี่ยนลดจาก 1:1000 เหลือ 1000:1 ยิ่งอยู่ในช่วงต้น เหรียญยิ่งหายาก สูงสุดถึง',
-            sidebarPoint2Highlight: '1,000,000',
-            sidebarPoint2Suffix: ' เท่า',
-            sidebarPoint3Title: 'มูลค่าที่ถูกยึดโยงชัดเจน:',
-            sidebarPoint3Desc: 'มูลค่า MeowCoin = มูลค่ากองทุน ÷ จำนวนโทเค็น กองทุนโตเร็ว มูลค่าก็พุ่งเร็ว',
-            tokenBadge: 'รางวัลสำหรับผู้บุกเบิก',
-            tokenTitle: 'ประมาณการเติบโตของ MeowCoin',
-            tokenDesc: 'ตารางนี้อ้างอิงยอดขายของ Maollar ผู้เข้าร่วมเบต้ามีโอกาสได้ 3–5 เท่าใน 24 เดือน และ 44 เท่าใน 36 เดือน',
-            tableHeader1: 'ยอดขาย (ล้าน)',
-            tableHeader2: 'กองทุน (ล้าน)',
-            tableHeader3: 'โทเค็น/1¥',
-            tableHeader4: 'จำนวนรวม (ล้าน)',
-            tableHeader5: 'มูลค่าโทเค็น (¥)',
-            tableHeader6: 'ระยะเวลา (เดือน)',
-            howBadge: 'Maollar ใน 3 ขั้นตอน',
-            howTitle: 'ช้อป · แบ่งปัน · เติบโต',
-            howStep1Title: 'ช้อป',
-            howStep1Desc: 'ใช้เงินบาท ดอลลาร์ เยน ฯลฯ พร้อมประสบการณ์แบบแพลตฟอร์มชั้นนำ',
-            howStep2Title: 'แบ่งปัน',
-            howStep2Desc: 'Maollar รักษากำไร 15% โดย 10% เข้ากองทุน Meow อัตโนมัติและแจกตามระดับ',
-            howStep3Title: 'เติบโต',
-            howStep3Desc: 'MeowCoin ผูกกับกองทุน 1:1 ใช้ลดราคา ถอน หรือร่วมบริหารได้ มูลค่าจะเพิ่มตามกองทุน',
-            howFooter: 'เราแปลง "กำไรอีคอมเมิร์ซ + เงินสนับสนุนแบรนด์" เป็นสินทรัพย์ของผู้ใช้ ให้การใช้จ่ายสร้างรายได้ต่อเนื่อง',
-            trustBadge: 'ความเชื่อมั่นและความปลอดภัย',
-            trustTitle: 'โครงสร้างโปร่งใส · มูลค่าจริง · ลูกค้าเป็นเจ้าของ',
-            trustCard1Title: 'โครงสร้างโปร่งใส',
-            trustCard1Point1: '✓ กำไรคงที่ 15% โดย 10% เข้ากองทุน และ 5% สำหรับภาษี โลจิสติกส์ และการดำเนินงาน',
-            trustCard1Point2: '✓ กองทุนจดทะเบียนถูกกฎหมายในสิงคโปร์ ตรวจสอบได้',
-            trustCard1Point3: '✓ รายได้จากกำไรจริงและเงินสนับสนุนจากแบรนด์',
-            trustCard2Title: 'ความปลอดภัยของกองทุน',
-            trustCard2Point1: '✓ MeowCoin รองรับด้วยเงินสดจริง ถอนตามกติกาได้',
-            trustCard2Point2: '✓ ข้อมูลบนบล็อกเชน โปร่งใส แก้ไขไม่ได้',
-            trustCard2Point3: '✓ โครงสร้างไม่หวังกำไร ผู้ถือโทเค็นเป็นเจ้าของร่วม',
-            weAreNotTitle: 'เราไม่ใช่',
-            weAreNotPoint1: '✘ แชร์ลูกโซ่/โทเค็นเก็งกำไร/ระบบชวนเพื่อน',
-            weAreNotPoint2: '✘ แพลตฟอร์มที่ต้องเติมเงินก่อนถอน',
-            weAreNotPoint3: '✘ การเก็งกำไรระยะสั้นไร้สินค้าจริง',
-            weAreTitle: 'เราเป็น',
-            weArePoint1: '✔ คอมเมิร์ซจริง + บัญชีบล็อกเชน',
-            weArePoint2: '✔ แบ่งปันผลกำไรโปร่งใส กองทุนตรวจสอบได้',
-            weArePoint3: '✔ ระบบนิเวศระยะยาวที่สร้างร่วมกัน',
-            whoBadge: 'เราเป็นใคร',
-            whoTitle: 'แพลตฟอร์มอีคอมเมิร์ซไม่แสวงกำไรแห่งแรกของโลก',
-            whoCard1Label: 'รูปแบบธุรกิจ',
-            whoCard1Title: 'ไม่มุ่งกำไร',
-            whoCard1Desc: 'เมื่อโลกไล่ตามกำไร เราก็ยิ่งโดดเด่น',
-            whoCard2Label: 'แหล่งทุน',
-            whoCard2Title: 'ผู้ก่อตั้งแพลตฟอร์ม',
-            whoCard2Desc: 'เงินตั้งต้นจากผู้ก่อตั้ง จุดประกายให้ลูกค้าขยายเป็นไฟลุก',
-            whoCard3Label: 'ใครคือเจ้านาย',
-            whoCard3Title: 'ไม่มีเจ้านาย',
-            whoCard3Desc: 'ไม่มีผู้ควบคุม แม้ผู้ถือรายใหญ่สุดก็เปลี่ยนโครงสร้างเองไม่ได้',
-            whoCard4Label: 'พันธกิจ',
-            whoCard4Title: 'สร้างคุณค่าแก่ผู้บริโภคทุกคน',
-            whoCard4Desc: 'ผู้บริโภคคือเจ้าของและลูกค้า ผลประโยชน์ของพวกเขาคือเป้าหมาย',
-            whoFooter: 'สินค้าคุณภาพดีราคายุติธรรม เพิ่มยอดขาย ขยายกองทุน และคุ้มครองสิทธิผู้ถือ',
-            bizBadge: 'ภาพรวมโมเดลธุรกิจ',
-            bizTitle: 'รายได้แพลตฟอร์ม · ผลตอบแทนผู้ใช้',
-            bizCard1Title: 'รายได้แพลตฟอร์ม',
-            bizCard1Point1: '• กำไรคงที่ 15% แบบ Costco ไม่ใช้สินค้าคุณภาพต่ำทำกำไร',
-            bizCard1Point2: '• 5% สำหรับการดำเนินงาน ภาษี และโลจิสติกส์',
-            bizCard1Point3: '• 10% เข้ากองทุน Meow เพื่อคืนให้ผู้บริโภค',
-            bizCard1Point4: '• พันธมิตรแบรนด์และบริการเสริมหล่อเลี้ยงระบบ',
-            bizCard2Title: 'ผลตอบแทนผู้ใช้',
-            bizCard2Point1: '• MeowCoin = ส่วนแบ่งกองทุน ใช้ลดราคา ถอน หรือเทรดได้',
-            bizCard2Point2: '• เข้าร่วมเร็วและใช้จ่ายมาก ยิ่งเห็นรางวัลและผลตอบแทนทบต้น',
-            bizCard2Point3: '• แพลตฟอร์มเป็นของผู้บริโภคร่วมกัน ทีม Maollar ดูแลการดำเนินงาน',
-            faqBadge: 'คำถามที่พบบ่อย',
-            faqTitle: 'เพิ่งรู้จัก MeowCoin?',
-            faq1Question: 'MeowCoin เป็นเหรียญเสมือนหรือไม่? จะศูนย์ได้หรือเปล่า?',
-            faq1Answer: 'เหรียญรองรับด้วยเงินสดจริงในกองทุนและแลกได้ตามสัดส่วน รายได้มาจากยอดขายจริงและเงินสนับสนุน',
-            faq2Question: 'ทำไมผลตอบแทนช่วงแรกสูงกว่า?',
-            faq2Answer: 'ช่วงเบต้าจำนวนเหรียญคงที่ ขณะที่กองทุนโตเร็ว ทำให้มูลค่าเหรียญเพิ่มเร็ว',
-            faq3Question: 'ต้องชวนคนหรือเติมเงินก่อนหรือไม่?',
-            faq3Answer: 'ไม่จำเป็น เราไม่ใช่แชร์ลูกโซ่หรือระบบบังคับเติมเงิน',
-            faq4Question: 'หากแพลตฟอร์มหยุดให้บริการล่ะ?',
-            faq4Answer: 'กองทุนถูกแยกและฝากกับสถาบันที่ถูกกำกับ Holder ยังถอนตามกติกาได้',
-            ctaBadge: 'เชิญเข้าร่วม',
-            ctaTitle: 'การใช้จ่ายคือการลงทุน เปลี่ยนการช้อปให้เป็นสินทรัพย์ระยะยาว',
-            ctaDesc: 'เข้าร่วมก่อนให้โอกาสรับผลตอบแทนหลายเท่าได้ง่ายกว่า ดาวน์โหลดแอปหรือ ติดต่อเราเพื่อจองสิทธิ์ early bird',
-            ctaBtn1: 'ดาวน์โหลดแอป',
-            ctaBtn2: 'ติดต่อเรา: ss@maollar.com',
-            footerCopyright: '© 2025 Maollar · การใช้จ่ายคือการลงทุน',
-            footerItem1: 'กองทุน Meow · ตรวจสอบได้โปร่งใส',
-            footerItem2: 'บัญชีบล็อกเชน Solana',
-            footerItem3: 'โครงสร้างพื้นฐาน Alibaba Cloud & Cloudflare',
-            viewFundBtn: 'View MEOW realtime market',
-            viewFundL1: 'View MEOW',
-            viewFundL2: 'Live Market'
-        },
-        vi: {
-            lang: 'vi',
-            dir: 'ltr',
-            name: 'Tiếng Việt',
-            flag: '🇻🇳',
-            fonts: '"Be Vietnam Pro", "Helvetica Neue", Arial, sans-serif',
-            title: 'Maollar · Mua sắm là đầu tư',
-            brandName: 'Maollar',
-            tagline: 'Mua sắm là đầu tư',
-            enterShop: 'Vào cửa hàng',
-            heroBadge: 'Thương mại điện tử toàn cầu · Thuật toán Web3',
-            heroTitle1: 'Mỗi lần mua sắm',
-            heroTitle2: 'là khoản đầu tư sinh lợi bền vững',
-            heroTitle3: 'Tham gia sớm lợi nhuận càng cao',
-            heroDesc: 'Maollar hoàn trả trực tiếp "lợi nhuận nền tảng + trợ cấp thương hiệu" cho người tiêu dùng, biến mua sắm thành dòng thu liên tục như đào coin.',
-            heroCard1Title: 'Phi tập trung',
-            heroCard1Desc: 'Không cổ đông, không vùng tối, minh bạch dữ liệu',
-            heroCard2Title: 'Chất lượng hàng đầu',
-            heroCard2Desc: 'Tiêu chuẩn Nhật Bản cho mọi sản phẩm',
-            heroCard3Title: 'Mua là có lời',
-            heroCard3Desc: 'Nền tảng phi lợi nhuận, chia sẻ lợi ích cho tất cả',
-            heroCta1: 'Tham gia bản beta',
-            heroCta2: 'Xem câu hỏi thường gặp',
-            sidebarTitle: 'Vì sao nên tham gia ngay?',
-            sidebarPoint1Title: 'Doanh thu tăng tuyến tính:',
-            sidebarPoint1Desc: '10% mỗi đơn hàng được khóa vào Quỹ Meow, mở rộng quỹ thưởng liên tục.',
-            sidebarPoint2Title: 'Token ngày càng khan hiếm:',
-            sidebarPoint2Desc: 'Tỷ lệ quy đổi giảm từ 1:1000 xuống 1000:1; bậc càng sớm token càng hiếm với chênh lệch tới',
-            sidebarPoint2Highlight: '1.000.000',
-            sidebarPoint2Suffix: ' lần.',
-            sidebarPoint3Title: 'Giá trị neo rõ ràng:',
-            sidebarPoint3Desc: 'Giá MeowCoin = tổng quỹ ÷ lượng token. Quỹ tăng càng nhanh, giá trị càng bứt tốc.',
-            tokenBadge: 'Thưởng cho người tiên phong',
-            tokenTitle: 'Dự phóng tăng trưởng MeowCoin',
-            tokenDesc: 'Bảng bên dưới dựa trên doanh thu của Maollar. Người tham gia bản beta có thể đạt 3–5× sau 24 tháng và 44× sau 36 tháng.',
-            tableHeader1: 'Doanh thu (triệu)',
-            tableHeader2: 'Quỹ (triệu)',
-            tableHeader3: 'Token/1¥',
-            tableHeader4: 'Tổng cung (triệu)',
-            tableHeader5: 'Giá token (¥)',
-            tableHeader6: 'Thời gian (tháng)',
-            howBadge: 'Maollar trong 3 bước',
-            howTitle: 'Mua sắm · Chia sẻ · Tăng trưởng',
-            howStep1Title: 'Mua sắm',
-            howStep1Desc: 'Thanh toán bằng VND, USD, JPY… với trải nghiệm như các sàn lớn.',
-            howStep2Title: 'Chia sẻ',
-            howStep2Desc: 'Maollar giữ biên lợi nhuận 15%; 10% tự động chuyển vào quỹ để phân bổ theo bậc.',
-            howStep3Title: 'Tăng trưởng',
-            howStep3Desc: 'MeowCoin neo 1:1 với quỹ, dùng giảm giá, rút tiền hoặc tham gia quản trị khi giá trị tăng.',
-            howFooter: 'Chúng tôi biến "lợi nhuận TMĐT + trợ cấp thương hiệu" thành tài sản của người dùng để tạo dòng thu ổn định.',
-            trustBadge: 'Tin cậy & an toàn',
-            trustTitle: 'Cấu trúc minh bạch · Giá trị thật · Khách hàng làm chủ',
-            trustCard1Title: 'Cấu trúc minh bạch',
-            trustCard1Point1: '✓ Biên lợi nhuận cố định 15%: 10% vào quỹ, 5% cho vận hành, thuế và giao nhận.',
-            trustCard1Point2: '✓ Quỹ đăng ký hợp pháp tại Singapore, kiểm toán và công khai.',
-            trustCard1Point3: '✓ Doanh thu đến từ lợi nhuận bán hàng thật và trợ cấp thương hiệu.',
-            trustCard2Title: 'An toàn quỹ',
-            trustCard2Point1: '✓ MeowCoin được bảo chứng bằng tiền thật và có thể rút theo quy định.',
-            trustCard2Point2: '✓ Phát hành và giao dịch ghi trên blockchain, minh bạch và bất biến.',
-            trustCard2Point3: '✓ Cấu trúc phi lợi nhuận, mọi holder là đồng chủ sở hữu.',
-            weAreNotTitle: 'Chúng tôi không phải',
-            weAreNotPoint1: '✘ Mô hình Ponzi / coin rác / đa cấp lôi kéo',
-            weAreNotPoint2: '✘ Nền tảng ép nạp tiền trước rồi mới rút được',
-            weAreNotPoint3: '✘ Đầu cơ ngắn hạn không có hàng thật',
-            weAreTitle: 'Chúng tôi là',
-            weArePoint1: '✔ TMĐT thật với sổ cái blockchain',
-            weArePoint2: '✔ Chia sẻ lợi nhuận minh bạch, quỹ kiểm toán được',
-            weArePoint3: '✔ Hệ sinh thái dài hạn do cộng đồng đồng hành',
-            whoBadge: 'Chúng tôi là ai',
-            whoTitle: 'Nền tảng TMĐT phi lợi nhuận đầu tiên trên thế giới',
-            whoCard1Label: 'Mô hình hoạt động',
-            whoCard1Title: 'Không mưu lợi',
-            whoCard1Desc: 'Khi thế giới chạy theo lợi nhuận, chúng tôi vượt ra khỏi cuộc đua.',
-            whoCard2Label: 'Nguồn vốn',
-            whoCard2Title: 'Nhà sáng lập',
-            whoCard2Desc: 'Vốn mồi do nhà sáng lập thắp lửa, khách hàng nuôi thành ngọn lửa lớn.',
-            whoCard3Label: 'Ai là ông chủ',
-            whoCard3Title: 'Không có ông chủ',
-            whoCard3Desc: 'Không ai kiểm soát tuyệt đối; holder lớn nhất cũng không thể đơn phương đổi cấu trúc.',
-            whoCard4Label: 'Sứ mệnh',
-            whoCard4Title: 'Tạo giá trị cho mọi người tiêu dùng',
-            whoCard4Desc: 'Người tiêu dùng vừa là chủ sở hữu vừa là khách hàng; tối đa hóa lợi ích của họ là mục tiêu.',
-            whoFooter: 'Sản phẩm chất lượng với giá tốt giúp tăng doanh số, mở rộng quỹ và bảo vệ quyền lợi holder.',
-            bizBadge: 'Tổng quan mô hình',
-            bizTitle: 'Doanh thu nền tảng · Lợi nhuận người dùng',
-            bizCard1Title: 'Doanh thu nền tảng',
-            bizCard1Point1: '• Biên lợi nhuận cố định 15% (như Costco) không ăn chênh lệch chất lượng.',
-            bizCard1Point2: '• 5% dành cho vận hành, thuế và logistics.',
-            bizCard1Point3: '• 10% khóa vào quỹ Meow để hoàn lại cho người dùng.',
-            bizCard1Point4: '• Hợp tác thương hiệu và dịch vụ gia tăng bảo đảm sự bền vững.',
-            bizCard2Title: 'Lợi nhuận người dùng',
-            bizCard2Point1: '• MeowCoin = phần sở hữu quỹ, dùng giảm giá, rút tiền, giao dịch.',
-            bizCard2Point2: '• Tham gia sớm và chi tiêu nhiều giúp thưởng quỹ lớn hơn, lãi kép mạnh hơn.',
-            bizCard2Point3: '• Nền tảng thuộc về cộng đồng người tiêu dùng; đội Maollar vận hành.',
-            faqBadge: 'Câu hỏi thường gặp',
-            faqTitle: 'Lần đầu biết đến MeowCoin?',
-            faq1Question: 'MeowCoin có phải chỉ là coin ảo? Có thể về 0 không?',
-            faq1Answer: 'Được bảo chứng bởi tiền thật trong quỹ và đổi theo tỷ lệ. Nguồn tiền từ doanh thu thực và trợ cấp với sổ sách kiểm toán.',
-            faq2Question: 'Tại sao vào sớm lại lợi hơn?',
-            faq2Answer: 'Giai đoạn beta lượng phát hành cố định trong khi quỹ tăng nhanh, đẩy giá trị token lên mạnh.',
-            faq3Question: 'Có cần mời người hay nạp trước không?',
-            faq3Answer: 'Không. Không phải đa cấp; lợi nhuận đến từ đơn hàng thực.',
-            faq4Question: 'Nếu nền tảng dừng hoạt động thì sao?',
-            faq4Answer: 'Quỹ tách biệt và gửi tại đơn vị được quản lý; holder vẫn rút theo quy định.',
-            ctaBadge: 'Tham gia ngay',
-            ctaTitle: 'Mua sắm là đầu tư: biến chi tiêu thành tài sản dài hạn',
-            ctaDesc: 'Tham gia sớm giúp dễ dàng nhân lợi nhuận. Tải ứng dụng hoặc liên hệ để giữ suất early bird.',
-            ctaBtn1: 'Tải ứng dụng',
-            ctaBtn2: 'Liên hệ: ss@maollar.com',
-            footerCopyright: '© 2025 Maollar · Mua sắm là đầu tư',
-            footerItem1: 'Quỹ Meow · Kiểm toán minh bạch',
-            footerItem2: 'Sổ cái trên Solana',
-            footerItem3: 'Hạ tầng Alibaba Cloud & Cloudflare',
-            viewFundBtn: 'View MEOW realtime market',
-            viewFundL1: 'View MEOW',
-            viewFundL2: 'realtime market'
-        }
-    };
-    
-    // 表格数据（所有语言通用）
-    const tableData = [
-        [1, 0.1, 100, 200, 0.0005, 1],
-        [2, 0.2, 100, 300, 0.0007, 1],
-        [3, 0.3, 100, 400, 0.0008, 1],
-        [5, 0.5, 50, 500, 0.0010, 1],
-        [8, 0.8, 33.33, 600, 0.0013, 1],
-        [13, 1.3, 20, 700, 0.0019, 2],
-        [21, 2.1, 12.5, 800, 0.0026, 2],
-        [34, 3.4, 7.69, 900, 0.0038, 2],
-        [55, 5.5, 4.76, 1000, 0.0055, 2],
-        [89, 8.9, 2.94, 1100, 0.0081, 3],
-        [144, 14.4, 1.82, 1100, 0.0131, 3],
-        [233, 23.3, 1.12, 1300, 0.0179, 4],
-        [377, 37.7, 0.69, 1400, 0.0269, 4],
-        [610, 61.0, 0.43, 1500, 0.0407, 5],
-        [987, 98.7, 0.27, 1600, 0.0617, 9],
-        [1597, 159.7, 0.16, 1700, 0.0939, 12],
-        [2584, 258.4, 0.10, 1800, 0.1436, 15],
-        [4181, 418.1, 0.06, 1900, 0.2201, 18],
-        [6765, 676.5, 0.04, 2000, 0.3383, 21],
-        [10946, 1094.6, 0.02, 2100, 0.5212, 24]
-    ];
-    
-    let currentLang = 'zh';
-    
-    // 获取当前语言数据
-    const t = (key) => translations[currentLang][key] || key;
-    
-    // 渲染HTML模板
-    function renderTemplate() {
-        const lang = translations[currentLang];
-        
-        return `
-    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-white/40 shadow-sm">
-        <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-            <div class="flex items-center gap-3">
-                <img src="https://pub-52cfa058efcc498eb28c64d7af72cf06.r2.dev/logo.png" alt="Maollar logo" class="h-12 w-12 rounded-full border-2 border-white shadow-md">
-                <div>
-                    <p class="header-brand-line text-sm font-semibold text-amber-600 uppercase tracking-wide">${t('brandName')}</p>
-                    <h1 class="header-brand-line header-tagline text-xl font-bold text-gray-900">${t('tagline')}</h1>
-                </div>
-            </div>
-            <a href="https://shop.maollar.com" target="_blank" rel="noopener noreferrer" class="header-enter-btn hidden items-center gap-2 rounded-full border border-black/5 bg-white px-5 py-2 text-sm font-semibold text-gray-800 shadow-md shadow-amber-100 transition hover:border-amber-400 hover:text-amber-600 md:inline-flex">
-                <span>${t('enterShop')}</span>
-                <span class="text-lg">↗</span>
-            </a>
-            <a href="https://m.maollar.com" target="_blank" rel="noopener noreferrer" class="header-enter-btn inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-4 py-2 text-sm font-semibold text-gray-800 shadow-md shadow-amber-100 transition hover:border-amber-400 hover:text-amber-600 md:hidden">
-                <span>${t('enterShop')}</span>
-                <span class="text-lg">↗</span>
-            </a>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4">
+        <!-- Abstract Nodes Background -->
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <svg class="w-full h-full" viewBox="0 0 1000 1000">
+                <circle cx="500" cy="500" r="300" stroke="#00FFCC" stroke-width="0.5" fill="none" opacity="0.3" />
+                <circle cx="500" cy="500" r="200" stroke="#00FFCC" stroke-width="0.5" fill="none" opacity="0.1" />
+                <path d="M 0 500 L 1000 500 M 500 0 L 500 1000" stroke="#00FFCC" stroke-width="0.5" opacity="0.1" />
+            </svg>
         </div>
-    </header>
 
-    <main class="mx-auto flex max-w-6xl flex-col gap-12 px-6 py-12 md:py-16">
-        <!-- Hero -->
-        <section class="section-card relative overflow-hidden scroll-animate">
-            <div class="absolute right-0 top-0 h-32 w-32 -translate-y-1/2 translate-x-1/3 rounded-full bg-amber-100/70 blur-3xl"></div>
-            <div class="absolute bottom-0 left-0 h-32 w-32 translate-y-1/2 -translate-x-1/3 rounded-full bg-primary/10 blur-3xl"></div>
-            <div class="relative grid gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,320px)] md:items-center">
-                <div class="space-y-6">
-                    <span class="badge badge-new w-fit">
-                        <span class="text-lg">🔥</span>
-                        ${t('heroBadge')}
-                    </span>
-                    <h2 class="hero-headline">
-                        <span class="hero-line text-primary">${t('heroTitle1')}</span>
-                        <span class="hero-line text-primary">${t('heroTitle2')}</span>
-                        <span class="hero-line text-primary">${t('heroTitle3')}</span>
-                    </h2>
-                    <p class="text-lg text-gray-600 leading-relaxed">${t('heroDesc')}</p>
-                    <div class="grid gap-4 sm:grid-cols-3">
-                        <div class="rounded-2xl border border-primary/10 bg-primary/5 p-4 text-primary grid-title-spacing">
-                            <p class="text-2xl font-bold">${t('heroCard1Title')}</p>
-                            <p class="text-sm text-primary/80">${t('heroCard1Desc')}</p>
-                        </div>
-                        <div class="rounded-2xl border border-amber-200 bg-white p-4 grid-title-spacing">
-                            <p class="text-2xl font-bold text-amber-600">${t('heroCard2Title')}</p>
-                            <p class="text-sm text-amber-600/80">${t('heroCard2Desc')}</p>
-                        </div>
-                        <div class="rounded-2xl border border-gray-200 bg-white/90 p-4 grid-title-spacing">
-                            <p class="text-2xl font-bold text-gray-800">${t('heroCard3Title')}</p>
-                            <p class="text-sm text-gray-500">${t('heroCard3Desc')}</p>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-3">
-                        <a href="https://download.maollar.com" target="_blank" rel="noopener noreferrer" class="btn-primary btn-download inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 shadow-lg shadow-primary/30">
-                            ${t('heroCta1')}
-                            <span class="text-xl">→</span>
-                        </a>
-                        <a href="#faq" class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white px-6 py-3 text-primary transition hover:border-primary hover:text-primary-dark">
-                            ${t('heroCta2')}
-                        </a>
+        <div class="z-10 text-center max-w-4xl animate-fade-in">
+            <h1 class="text-5xl md:text-8xl font-black text-white mb-6 uppercase tracking-tighter">
+                Decentralized Supply Chain Protocol.
+            </h1>
+            <h2
+                class="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-green-400 mb-4 italic">
+                Native to the AI Era.
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-400 mb-8 chinese-subtext font-light uppercase tracking-[0.3em]">
+                去中心化供应链协议。AI 纪元原生。
+            </p>
+            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed font-medium">
+                The infrastructure powering the autonomous economy. Connecting the world's best factories to your AI
+                Agent.
+            </p>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
+            <svg class="w-8 h-8 text-neon-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
+                </path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Value Section: Global Arbitrage -->
+    <section class="py-32 bg-black px-4 border-t border-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="animate-fade-in" style="animation-delay: 0.2s">
+                    <h2 class="text-5xl font-extrabold text-white mb-8">Tokyo Standards.<br><span
+                            class="text-neon-cyan">Shenzhen Prices.</span></h2>
+                    <p class="text-gray-400 text-xl mb-8 leading-relaxed">
+                        We source directly from the exact same ODMs (Original Design Manufacturers) that supply top
+                        Japanese brands.
+                        You get the strict Japanese QC standard, but at China's raw production cost.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="h-1 w-12 bg-neon-cyan"></div>
+                        <p class="text-neon-cyan text-2xl font-black uppercase tracking-widest Chinese-subtext">全球套利</p>
                     </div>
                 </div>
-                <aside class="section-card flex flex-col gap-4 bg-white/90 md:sticky md:top-24 corner-accent">
-                    <h3 class="text-lg font-semibold text-primary icon-decorated">💡 ${t('sidebarTitle')}</h3>
-                    <ul class="space-y-4 text-sm text-gray-700 leading-relaxed">
-                        <li class="flex gap-3 items-start">
-                            <span class="number-badge-sm mt-0.5">1</span>
-                            <span><strong>${t('sidebarPoint1Title')}</strong>${t('sidebarPoint1Desc')}</span>
-                        </li>
-                        <li class="flex gap-3 items-start">
-                            <span class="number-badge-sm mt-0.5">2</span>
-                            <span><strong>${t('sidebarPoint2Title')}</strong>${t('sidebarPoint2Desc')} <span class="text-gradient font-bold">${t('sidebarPoint2Highlight')}</span>${t('sidebarPoint2Suffix')}</span>
-                        </li>
-                        <li class="flex gap-3 items-start">
-                            <span class="number-badge-sm mt-0.5">3</span>
-                            <span><strong>${t('sidebarPoint3Title')}</strong>${t('sidebarPoint3Desc')}</span>
-                        </li>
-                    </ul>
-                </aside>
-            </div>
-        </section>
 
-        <!-- Token Growth -->
-        <section class="section-card scroll-animate">
-            <span class="badge">📈 ${t('tokenBadge')}</span>
-            <h2 class="mt-4 text-3xl wave-decoration">${t('tokenTitle')}</h2>
-            <p class="mt-4 text-gray-600 leading-relaxed">${t('tokenDesc')}</p>
-            <div class="mt-8 overflow-hidden rounded-3xl border border-primary/10 bg-white/95 shadow-sm shadow-primary/10">
-                <div class="overflow-x-auto">
-                    <table class="meow-table w-full text-center text-xs text-gray-700 md:text-sm">
-                        <thead>
-                            <tr class="bg-white text-primary">
-                                <th class="px-4 py-3 text-left text-sm font-semibold uppercase tracking-[0.08em]">${t('tableHeader1')}</th>
-                                <th class="px-4 py-3 text-left text-sm font-semibold uppercase tracking-[0.08em]">${t('tableHeader2')}</th>
-                                <th class="px-4 py-3 text-left text-sm font-semibold uppercase tracking-[0.08em]">${t('tableHeader3')}</th>
-                                <th class="px-4 py-3 text-left text-sm font-semibold uppercase tracking-[0.08em]">${t('tableHeader4')}</th>
-                                <th class="px-4 py-3 text-left text-sm font-semibold uppercase tracking-[0.08em]">${t('tableHeader5')}</th>
-                                <th class="px-4 py-3 text-left text-sm font-semibold uppercase tracking-[0.08em]">${t('tableHeader6')}</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-xs md:text-sm">
-                            ${tableData.map(row => `
-                            <tr>
-                                <td class="px-4 py-3 font-semibold text-primary">${row[0]}</td>
-                                <td class="px-4 py-3">${row[1]}</td>
-                                <td class="px-4 py-3">${row[2]}</td>
-                                <td class="px-4 py-3">${row[3]}</td>
-                                <td class="px-4 py-3">${row[4]}</td>
-                                <td class="px-4 py-3">${row[5]}</td>
-                            </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="mt-8 flex justify-center">
-                <img src="https://pub-52cfa058efcc498eb28c64d7af72cf06.r2.dev/wave.jpg" alt="MeowCoin growth wave chart" class="max-w-lg w-full rounded-2xl shadow-lg opacity-90">
-            </div>
-        </section>
+                <div
+                    class="bg-gray-900/50 p-10 rounded-3xl border border-gray-800 shadow-[0_0_50px_rgba(0,0,0,0.5)] transform hover:scale-[1.02] transition-all">
+                    <div class="space-y-8">
+                        <div
+                            class="flex justify-between items-center p-6 bg-black/80 rounded-2xl border-l-8 border-red-500/50 opacity-40 grayscale">
+                            <div>
+                                <p class="text-gray-500 text-xs uppercase tracking-widest mb-1">Traditional Model</p>
+                                <span class="text-white text-xl font-bold">Brand Label Markup</span>
+                            </div>
+                            <span class="text-red-500 line-through text-4xl font-black">$500</span>
+                        </div>
 
-        <!-- How it Works -->
-        <section class="section-card scroll-animate dot-pattern dot-pattern-tr">
-            <span class="badge">🔍 ${t('howBadge')}</span>
-            <h2 class="mt-4 text-3xl wave-decoration">${t('howTitle')}</h2>
-            <div class="mt-8 grid gap-6 md:grid-cols-3">
-                <div class="hover-lift corner-accent rounded-2xl border border-white bg-white p-6 shadow-sm shadow-primary/10 scroll-animate-delay-1">
-                    <div class="number-badge mb-4">1</div>
-                    <h3 class="text-xl font-semibold decorative-line">🛒 ${t('howStep1Title')}</h3>
-                    <p class="mt-3 text-gray-600 leading-relaxed">${t('howStep1Desc')}</p>
-                </div>
-                <div class="hover-lift corner-accent rounded-2xl border border-white bg-white p-6 shadow-sm shadow-primary/10 scroll-animate-delay-2">
-                    <div class="number-badge mb-4">2</div>
-                    <h3 class="text-xl font-semibold decorative-line">💰 ${t('howStep2Title')}</h3>
-                    <p class="mt-3 text-gray-600 leading-relaxed">${t('howStep2Desc')}</p>
-                </div>
-                <div class="hover-lift corner-accent rounded-2xl border border-white bg-white p-6 shadow-sm shadow-primary/10 scroll-animate-delay-3">
-                    <div class="number-badge mb-4">3</div>
-                    <h3 class="text-xl font-semibold decorative-line">📈 ${t('howStep3Title')}</h3>
-                    <p class="mt-3 text-gray-600 leading-relaxed">${t('howStep3Desc')}</p>
+                        <div
+                            class="flex justify-between items-center p-6 bg-matte-black rounded-2xl border-l-8 border-neon-cyan shadow-[0_0_30px_rgba(0,255,204,0.1)]">
+                            <div>
+                                <p class="text-neon-cyan text-xs uppercase tracking-widest mb-1">Protocol Direct</p>
+                                <span class="text-white text-xl font-bold">Mao Mall ODM Cost</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-neon-cyan text-5xl font-black block">$80</span>
+                                <span class="text-green-500 text-xs font-bold uppercase tracking-tighter">✓ Japanese
+                                    Standard</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <p class="mt-6 text-gray-600 leading-relaxed">${t('howFooter')}</p>
-            <div class="mt-10 flex justify-center">
-                <img src="https://pub-52cfa058efcc498eb28c64d7af72cf06.r2.dev/N3.PNG" alt="Maollar business model flow diagram" class="w-full max-w-3xl rounded-3xl border border-primary/10 shadow-lg shadow-primary/20">
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Trust & Safety -->
-        <section class="section-card scroll-animate dot-pattern dot-pattern-bl">
-            <span class="badge">🛡️ ${t('trustBadge')}</span>
-            <h2 class="mt-4 text-3xl wave-decoration">${t('trustTitle')}</h2>
-            <div class="mt-6 grid gap-6 md:grid-cols-2">
-                <div class="rounded-3xl border border-white bg-white/95 p-6 shadow-sm">
-                    <h3 class="text-xl font-semibold text-primary decorative-line">🔍 ${t('trustCard1Title')}</h3>
-                    <ul class="mt-4 space-y-3 text-gray-600 leading-relaxed">
-                        <li>${t('trustCard1Point1')}</li>
-                        <li>${t('trustCard1Point2')}</li>
-                        <li>${t('trustCard1Point3')}</li>
-                    </ul>
-                </div>
-                <div class="rounded-3xl border border-amber-200 bg-white/95 p-6 shadow-sm">
-                    <h3 class="text-xl font-semibold text-amber-600 decorative-line">🔐 ${t('trustCard2Title')}</h3>
-                    <ul class="mt-4 space-y-3 text-gray-600 leading-relaxed">
-                        <li>${t('trustCard2Point1')}</li>
-                        <li>${t('trustCard2Point2')}</li>
-                        <li>${t('trustCard2Point3')}</li>
-                    </ul>
-                </div>
+    <!-- Model Section: Foundation -->
+    <section class="py-32 bg-matte-black px-4 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center">
+            <div
+                class="inline-block px-4 py-1 border border-neon-cyan/30 rounded-full text-neon-cyan text-xs font-bold uppercase tracking-widest mb-8">
+                Foundation Model
             </div>
-            <div class="mt-8 grid gap-4 rounded-3xl border border-gray-200 bg-white/95 p-6 shadow-sm md:grid-cols-2">
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-800">${t('weAreNotTitle')}</h3>
-                    <ul class="mt-3 space-y-2 text-gray-600">
-                        <li>${t('weAreNotPoint1')}</li>
-                        <li>${t('weAreNotPoint2')}</li>
-                        <li>${t('weAreNotPoint3')}</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-800">${t('weAreTitle')}</h3>
-                    <ul class="mt-3 space-y-2 text-gray-600">
-                        <li>${t('weArePoint1')}</li>
-                        <li>${t('weArePoint2')}</li>
-                        <li>${t('weArePoint3')}</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+            <h2 class="text-5xl font-extrabold text-white mb-8">We Don't Take Profits.<br>We Distribute Value.</h2>
+            <p class="text-gray-400 text-xl mb-16 max-w-2xl mx-auto">
+                Mao Mall operates as a non-profit Foundation. No private shareholders.
+                All surplus revenue is returned to the community via the <span
+                    class="text-white font-bold italic">Shop-to-Earn</span> mechanism.
+            </p>
 
-        <!-- Who We Are -->
-        <section class="section-card scroll-animate">
-            <span class="badge">👥 ${t('whoBadge')}</span>
-            <h2 class="mt-4 text-3xl wave-decoration"><span class="text-gradient">${t('whoTitle')}</span></h2>
-            <div class="mt-8 grid gap-6 md:grid-cols-4">
-                <div class="brand-card rounded-2xl border border-primary/15 bg-white p-5 shadow-sm shadow-primary/10">
-                    <p class="text-sm font-semibold text-primary">${t('whoCard1Label')}</p>
-                    <p class="mt-3 text-3xl font-bold text-primary brand-heading">${t('whoCard1Title')}</p>
-                    <p class="text-sm text-gray-600 leading-relaxed brand-note">${t('whoCard1Desc')}</p>
+            <!-- Flow Visual -->
+            <div class="relative flex flex-col md:flex-row items-center justify-between gap-8 md:gap-0">
+                <div class="z-10 w-full md:w-5/12 p-8 bg-black rounded-3xl border border-gray-800 text-center">
+                    <p class="text-4xl font-black text-white mb-2">$100</p>
+                    <p class="text-gray-500 uppercase text-xs tracking-widest font-bold">User Payment</p>
                 </div>
-                <div class="brand-card rounded-2xl border border-primary/20 bg-white p-5 shadow-sm shadow-primary/10">
-                    <p class="text-sm font-semibold text-primary">${t('whoCard2Label')}</p>
-                    <p class="mt-3 text-3xl font-bold text-primary brand-heading">${t('whoCard2Title')}</p>
-                    <p class="text-sm text-gray-600 leading-relaxed brand-note">${t('whoCard2Desc')}</p>
+
+                <div class="z-20 transform md:rotate-0 rotate-90 scale-150">
+                    <svg class="w-12 h-12 text-neon-cyan animate-pulse" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7-7m7-7H3"></path>
+                    </svg>
                 </div>
-                <div class="brand-card rounded-2xl border border-primary/25 bg-white p-5 shadow-sm shadow-primary/10">
-                    <p class="text-sm font-semibold text-primary">${t('whoCard3Label')}</p>
-                    <p class="mt-3 text-3xl font-bold text-primary brand-heading">${t('whoCard3Title')}</p>
-                    <p class="text-sm text-gray-600 leading-relaxed brand-note">${t('whoCard3Desc')}</p>
-                </div>
-                <div class="brand-card rounded-2xl border border-amber-200 bg-white p-5 shadow-sm shadow-amber-100">
-                    <p class="text-sm font-semibold text-amber-600">${t('whoCard4Label')}</p>
-                    <p class="mt-3 text-3xl font-bold text-amber-600 brand-heading">${t('whoCard4Title')}</p>
-                    <p class="text-sm text-gray-600 leading-relaxed brand-note">${t('whoCard4Desc')}</p>
+
+                <div
+                    class="z-10 w-full md:w-5/12 p-8 bg-gradient-to-br from-green-900/20 to-black rounded-3xl border-2 border-neon-cyan text-center shadow-[0_0_40px_rgba(0,255,204,0.2)]">
+                    <p class="text-4xl font-black text-neon-cyan mb-2">100%</p>
+                    <p class="text-white uppercase text-xs tracking-widest font-bold">Eco-System Return</p>
                 </div>
             </div>
-            <p class="mt-6 text-xs text-gray-500 leading-relaxed">${t('whoFooter')}</p>
-        </section>
+        </div>
+    </section>
 
-        <!-- Business Model -->
-        <section class="section-card scroll-animate dot-pattern dot-pattern-tr">
-            <span class="badge">💼 ${t('bizBadge')}</span>
-            <h2 class="mt-4 text-3xl wave-decoration">${t('bizTitle')}</h2>
-            <div class="mt-6 grid gap-6 md:grid-cols-2">
-                <div class="rounded-3xl border border-white bg-white/95 p-6 shadow-sm">
-                    <h3 class="text-xl font-semibold text-primary decorative-line">📊 ${t('bizCard1Title')}</h3>
-                    <ul class="mt-4 space-y-3 text-gray-600 leading-relaxed">
-                        <li>${t('bizCard1Point1')}</li>
-                        <li>${t('bizCard1Point2')}</li>
-                        <li>${t('bizCard1Point3')}</li>
-                        <li>${t('bizCard1Point4')}</li>
-                    </ul>
+    <!-- FOMO Section: Halving -->
+    <section class="py-32 bg-black px-4 overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-6xl font-black text-white mb-6 uppercase tracking-tighter">The Fibonacci Halving.</h2>
+                <div class="w-24 h-2 bg-neon-cyan mx-auto mb-6"></div>
+                <p class="text-neon-cyan text-2xl font-black italic tracking-widest Chinese-subtext">创世倍增</p>
+            </div>
+
+            <div class="bg-matte-black p-8 md:p-16 rounded-[3rem] border border-gray-800 relative">
+                <!-- Data Visualization -->
+                <div class="relative h-96 w-full mb-12">
+                    <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 400">
+                        <defs>
+                            <linearGradient id="curveGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#00FFCC;stop-opacity:0.4" />
+                                <stop offset="100%" style="stop-color:#00FFCC;stop-opacity:0" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Grid Lines -->
+                        <line v-for="i in 4" x1="0" :y1="i*100" x2="1000" :y2="i*100" stroke="#1a1a1a"
+                            stroke-width="1" />
+
+                        <!-- Efficiency Steps -->
+                        <path d="M 0 50 L 200 50 L 200 200 L 500 200 L 500 320 L 1000 320" fill="none" stroke="#00FFCC"
+                            stroke-width="8" stroke-linecap="round" />
+                        <path d="M 0 50 L 200 50 L 200 200 L 500 200 L 500 320 L 1000 320 V 400 H 0 Z"
+                            fill="url(#curveGrad)" />
+
+                        <!-- Status Dot -->
+                        <circle cx="100" cy="50" r="10" fill="#00FFCC" class="animate-ping" opacity="0.5" />
+                        <circle cx="100" cy="50" r="6" fill="#00FFCC" />
+                    </svg>
+
+                    <div class="absolute top-0 left-[60px] md:left-[80px]">
+                        <div
+                            class="bg-neon-cyan text-black text-[10px] font-black px-3 py-1 rounded shadow-[0_0_20px_rgba(0,255,204,0.5)]">
+                            YOU ARE HERE
+                        </div>
+                    </div>
                 </div>
-                <div class="rounded-3xl border border-amber-200 bg-white/95 p-6 shadow-sm">
-                    <h3 class="text-xl font-semibold text-amber-600 decorative-line">💎 ${t('bizCard2Title')}</h3>
-                    <ul class="mt-4 space-y-3 text-gray-600 leading-relaxed">
-                        <li>${t('bizCard2Point1')}</li>
-                        <li>${t('bizCard2Point2')}</li>
-                        <li>${t('bizCard2Point3')}</li>
-                    </ul>
+
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="text-left">
+                        <p class="text-neon-cyan text-4xl font-black">1000%</p>
+                        <p class="text-gray-500 uppercase text-[10px] font-black tracking-widest mt-2">Genesis Era</p>
+                        <p class="text-white/40 text-[9px]">10x Reward Yield</p>
+                    </div>
+                    <div class="text-center opacity-40">
+                        <p class="text-white text-4xl font-black">125%</p>
+                        <p class="text-gray-500 uppercase text-[10px] font-black tracking-widest mt-2">Growth Era</p>
+                    </div>
+                    <div class="text-right opacity-20">
+                        <p class="text-white text-4xl font-black">30%</p>
+                        <p class="text-gray-500 uppercase text-[10px] font-black tracking-widest mt-2">Mature Era</p>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- FAQ -->
-        <section class="section-card scroll-animate" id="faq">
-            <span class="badge">❓ ${t('faqBadge')}</span>
-            <h2 class="mt-4 text-3xl wave-decoration">${t('faqTitle')}</h2>
-            <div class="mt-6 grid gap-4">
-                <details class="group rounded-2xl border border-gray-200 bg-white p-5 transition hover:border-primary/40">
-                    <summary class="flex cursor-pointer items-center justify-between text-lg font-semibold text-gray-800">
-                        ${t('faq1Question')}
-                        <span class="text-primary transition group-open:rotate-90">›</span>
-                    </summary>
-                    <p class="mt-3 text-gray-600 leading-relaxed">${t('faq1Answer')}</p>
-                </details>
-                <details class="group rounded-2xl border border-gray-200 bg-white p-5 transition hover:border-primary/40">
-                    <summary class="flex cursor-pointer items-center justify-between text-lg font-semibold text-gray-800">
-                        ${t('faq2Question')}
-                        <span class="text-primary transition group-open:rotate-90">›</span>
-                    </summary>
-                    <p class="mt-3 text-gray-600 leading-relaxed">${t('faq2Answer')}</p>
-                </details>
-                <details class="group rounded-2xl border border-gray-200 bg-white p-5 transition hover:border-primary/40">
-                    <summary class="flex cursor-pointer items-center justify-between text-lg font-semibold text-gray-800">
-                        ${t('faq3Question')}
-                        <span class="text-primary transition group-open:rotate-90">›</span>
-                    </summary>
-                    <p class="mt-3 text-gray-600 leading-relaxed">${t('faq3Answer')}</p>
-                </details>
-                <details class="group rounded-2xl border border-gray-200 bg-white p-5 transition hover:border-primary/40">
-                    <summary class="flex cursor-pointer items-center justify-between text-lg font-semibold text-gray-800">
-                        ${t('faq4Question')}
-                        <span class="text-primary transition group-open:rotate-90">›</span>
-                    </summary>
-                    <p class="mt-3 text-gray-600 leading-relaxed">${t('faq4Answer')}</p>
-                </details>
+            <div class="mt-20 text-center">
+                <p class="text-gray-400 text-xl font-medium max-w-2xl mx-auto italic">
+                    "Like Bitcoin in 2009. The era of easy mining ends soon. Secure your Genesis Hashrate today."
+                </p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- CTA -->
-        <section class="section-card scroll-animate text-center dot-pattern dot-pattern-tl dot-pattern-br">
-            <span class="badge justify-center">🚀 ${t('ctaBadge')}</span>
-            <h2 class="mt-4 text-3xl"><span class="text-gradient">${t('ctaTitle')}</span></h2>
-            <p class="mt-4 text-gray-600">${t('ctaDesc')}</p>
-            <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
-                <a href="https://download.maollar.com" target="_blank" rel="noopener noreferrer" class="btn-primary btn-download inline-flex items-center gap-2 rounded-full px-6 py-3 shadow-lg shadow-primary/30">
-                    ${t('ctaBtn1')}
-                    <span class="text-xl">→</span>
-                </a>
-                <a href="mailto:ss@maollar.com" class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white px-6 py-3 text-primary transition hover:border-primary hover:text-primary-dark">
-                    ${t('ctaBtn2')}
-                </a>
+    <!-- Tech & Governance -->
+    <section class="py-32 bg-matte-black px-4">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div class="bg-gray-900 p-8 rounded-3xl border border-gray-800 font-mono shadow-2xl">
+                <div class="flex gap-2 mb-6">
+                    <div class="w-3 h-3 rounded-full bg-red-600"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-600"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-600"></div>
+                </div>
+                <div class="text-cyan-400/90 leading-relaxed text-sm">
+                    <p><span class="text-pink-500">GET</span> /api/v1/ai/rebate-status</p>
+                    <p class="text-gray-500 mt-2">// Genesis Protocol Active</p>
+                    <p class="mt-2">{</p>
+                    <p class="ml-4">"tier": <span class="text-amber-400">1</span>,</p>
+                    <p class="ml-4">"efficiency": <span class="text-amber-400">"1000%"</span>,</p>
+                    <p class="ml-4">"compliance": <span class="text-white">"fiat-secure"</span>,</p>
+                    <p class="ml-4">"agent_status": <span class="text-white">"ready"</span></p>
+                    <p>}</p>
+                </div>
             </div>
-        </section>
-    </main>
 
-    <footer class="border-t border-white/40 bg-white/90 backdrop-blur">
-        <div class="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-8 text-center text-sm text-gray-600 md:flex-row md:justify-between">
-            <span>${t('footerCopyright')}</span>
-            <div class="flex flex-wrap items-center gap-4 text-xs">
-                <span>${t('footerItem1')}</span>
-                <span>${t('footerItem2')}</span>
-                <span>${t('footerItem3')}</span>
+            <div>
+                <h2 class="text-4xl font-black text-white mb-6 uppercase">Built for Silicon Lifeforms.</h2>
+                <p class="text-gray-400 text-lg mb-8">
+                    The first e-commerce protocol with a native **Model Context Protocol (MCP)** interface.
+                    Connect your autonomous AI Agent to find the best arbitrage opportunities instantly.
+                </p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="p-4 border border-gray-800 rounded-xl">
+                        <p class="text-neon-cyan font-bold mb-1">Audit Ready</p>
+                        <p class="text-gray-500 text-xs text-balance">Verifiable on-chain logic.</p>
+                    </div>
+                    <div class="p-4 border border-gray-800 rounded-xl">
+                        <p class="text-neon-cyan font-bold mb-1">Multi-Sig</p>
+                        <p class="text-gray-500 text-xs">Institutional grade vaulting.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-black border-t border-gray-900 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+            <div
+                class="flex items-center gap-10 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                <img src="https://www.airwallex.com/favicon.ico" class="h-6" alt="Airwallex">
+                <span class="text-white font-black tracking-tighter text-2xl">SOLANA</span>
+                <span class="text-white font-black tracking-tighter text-2xl">CLOUDFLARE</span>
+            </div>
+
+            <div class="text-right">
+                <p class="text-gray-600 text-xs font-bold uppercase tracking-[0.2em] mb-2 font-mono">Governed by Code.
+                    Community Owned.</p>
+                <p class="text-gray-800 text-[10px]">© 2026 Mao Mall Protocol Foundation. All Profits Distribute to
+                    Holders.</p>
             </div>
         </div>
     </footer>
-        `;
-    }
-    
-    // 切换语言
-    function switchLanguage(lang) {
-        if (!translations[lang]) return;
-        
-        currentLang = lang;
-        const langData = translations[lang];
-        
-        // 更新HTML lang属性
-        const htmlRoot = document.getElementById('html-root');
-        htmlRoot.setAttribute('lang', langData.lang);
-        htmlRoot.setAttribute('dir', langData.dir || 'ltr');
-        document.body.style.direction = langData.dir || 'ltr';
-        
-        // 更新字体
-        document.body.style.fontFamily = langData.fonts;
-        document.body.setAttribute('data-lang', langData.lang || currentLang);
-        
-        // 更新页面标题
-        document.getElementById('page-title').textContent = langData.title;
-        
-        // 重新渲染内容
-        document.getElementById('app').innerHTML = renderTemplate();
-        
-        // 重新初始化动画
-        initAnimations();
-        
-        // 更新语言选择器
-        updateLangSelector();
-        
-        // 保存到localStorage
-        localStorage.setItem('maollar_lang', lang);
-        
-        // 更新URL参数
-        const url = new URL(window.location);
-        url.searchParams.set('lang', lang);
-        window.history.replaceState({}, '', url);
-        
-        // 设置左下角实时行情按钮文案
-        const t = (k) => translations[lang] && translations[lang][k] ? translations[lang][k] : null;
-        const fundBtn = document.getElementById('fund-button-text');
-        if (fundBtn) {
-            fundBtn.textContent = t('viewFundBtn') || '喵币行情';
-        }
-        
-        // 点击外部关闭语言菜单
-        document.addEventListener('click', (e) => {
-            const langSelector = document.querySelector('.lang-selector');
-            const langMenu = document.getElementById('lang-menu');
-            if (!langSelector.contains(e.target) && langMenu.classList.contains('active')) {
-                langMenu.classList.remove('active');
-            }
-        });
-    }
-    
-    // 初始化动画
-    function initAnimations() {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.animation = entry.target.style.animation || 'fadeInUp 0.8s ease-out forwards';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        const animateElements = document.querySelectorAll('.scroll-animate, .scroll-animate-delay-1, .scroll-animate-delay-2, .scroll-animate-delay-3');
-        animateElements.forEach(el => {
-            observer.observe(el);
-        });
-
-        // FAQ smooth expand
-        document.querySelectorAll('details').forEach(detail => {
-            detail.addEventListener('toggle', function() {
-                if (this.open) {
-                    const content = this.querySelector('p');
-                    if (content) {
-                        content.style.animation = 'fadeInUp 0.3s ease-out';
-                    }
-                }
-            });
-        });
-    }
-    
-    // 更新语言选择器
-    function updateLangSelector() {
-        const langMenu = document.getElementById('lang-menu');
-        const currentLangEl = document.getElementById('current-lang');
-        
-        // 更新当前语言显示
-        currentLangEl.textContent = translations[currentLang].name;
-        
-        // 生成语言选项
-        langMenu.innerHTML = Object.keys(translations).map(lang => {
-            const data = translations[lang];
-            const isActive = lang === currentLang;
-            return `
-                <div class="lang-option ${isActive ? 'active' : ''}" onclick="window.i18n.switchLanguage('${lang}')">
-                    <span>${data.flag}</span>
-                    <span>${data.name}</span>
-                </div>
-            `;
-        }).join('');
-    }
-    
-    // 切换语言菜单
-    function toggleLangMenu() {
-        const menu = document.getElementById('lang-menu');
-        menu.classList.toggle('active');
-    }
-    
-    // 检测浏览器语言
-    function detectLanguage() {
-        // 1. 检查URL参数
-        const urlParams = new URLSearchParams(window.location.search);
-        const urlLang = urlParams.get('lang');
-        if (urlLang && translations[urlLang]) {
-            return urlLang;
-        }
-        
-        // 2. 检查localStorage
-        const savedLang = localStorage.getItem('maollar_lang');
-        if (savedLang && translations[savedLang]) {
-            return savedLang;
-        }
-        
-        // 3. 检查浏览器语言
-        const browserLang = navigator.language || navigator.userLanguage;
-        const langCode = browserLang.split('-')[0];
-        if (translations[langCode]) {
-            return langCode;
-        }
-        
-        // 4. 默认中文
-        return 'zh';
-    }
-    
-    // 初始化
-    function init() {
-        const lang = detectLanguage();
-        switchLanguage(lang);
-        
-        // 点击外部关闭语言菜单
-        document.addEventListener('click', (e) => {
-            const langSelector = document.querySelector('.lang-selector');
-            const langMenu = document.getElementById('lang-menu');
-            if (!langSelector.contains(e.target) && langMenu.classList.contains('active')) {
-                langMenu.classList.remove('active');
-            }
-        });
-    }
-    
-    // 导出API
-    return {
-        switchLanguage,
-        toggleLangMenu,
-        init,
-        getCurrentLang: () => currentLang,
-        getTranslations: () => translations
-    };
-})();
-
-// 页面加载完成后初始化
-document.addEventListener('DOMContentLoaded', () => {
-    window.i18n.init();
-});
-    </script>
-
-    <!-- Realtime Fund Button (bottom-left) -->
-    <a href="https://fund.maollar.com" target="_blank" rel="noopener noreferrer"
-       class="fixed left-8 bottom-8 z-50 bg-gradient-to-r from-amber-600 to-orange-600 text-white font-semibold shadow-2xl ring-1 ring-white/40 hover:from-amber-700 hover:to-orange-700 transition fund-btn border-2 border-transparent">
-        <span class="text-xl leading-none">📈</span>
-        <span id="fund-button-text" class="text-base sm:text-lg leading-none">喵币行情</span>
-    </a>
 </body>
-</html>
 
+</html>
