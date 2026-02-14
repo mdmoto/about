@@ -440,6 +440,18 @@
             easing: 'ease-out-quad',
             offset: 50,
         });
+
+        // Dynamic Shop URL Detection
+        (function () {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+            const shopUrl = isMobile ? 'https://m.maollar.com' : 'https://shop.maollar.com';
+            const links = document.querySelectorAll('a');
+            links.forEach(link => {
+                if (link.href.includes('shop.maollar.com')) {
+                    link.href = shopUrl;
+                }
+            });
+        })();
     </script>
 </body>
 
