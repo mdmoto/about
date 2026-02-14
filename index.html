@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mao Mall | Decentralized Supply Chain Protocol</title>
     <meta name="description"
-        content="A decentralized supply chain protocol native to the AI era. Structural asset isolation, DAO governance, and factory-direct efficiency.">
+        content="A decentralized supply chain protocol native to the AI era. Structural asset isolation and mathematical sovereignty.">
     <link rel="icon" type="image/png" href="./logo.png">
 
     <!-- Fonts -->
@@ -39,12 +39,16 @@
                     animation: {
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite',
-                        'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
+                        'scroll': 'scroll 20s linear infinite',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
                         }
                     }
                 }
@@ -58,405 +62,349 @@
             color: #ffffff;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            width: 100%;
-        }
-
-        .text-glow {
-            text-shadow: 0 0 20px rgba(0, 251, 255, 0.4);
-        }
-
-        .text-glow-green {
-            text-shadow: 0 0 20px rgba(74, 222, 128, 0.4);
         }
 
         .bg-glass {
             background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .curve-container svg {
-            filter: drop-shadow(0 0 15px rgba(0, 251, 255, 0.2));
+        .glow-cyan {
+            text-shadow: 0 0 15px rgba(0, 251, 255, 0.5);
         }
 
-        .hero-gradient {
-            background: radial-gradient(circle at 50% 50%, rgba(0, 251, 255, 0.05) 0%, rgba(10, 10, 10, 1) 80%);
+        .glow-green {
+            text-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
         }
 
-        /* Mobile specific curve height */
-        @media (max-width: 640px) {
-            .curve-container {
-                height: 250px !important;
-            }
+        .ticker-gradient {
+            background: linear-gradient(90deg, #0a0a0a 0%, transparent 15%, transparent 85%, #0a0a0a 100%);
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 10px;
         }
     </style>
 </head>
 
 <body class="antialiased">
 
-    <!-- Premium Sticky Navbar -->
-    <nav class="fixed top-0 left-0 w-full z-50 bg-[rgba(5,5,5,0.7)] backdrop-blur-xl border-b border-white/5 px-6 py-4">
+    <!-- 1. Universal Sticky Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/5 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <img src="./logo.png" class="h-8 md:h-10" alt="Mao Mall Logo">
-                <span class="text-white font-black tracking-tighter text-xl hidden sm:block uppercase">Mao Mall</span>
+                <img src="./logo.png" class="h-8 md:h-9" alt="Logo">
+                <span class="text-white font-black tracking-tighter text-lg uppercase">Mao Mall</span>
             </div>
-            <a href="https://shop.maollar.com"
-                class="px-6 py-2 bg-protocol-green text-black font-black text-xs uppercase rounded-full shadow-[0_0_20px_rgba(74,222,128,0.4)] hover:scale-105 transition-transform tracking-wider">
-                Launch dApp
-            </a>
+            <div class="flex items-center gap-6">
+                <a href="https://shop.maollar.com"
+                    class="hidden md:block text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Launch
+                    dApp</a>
+                <a href="https://shop.maollar.com"
+                    class="px-5 py-2 bg-protocol-green text-black font-black text-[10px] uppercase rounded-full shadow-[0_0_15px_rgba(74,222,128,0.3)] hover:scale-105 transition-all">
+                    Initialize Protocol
+                </a>
+            </div>
         </div>
     </nav>
 
-    <!-- 1. Hero Section -->
-    <section
-        class="relative min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center overflow-hidden hero-gradient px-6 py-20">
-        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
-            <svg width="100%" height="100%" viewBox="0 0 1000 1000" class="animate-pulse-slow">
-                <circle cx="500" cy="500" r="400" fill="url(#worldGrad)" />
-                <path d="M 500 500 m -300 0 a 300 300 0 1 0 600 0 a 300 300 0 1 0 -600 0" stroke="#00fbff"
-                    stroke-width="0.5" fill="none" opacity="0.2" />
-                <path d="M 500 500 m -400 0 a 400 400 0 1 0 800 0 a 400 400 0 1 0 -800 0" stroke="#00fbff"
-                    stroke-width="0.2" fill="none" opacity="0.1" />
-                <defs>
-                    <radialGradient id="worldGrad" cx="50%" cy="50%" r="50%">
-                        <stop offset="0%" style="stop-color:#00fbff;stop-opacity:0.2" />
-                        <stop offset="100%" style="stop-color:#00fbff;stop-opacity:0" />
-                    </radialGradient>
-                </defs>
+    <!-- 2. Hero Section + Live Stats -->
+    <section class="relative min-h-screen flex flex-col items-center justify-center pt-24 overflow-hidden px-6">
+        <div class="relative z-10 text-center max-w-6xl" data-aos="fade-up">
+            <h1 class="text-5xl sm:text-7xl md:text-9xl font-black mb-8 tracking-tighter leading-[0.9] text-white">
+                Decentralized<br><span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-protocol-green">Supply
+                    Chain.</span>
+            </h1>
+            <h2 class="text-lg sm:text-xl md:text-2xl font-mono text-gray-500 uppercase tracking-[0.3em] mb-12">
+                Native Decrees for the AI Era.
+            </h2>
+
+            <!-- Live Protocol Stats Ticker -->
+            <div
+                class="inline-flex items-center gap-8 px-8 py-3 bg-white/5 border border-white/10 rounded-full font-mono text-[10px] md:text-xs text-neon-cyan shadow-lg backdrop-blur-md text-glow">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-protocol-green animate-ping"></span>
+                    <span class="text-gray-500">TOTAL INJECTED VALUE:</span>
+                    <span class="font-black ticker-span">$2,841,902.12 USDT</span>
+                </div>
+                <div class="hidden sm:block w-[1px] h-4 bg-white/10"></div>
+                <div class="hidden sm:flex items-center gap-2">
+                    <span class="text-gray-500">BURN RATE:</span>
+                    <span class="font-black text-white">8.4%</span>
+                </div>
+                <div class="hidden md:block w-[1px] h-4 bg-white/10"></div>
+                <div class="hidden md:flex items-center gap-2">
+                    <span class="text-gray-500">ACTIVE MCP NODES:</span>
+                    <span class="font-black text-white">1,024</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-20">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M19 14l-7 7-7-7m14-8l-7 7-7-7" stroke-width="2" />
             </svg>
         </div>
-
-        <div class="relative z-10 text-center max-w-5xl" data-aos="fade-up">
-            <h1 class="text-4xl sm:text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-[1.1] text-white">
-                Decentralized<br>Supply Chain Protocol.
-            </h1>
-            <h2
-                class="text-xl sm:text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neon-cyan to-protocol-green mb-8 italic">
-                Native to the AI Era.
-            </h2>
-            <div
-                class="flex flex-wrap justify-center gap-2 sm:gap-4 text-[10px] sm:text-xs font-mono uppercase tracking-widest text-gray-500">
-                <span class="px-2 py-1 border border-gray-800 rounded bg-black/50">Structural Asset Isolation</span>
-                <span class="px-2 py-1 border border-gray-800 rounded bg-black/50">Factory-Direct Latency</span>
-                <span class="px-2 py-1 border border-gray-800 rounded bg-black/50">DAO Governance</span>
-            </div>
-            <div class="flex flex-wrap justify-center gap-4 mt-12">
-                <a href="https://shop.maollar.com"
-                    class="px-8 py-3 bg-protocol-green text-black font-black uppercase rounded-xl shadow-[0_0_30px_rgba(74,222,128,0.6)] hover:scale-105 transition-transform">
-                    Launch dApp
-                </a>
-                <a href="https://fund.maollar.com"
-                    class="px-8 py-3 border-2 border-neon-cyan text-neon-cyan font-black uppercase rounded-xl hover:bg-neon-cyan/10 transition-colors shadow-[0_0_20px_rgba(0,251,255,0.2)]">
-                    Live Treasury
-                </a>
-            </div>
-        </div>
     </section>
 
-    <!-- 2. The Tech (AI Native) -->
-    <section class="py-20 md:py-32 px-6 max-w-7xl mx-auto border-t border-gray-900">
-        <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-            <div data-aos="fade-right" class="order-2 md:order-1">
-                <div
-                    class="bg-glass p-6 md:p-8 rounded-3xl font-mono text-xs sm:text-sm leading-relaxed text-neon-cyan shadow-xl overflow-x-auto relative group">
-                    <pre><code>{
-  "protocol": "maomall",
-  "interface": "mcp",
-  "status": "active",
-  "ai_read_ready": true,
-  "real_time_api": {
-    "factory_cost": "v2.1",
-    "treasury_health": "verified"
-  }
-}</code></pre>
-                </div>
-            </div>
-            <div data-aos="fade-left" class="order-1 md:order-2">
-                <h3 class="text-3xl md:text-4xl font-black mb-6 uppercase tracking-tighter leading-tight">Built
-                    for<br>Silicon Lifeforms.</h3>
-                <p class="text-gray-400 text-base md:text-lg mb-6 leading-relaxed">
-                    Mao Mall is the first supply chain protocol with native **Model Context Protocol (MCP)** support.
-                </p>
-                <p class="text-gray-500 text-sm md:text-base leading-relaxed font-medium">
-                    Designed for a future where autonomous agents find the best ROI, handle procurement, and monitor
-                    factory compliance via real-time data streams without human intervention.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. The E-Commerce Engine -->
-    <section class="py-20 md:py-32 bg-matte-black px-6 border-t border-gray-900">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 md:mb-24" data-aos="fade-up">
-                <h3
-                    class="text-3xl sm:text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-tight">
-                    Costco Logic.<br>Tokyo Quality.
+    <!-- 3. AI Native Code Snippet Interface (Visual Update) -->
+    <section class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <h3 class="text-3xl md:text-5xl font-black mb-8 uppercase tracking-tighter leading-tight italic">
+                    Silicon-First.<br>Interface-Zero.
                 </h3>
+                <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                    No UI required. The protocol provides a **Universal Interface** for AI agents to access, verify, and
+                    procure from the physical production world.
+                </p>
+                <div class="flex items-center gap-3 text-protocol-green font-mono text-sm leading-relaxed">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                    </svg>
+                    Native MCP (Model Context Protocol) Integration
+                </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-                <div data-aos="fade-up" class="order-2 md:order-1">
-                    <div class="space-y-4">
-                        <div class="p-6 bg-glass rounded-2xl border-l-4 border-protocol-green">
-                            <h4 class="font-bold text-white mb-1">Direct from Source</h4>
-                            <p class="text-sm text-gray-400">Identical factories as top Japanese labels.</p>
+            <div data-aos="zoom-in" class="relative">
+                <div
+                    class="bg-[#0d0d0d] rounded-2xl border border-white/10 shadow-2xl overflow-hidden font-mono text-[11px] sm:text-xs text-gray-400">
+                    <div class="bg-white/5 px-4 py-2 border-b border-white/5 flex items-center gap-2">
+                        <div class="flex gap-1.5 leading-none">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-500/50"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-green-500/50"></span>
                         </div>
-                        <div class="p-6 bg-glass rounded-2xl border-l-4 border-neon-cyan">
-                            <h4 class="font-bold text-white mb-1">Max 15% Margin</h4>
-                            <p class="text-sm text-gray-400">Enforced by protocol logic. No brand markup.</p>
-                        </div>
+                        <span class="text-[9px] uppercase tracking-widest ml-4">Agent-Autonomous-Procurement.json</span>
+                    </div>
+                    <div class="p-6 overflow-x-auto">
+                        <pre class="text-neon-cyan"><code>{
+  "agent": "Autonomous-Procurement-Unit-07",
+  "protocol": "MCP/1.2",
+  "action": "execute_buy_decree",
+  "parameters": {
+    "factory_node": "JP-SK2-CORE",
+    "item_hash": "0x89...2f",
+    "settlement": "ProtocolSurplus"
+  },
+  "status": "<span class="text-protocol-green animate-pulse">DECREE_EXECUTED</span>"
+}</code></pre>
                     </div>
                 </div>
-                <div data-aos="zoom-in" class="order-1 md:order-2">
-                    <div class="relative bg-glass p-2 sm:p-4 rounded-3xl border border-white/5">
-                        <img src="./product_compare.png"
-                            class="w-full rounded-2xl grayscale hover:grayscale-0 transition-all duration-700"
-                            alt="Direct Comparison">
-                        <div class="absolute inset-x-0 bottom-4 px-6 flex justify-between items-end">
-                            <span class="text-red-600 line-through text-2xl sm:text-4xl font-black">$500</span>
-                            <span class="text-protocol-green text-3xl sm:text-5xl font-black text-glow-green">$80</span>
-                        </div>
-                    </div>
+                <!-- Float Tag -->
+                <div
+                    class="absolute -bottom-6 -right-6 bg-protocol-green text-black px-4 py-2 rounded-lg font-black text-[10px] uppercase shadow-xl animate-float">
+                    Direct Factory Access
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. The Treasury (Vanguard Model) -->
-    <section class="py-20 md:py-40 px-6 bg-black border-y border-white/5">
+    <!-- 4. The Cycle of Value (Visual Update) -->
+    <section class="py-32 bg-matte-black border-y border-white/5 px-6">
         <div class="max-w-7xl mx-auto text-center">
-            <h3 class="text-3xl sm:text-5xl md:text-7xl font-black mb-8 tracking-tighter" data-aos="fade-up">100%
-                User-Owned.</h3>
-            <p class="text-gray-400 text-sm md:text-xl max-w-3xl mx-auto mb-16" data-aos="fade-up">
-                Surplus values flow back to the community treasury. Institutional-grade yield from real fiat cash flow.
+            <h3 class="text-3xl md:text-6xl font-black mb-6 tracking-tighter uppercase" data-aos="fade-up">The Cycle of
+                Value</h3>
+            <p class="text-gray-500 max-w-2xl mx-auto mb-20 text-sm md:text-base leading-relaxed">
+                The 15% is not a platform tax. It is a strict **Protocol Boundary** for structural asset restructuring
+                and community expansion.
             </p>
 
-            <div class="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-4" data-aos="fade-up">
-                <div class="w-full lg:w-60 p-6 bg-glass rounded-2xl border border-white/5">
-                    <p class="text-[10px] text-gray-500 uppercase mb-1">User Payment</p>
-                    <p class="text-3xl font-black text-white">$100</p>
-                </div>
-                <div class="text-neon-cyan rotate-90 lg:rotate-0">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-6 h-6">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                </div>
-                <div class="w-full lg:w-80 p-6 bg-glass rounded-2xl border border-protocol-green/30 text-left">
-                    <p class="text-[10px] text-protocol-green uppercase mb-4 font-black tracking-widest">Protocol Split
-                        (15%)</p>
-                    <div class="space-y-3">
-                        <div class="flex justify-between p-2 bg-white/5 rounded-lg border border-white/5">
-                            <span class="text-gray-400 text-xs text-left">Operations</span>
-                            <span class="text-white font-bold text-xs">5%</span>
-                        </div>
-                        <div
-                            class="flex justify-between p-2 bg-protocol-green/10 rounded-lg border border-protocol-green/20">
-                            <span class="text-protocol-green text-xs font-bold text-left">Community Treasury</span>
-                            <span class="text-protocol-green font-black text-xs">10%</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-protocol-green rotate-90 lg:rotate-0">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-6 h-6">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                </div>
-                <div
-                    class="w-full lg:w-60 p-6 bg-gradient-to-br from-protocol-green/20 to-black rounded-2xl border-2 border-protocol-green">
-                    <p class="text-[10px] text-gray-400 uppercase mb-1">Injected Value</p>
-                    <p class="text-3xl font-black text-protocol-green glow-green">Real Yield</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. Tokenomics (Exponential Decay) -->
-    <section class="py-20 md:py-40 bg-matte-black px-6 overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 md:mb-24" data-aos="fade-up">
-                <h3 class="text-3xl sm:text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-10">
-                    Fixed Scarcity.</h3>
-                <div class="flex flex-wrap justify-center gap-6">
-                    <div class="text-center">
-                        <p class="text-neon-cyan text-3xl font-black italic">1000%</p>
-                        <p class="text-gray-600 text-[10px] font-bold uppercase mt-1">Genesis Multiplier</p>
-                    </div>
-                    <div class="text-center">
-                        <p class="text-red-500 text-3xl font-black italic">10% 🔥</p>
-                        <p class="text-gray-600 text-[10px] font-bold uppercase mt-1">Tx Burn Rate</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-glass p-6 sm:p-10 md:p-20 rounded-[2rem] sm:rounded-[4rem] relative shadow-2xl overflow-hidden"
-                data-aos="zoom-in">
-                <div class="relative h-[300px] md:h-[400px] w-full mb-12 curve-container">
-                    <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 400">
-                        <defs>
-                            <linearGradient id="decayGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#00fbff;stop-opacity:0.3" />
-                                <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:0" />
-                            </linearGradient>
-                        </defs>
-                        <line v-for="i in 4" x1="0" :y1="i*100" x2="1000" :y2="i*100" stroke="rgba(255,255,255,0.03)"
-                            stroke-width="1" />
-                        <!-- Steep Exponential Drop Curve -->
-                        <path d="M 0 20 C 50 20, 100 380, 1000 380" fill="none" stroke="#00fbff" stroke-width="8"
-                            stroke-linecap="round" />
-                        <path d="M 0 20 C 50 20, 100 380, 1000 380 V 400 H 0 Z" fill="url(#decayGrad)" />
-                        <!-- Pulsing Peak Marker -->
-                        <g>
-                            <circle cx="20" cy="20" r="25" fill="#00fbff" opacity="0.1" class="animate-ping-slow" />
-                            <circle cx="20" cy="20" r="8" fill="#00fbff" />
-                        </g>
-                    </svg>
-                    <!-- Floating Tag -->
-                    <div class="absolute top-0 left-4 md:left-10 animate-bounce">
-                        <div class="bg-neon-cyan text-black px-4 py-1.5 rounded-xl shadow-lg">
-                            <span class="text-[10px] sm:text-xs font-black uppercase">YOU ARE HERE</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid sm:grid-cols-2 gap-6">
-                    <div class="p-6 bg-white/5 rounded-2xl border border-white/5">
-                        <h4 class="text-neon-cyan font-black text-sm uppercase mb-2">Exponential Halving</h4>
-                        <p class="text-gray-500 text-xs leading-relaxed">Early participant reward multipliers decay
-                            steeply to enforce long-term scarcity.</p>
-                    </div>
-                    <div class="p-6 bg-white/5 rounded-2xl border border-white/5">
-                        <h4 class="text-red-500 font-black text-sm uppercase mb-2">Protocol Burn</h4>
-                        <p class="text-gray-500 text-xs leading-relaxed">Percentage of every economic interaction is
-                            permanently removed from circulation.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. Security -->
-    <section class="py-20 md:py-40 px-6 max-w-7xl mx-auto">
-        <div class="text-center mb-16 md:mb-24" data-aos="fade-up">
-            <h3 class="text-3xl sm:text-5xl md:text-6xl font-black text-white uppercase tracking-tighter">Structural
-                Isolation.</h3>
-        </div>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="p-8 bg-glass rounded-3xl border border-white/5 hover:border-neon-cyan/50 transition-all"
+            <div class="relative flex flex-col md:flex-row items-center justify-between gap-12 max-w-5xl mx-auto"
                 data-aos="fade-up">
-                <div class="w-12 h-12 bg-neon-cyan/10 rounded-xl flex items-center justify-center mb-6">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00fbff" stroke-width="2">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <!-- Step 1 -->
+                <div class="w-full md:w-64 p-8 bg-glass rounded-3xl border border-white/5">
+                    <p class="text-[9px] text-gray-500 uppercase mb-3 font-bold tracking-widest">Economic Input</p>
+                    <div class="text-4xl font-black text-white text-glow mb-2">100%</div>
+                    <p class="text-[10px] text-neon-cyan font-mono">FIAT / STABLE INPUT</p>
+                </div>
+
+                <div class="text-gray-700 rotate-90 md:rotate-0">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2" />
                     </svg>
                 </div>
-                <h4 class="text-lg font-bold mb-4 uppercase">Asset Legality</h4>
-                <p class="text-gray-500 text-xs leading-relaxed">Treasury is legally segregated from retail operations
-                    via non-profit foundation structure.</p>
-            </div>
-            <div class="p-8 bg-glass rounded-3xl border border-white/5 hover:border-protocol-green/50 transition-all"
-                data-aos="fade-up" data-aos-delay="100">
-                <div class="w-12 h-12 bg-protocol-green/10 rounded-xl flex items-center justify-center mb-6">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2">
-                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                        <rect x="3" y="11" width="18" height="11" rx="2" />
+
+                <!-- Step 2 (The Splitter) -->
+                <div class="w-full md:w-80 p-8 border-2 border-protocol-green bg-protocol-green/5 rounded-3xl relative">
+                    <div
+                        class="absolute -top-3 left-1/2 -translate-x-1/2 bg-protocol-green text-black px-3 py-0.5 rounded text-[9px] font-black uppercase">
+                        Protocol Splitter</div>
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-end border-b border-white/10 pb-2">
+                            <span
+                                class="text-[10px] text-gray-400 font-bold uppercase transition-colors hover:text-white">To
+                                Factory</span>
+                            <span class="text-2xl font-black text-white">85%</span>
+                        </div>
+                        <div class="flex justify-between items-end border-b border-white/10 pb-2">
+                            <span
+                                class="text-[10px] text-gray-400 font-bold uppercase transition-colors hover:text-white">Node
+                                Maintenance</span>
+                            <span class="text-2xl font-black text-white">5%</span>
+                        </div>
+                        <div class="flex justify-between items-end pb-2">
+                            <span class="text-[10px] text-protocol-green font-black uppercase">Auto-Treasury</span>
+                            <span class="text-3xl font-black text-protocol-green glow-green">10%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-protocol-green rotate-90 md:rotate-0">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2" />
                     </svg>
                 </div>
-                <h4 class="text-lg font-bold mb-4 uppercase">Multi-Sig Vaults</h4>
-                <p class="text-gray-500 text-xs leading-relaxed">On-chain funds secured by Segregated Witness and
-                    Multi-Signature governance frameworks.</p>
-            </div>
-            <div class="p-8 bg-glass rounded-3xl border border-white/5 hover:border-white/50 transition-all sm:col-span-2 lg:col-span-1"
-                data-aos="fade-up" data-aos-delay="200">
-                <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6">
-                    <span class="text-white font-black text-sm">SOL</span>
+
+                <!-- Step 3 -->
+                <div
+                    class="w-full md:w-64 p-8 bg-gradient-to-br from-protocol-green/20 to-black rounded-3xl border border-protocol-green/30">
+                    <p class="text-[9px] text-gray-500 uppercase mb-3 font-bold tracking-widest">Protocol Surplus</p>
+                    <div class="text-2xl font-black text-protocol-green mb-1">REAL YIELD</div>
+                    <p class="text-[10px] text-gray-400">Yield from Physical Cash-flow</p>
                 </div>
-                <h4 class="text-lg font-bold mb-4 uppercase">Solana Logic</h4>
-                <p class="text-gray-500 text-xs leading-relaxed">Settlement executed on the world's most performant
-                    distributed high-speed ledger.</p>
             </div>
         </div>
     </section>
 
-    <!-- Climax CTA Section -->
-    <section class="py-32 px-6 bg-matte-black border-t border-white/5">
-        <div class="max-w-5xl mx-auto text-center" data-aos="fade-up">
-            <h3 class="text-4xl md:text-6xl font-black text-white mb-12 uppercase tracking-tighter leading-tight">
-                Ready to enter the<br>AI-Native Economy?
-            </h3>
-            <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-6">
-                <a href="https://shop.maollar.com"
-                    class="px-10 py-4 bg-protocol-green text-black font-black uppercase rounded-2xl shadow-[0_0_40px_rgba(74,222,128,0.5)] hover:scale-105 transition-transform text-lg tracking-wide">
-                    Enter Genesis Mall
-                </a>
-                <a href="https://fund.maollar.com"
-                    class="px-10 py-4 border-2 border-white/20 text-white font-black uppercase rounded-2xl hover:bg-white/5 transition-colors text-lg">
-                    View DAO Fund
-                </a>
-            </div>
-            <div class="mt-12 flex justify-center gap-8 opacity-40 hover:opacity-100 transition-opacity">
-                <a href="https://download.maollar.com"
-                    class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white group">
-                    <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="currentColor"
-                        viewBox="0 0 24 24">
-                        <title>Apple</title>
-                        <path
-                            d="M15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701zM12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09z" />
-                    </svg>
-                    iOS Client
-                </a>
-                <a href="https://download.maollar.com"
-                    class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white group">
-                    <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="currentColor"
-                        viewBox="0 0 24 24">
-                        <title>Android</title>
-                        <path
-                            d="M18.4395 5.5586c-.675 1.1664-1.352 2.3318-2.0274 3.498-.0366-.0155-.0742-.0286-.1113-.043-1.8249-.6957-3.484-.8-4.42-.787-1.8551.0185-3.3544.4643-4.2597.8203-.084-.1494-1.7526-3.021-2.0215-3.4864a1.1451 1.1451 0 0 0-.1406-.1914c-.3312-.364-.9054-.4859-1.379-.203-.475.282-.7136.9361-.3886 1.5019 1.9466 3.3696-.0966-.2158 1.9473 3.3593.0172.031-.4946.2642-1.3926 1.0177C2.8987 12.176.452 14.772 0 18.9902h24c-.119-1.1108-.3686-2.099-.7461-3.0683-.7438-1.9118-1.8435-3.2928-2.7402-4.1836a12.1048 12.1048 0 0 0-2.1309-1.6875c.6594-1.122 1.312-2.2559 1.9649-3.3848.2077-.3615.1886-.7956-.0079-1.1191a1.1001 1.1001 0 0 0-.8515-.5332c-.5225-.0536-.9392.3128-1.0488.5449zm-.0391 8.461c.3944.5926.324 1.3306-.1563 1.6503-.4799.3197-1.188.0985-1.582-.4941-.3944-.5927-.324-1.3307.1563-1.6504.4727-.315 1.1812-.1086 1.582.4941zM7.207 13.5273c.4803.3197.5506 1.0577.1563 1.6504-.394.5926-1.1038.8138-1.584.4941-.48-.3197-.5503-1.0577-.1563-1.6504.4008-.6021 1.1087-.8106 1.584-.4941z" />
-                    </svg>
-                    Android APK
-                </a>
-            </div>
+    <!-- 5. Algorithmic Premium (Visual Content) -->
+    <section class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-24" data-aos="fade-up">
+            <h3 class="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tighter">Mathematical Asymmetry</h3>
+            <p class="text-gray-500 text-sm md:text-base font-mono uppercase tracking-[0.2em]">Deterministic Scarcity vs
+                Market Volatility</p>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="py-12 md:py-20 border-t border-white/5 bg-black px-6">
-        <div
-            class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4 text-center md:text-left">
+        <div class="grid md:grid-cols-3 gap-8" data-aos="fade-up">
+            <!-- Bitcoin -->
             <div
-                class="flex flex-wrap justify-center md:justify-start gap-8 opacity-30 grayscale hover:grayscale-0 transition-opacity">
-                <span class="text-white font-black text-xl tracking-tighter">AIRWALLEX</span>
-                <span class="text-white font-black text-xl tracking-tighter">SOLANA</span>
-                <span class="text-white font-black text-xl tracking-tighter">CLOUDFLARE</span>
+                class="p-10 bg-glass rounded-[2.5rem] border border-white/5 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                <p class="text-[10px] font-black text-yellow-500 uppercase mb-6 tracking-widest">Legacy Standard</p>
+                <h4 class="text-3xl font-black mb-4">Bitcoin</h4>
+                <p class="text-xs text-gray-500 leading-relaxed font-medium">Pure consensus energy. High scarcity, but
+                    zero underlying asset anchor. Driven by sentiment.</p>
             </div>
-            <div class="md:text-right">
-                <p class="text-protocol-green font-bold text-[10px] uppercase tracking-widest mb-2">Autonomous Protocol.
-                    Community Owned.</p>
-                <p class="text-gray-800 text-[9px]">&copy; 2026 Mao Mall Foundation.</p>
+            <!-- Stablecoins -->
+            <div
+                class="p-10 bg-glass rounded-[2.5rem] border border-white/5 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                <p class="text-[10px] font-black text-blue-500 uppercase mb-6 tracking-widest">Transitional Tool</p>
+                <h4 class="text-3xl font-black mb-4">Stablecoins</h4>
+                <p class="text-xs text-gray-500 leading-relaxed font-medium">1:1 Fiat peg. Perfect for settlement, but
+                    zero value capture. Infinite dilution of the underlying fiat.</p>
+            </div>
+            <!-- Mao Protocol -->
+            <div
+                class="p-10 bg-[#121212] rounded-[2.5rem] border-2 border-protocol-green shadow-[0_0_50px_rgba(74,222,128,0.15)] relative scale-105 z-10">
+                <div
+                    class="absolute -top-4 left-1/2 -translate-x-1/2 bg-protocol-green text-black px-4 py-1.5 rounded-full text-[10px] font-black uppercase">
+                    Strategic Alpha</div>
+                <p class="text-[10px] font-black text-protocol-green uppercase mb-6 tracking-widest">Algorithmic Premium
+                </p>
+                <h4 class="text-3xl font-black mb-4">$MAO Protocol</h4>
+                <p class="text-xs text-gray-300 leading-relaxed font-bold">Linear Treasury Growth + Exponential Issuance
+                    Halving = Deterministic Mathematical Scarcity.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. The Protocol Manifesto (The Grand Finaler) -->
+    <section class="py-40 px-6 bg-black relative overflow-hidden text-center border-t border-white/5">
+        <div class="relative z-10 max-w-5xl mx-auto" data-aos="fade-up">
+            <h3 class="text-5xl md:text-8xl font-black text-white mb-16 tracking-tighter leading-[0.95] uppercase">
+                When you Buy,<br>You are <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-protocol-green text-glow">Executing
+                    Code.</span>
+            </h3>
+            <p class="text-gray-400 text-lg md:text-3xl font-mono leading-snug mb-20 px-4 md:px-0">
+                "When you execute a purchase, you are not consuming. You are exercising your **Asset Sovereignty**
+                through code. Every product is a minted token. Every factory is your node."
+            </p>
+
+            <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-6 mb-24">
+                <a href="https://shop.maollar.com"
+                    class="px-12 py-5 bg-white text-black font-black uppercase rounded-2xl text-xl hover:scale-105 transition-all shadow-2xl">Launch
+                    dApp</a>
+                <a href="https://fund.maollar.com"
+                    class="px-12 py-5 border-2 border-white/20 text-white font-black uppercase rounded-2xl text-xl hover:bg-white/10 transition-all">Live
+                    Treasury</a>
+                <a href="#"
+                    class="px-12 py-5 border-2 border-white/20 text-white/50 font-black uppercase rounded-2xl text-xl hover:text-white transition-all">View
+                    MCP Docs</a>
+            </div>
+
+            <div
+                class="flex justify-center gap-12 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Solana_logo.svg" class="h-6" alt="Solana">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" class="h-6" alt="BTC">
+            </div>
+        </div>
+
+        <!-- Background Typography Decal -->
+        <div
+            class="absolute -bottom-20 -left-20 text-[20vw] font-black text-white/[0.02] select-none pointer-events-none uppercase">
+            MANIFESTO</div>
+    </section>
+
+    <!-- 7. Global Footer -->
+    <footer class="py-20 border-t border-white/5 bg-matte-black px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+            <div class="text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-4 mb-6">
+                    <img src="./logo.png" class="h-10 grayscale opacity-50" alt="Logo">
+                    <span class="text-white font-black text-2xl tracking-tighter uppercase opacity-30">Mao Mall</span>
+                </div>
+                <p class="text-gray-600 font-mono text-xs uppercase tracking-[0.3em]">Autonomous Protocol. Community
+                    Owned.</p>
+            </div>
+            <div class="flex gap-12 items-center">
+                <div
+                    class="text-center md:text-right font-mono text-[9px] text-gray-800 uppercase leading-loose tracking-widest">
+                    <p>On-chain decreed since 2026</p>
+                    <p>&copy; Mao Mall Foundation</p>
+                    <p>Settled on Solana Mainnet</p>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
         AOS.init({
-            duration: 800,
+            duration: 1000,
             once: true,
-            easing: 'ease-out-quad',
-            offset: 50,
+            easing: 'ease-out-expo',
+            offset: 100,
         });
 
-        // Dynamic Shop URL Detection
+        // Dynamic Subdomain Swapper (m. for mobile, shop. for desktop)
         (function () {
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
             const shopUrl = isMobile ? 'https://m.maollar.com' : 'https://shop.maollar.com';
-            const links = document.querySelectorAll('a');
-            links.forEach(link => {
-                if (link.href.includes('shop.maollar.com')) {
-                    link.href = shopUrl;
-                }
+            document.querySelectorAll('a').forEach(link => {
+                if (link.href.includes('shop.maollar.com')) link.href = shopUrl;
             });
         })();
+
+        // Live Counter Simulation (Injecting Zen-like realism)
+        setInterval(() => {
+            const ticker = document.querySelector('.ticker-span');
+            if (ticker) {
+                const current = parseFloat(ticker.innerText.replace(/[$,]/g, ''));
+                ticker.innerText = '$' + (current + (Math.random() * 0.5)).toLocaleString(undefined, { minimumFractionDigits: 2 });
+            }
+        }, 3000);
     </script>
 </body>
 
