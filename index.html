@@ -40,6 +40,7 @@
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite',
                         'scroll': 'scroll 20s linear infinite',
+                        'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
                     },
                     keyframes: {
                         float: {
@@ -94,6 +95,10 @@
             background: #333;
             border-radius: 10px;
         }
+
+        .curve-container svg {
+            filter: drop-shadow(0 0 15px rgba(0, 251, 255, 0.3));
+        }
     </style>
 </head>
 
@@ -123,8 +128,8 @@
         <div class="relative z-10 text-center max-w-6xl" data-aos="fade-up">
             <h1 class="text-5xl sm:text-7xl md:text-9xl font-black mb-8 tracking-tighter leading-[0.9] text-white">
                 Decentralized<br><span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-protocol-green">Supply
-                    Chain.</span>
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-protocol-green">Supply Chain
+                    Protocol.</span>
             </h1>
             <h2 class="text-lg sm:text-xl md:text-2xl font-mono text-gray-500 uppercase tracking-[0.3em] mb-12">
                 Native Decrees for the AI Era.
@@ -132,7 +137,7 @@
 
             <!-- Live Protocol Stats Ticker -->
             <div
-                class="inline-flex items-center gap-8 px-8 py-3 bg-white/5 border border-white/10 rounded-full font-mono text-[10px] md:text-xs text-neon-cyan shadow-lg backdrop-blur-md text-glow">
+                class="inline-flex items-center gap-8 px-8 py-3 bg-white/5 border border-white/10 rounded-full font-mono text-[10px] md:text-xs text-neon-cyan shadow-lg backdrop-blur-md">
                 <div class="flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-protocol-green animate-ping"></span>
                     <span class="text-gray-500">TOTAL INJECTED VALUE:</span>
@@ -159,7 +164,7 @@
         </div>
     </section>
 
-    <!-- 3. AI Native Code Snippet Interface (Visual Update) -->
+    <!-- 3. AI Native Code Snippet Interface -->
     <section class="py-32 px-6 max-w-7xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right">
@@ -204,17 +209,55 @@
 }</code></pre>
                     </div>
                 </div>
-                <!-- Float Tag -->
-                <div
-                    class="absolute -bottom-6 -right-6 bg-protocol-green text-black px-4 py-2 rounded-lg font-black text-[10px] uppercase shadow-xl animate-float">
-                    Direct Factory Access
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Costco Logic (The Physical Proof) -->
+    <section class="py-32 bg-matte-black px-6 border-y border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24" data-aos="fade-up">
+                <h3 class="text-4xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none mb-6">
+                    Costco Logic.<br>Tokyo Quality.
+                </h3>
+                <p class="text-gray-500 uppercase tracking-widest text-xs font-bold">Physical Goods, Protocol Prices.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <div class="space-y-6">
+                        <div class="p-8 bg-glass rounded-3xl border-l-8 border-protocol-green">
+                            <h4 class="font-black text-white text-xl mb-2 uppercase italic tracking-tighter">Direct from
+                                Source</h4>
+                            <p class="text-gray-400 leading-relaxed">Identical factories as top Japanese labels. Every
+                                item is verified for material compliance before entering the protocol stream.</p>
+                        </div>
+                        <div class="p-8 bg-glass rounded-3xl border-l-8 border-neon-cyan">
+                            <h4 class="font-black text-white text-xl mb-2 uppercase italic tracking-tighter">15% Hard
+                                Boundary</h4>
+                            <p class="text-gray-400 leading-relaxed">Enforced by protocol logic at the code level. No
+                                excessive brand markup, ever.</p>
+                        </div>
+                    </div>
+                </div>
+                <div data-aos="zoom-in" class="relative group">
+                    <div class="bg-glass p-3 rounded-[2.5rem] border border-white/5 shadow-2xl relative">
+                        <img src="./product_compare.png"
+                            class="w-full rounded-[2rem] grayscale group-hover:grayscale-0 transition-all duration-1000"
+                            alt="Comparison">
+                        <div class="absolute inset-x-8 bottom-8 flex justify-between items-end">
+                            <span class="text-red-500/50 line-through text-3xl font-black italic">$500.00</span>
+                            <span class="text-protocol-green text-5xl font-black glow-green italic">$80.00</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. The Cycle of Value (Visual Update) -->
-    <section class="py-32 bg-matte-black border-y border-white/5 px-6">
+    <!-- 5. The Cycle of Value -->
+    <section class="py-32 bg-black px-6">
         <div class="max-w-7xl mx-auto text-center">
             <h3 class="text-3xl md:text-6xl font-black mb-6 tracking-tighter uppercase" data-aos="fade-up">The Cycle of
                 Value</h3>
@@ -225,35 +268,28 @@
 
             <div class="relative flex flex-col md:flex-row items-center justify-between gap-12 max-w-5xl mx-auto"
                 data-aos="fade-up">
-                <!-- Step 1 -->
                 <div class="w-full md:w-64 p-8 bg-glass rounded-3xl border border-white/5">
                     <p class="text-[9px] text-gray-500 uppercase mb-3 font-bold tracking-widest">Economic Input</p>
-                    <div class="text-4xl font-black text-white text-glow mb-2">100%</div>
+                    <div class="text-4xl font-black text-white glow-cyan mb-2">100%</div>
                     <p class="text-[10px] text-neon-cyan font-mono">FIAT / STABLE INPUT</p>
                 </div>
-
                 <div class="text-gray-700 rotate-90 md:rotate-0">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2" />
                     </svg>
                 </div>
-
-                <!-- Step 2 (The Splitter) -->
                 <div class="w-full md:w-80 p-8 border-2 border-protocol-green bg-protocol-green/5 rounded-3xl relative">
                     <div
                         class="absolute -top-3 left-1/2 -translate-x-1/2 bg-protocol-green text-black px-3 py-0.5 rounded text-[9px] font-black uppercase">
                         Protocol Splitter</div>
                     <div class="space-y-6">
                         <div class="flex justify-between items-end border-b border-white/10 pb-2">
-                            <span
-                                class="text-[10px] text-gray-400 font-bold uppercase transition-colors hover:text-white">To
-                                Factory</span>
+                            <span class="text-[10px] text-gray-400 font-bold uppercase">To Factory</span>
                             <span class="text-2xl font-black text-white">85%</span>
                         </div>
                         <div class="flex justify-between items-end border-b border-white/10 pb-2">
                             <span
-                                class="text-[10px] text-gray-400 font-bold uppercase transition-colors hover:text-white">Node
-                                Maintenance</span>
+                                class="text-[10px] text-gray-400 font-bold uppercase transition-colors hover:text-white">Maintenance</span>
                             <span class="text-2xl font-black text-white">5%</span>
                         </div>
                         <div class="flex justify-between items-end pb-2">
@@ -262,68 +298,159 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="text-protocol-green rotate-90 md:rotate-0">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2" />
                     </svg>
                 </div>
-
-                <!-- Step 3 -->
                 <div
                     class="w-full md:w-64 p-8 bg-gradient-to-br from-protocol-green/20 to-black rounded-3xl border border-protocol-green/30">
                     <p class="text-[9px] text-gray-500 uppercase mb-3 font-bold tracking-widest">Protocol Surplus</p>
-                    <div class="text-2xl font-black text-protocol-green mb-1">REAL YIELD</div>
-                    <p class="text-[10px] text-gray-400">Yield from Physical Cash-flow</p>
+                    <div class="text-2xl font-black text-protocol-green mb-1 text-center">REAL YIELD</div>
+                    <p class="text-[10px] text-gray-400 text-center uppercase tracking-tighter">Proof of Consumption</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. Algorithmic Premium (Visual Content) -->
-    <section class="py-32 px-6 max-w-7xl mx-auto">
+    <!-- 6. Mathematical Asymmetry + The Curve -->
+    <section class="py-32 px-6 max-w-7xl mx-auto overflow-hidden">
         <div class="text-center mb-24" data-aos="fade-up">
-            <h3 class="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tighter">Mathematical Asymmetry</h3>
-            <p class="text-gray-500 text-sm md:text-base font-mono uppercase tracking-[0.2em]">Deterministic Scarcity vs
-                Market Volatility</p>
+            <h3 class="text-3xl md:text-6xl font-black mb-6 uppercase tracking-tighter italic">Mathematical Asymmetry
+            </h3>
+            <p class="text-gray-500 text-sm md:text-base font-mono uppercase tracking-[0.25em]">Deterministic Scarcity
+                vs Market Sentiment</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8" data-aos="fade-up">
-            <!-- Bitcoin -->
-            <div
-                class="p-10 bg-glass rounded-[2.5rem] border border-white/5 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-                <p class="text-[10px] font-black text-yellow-500 uppercase mb-6 tracking-widest">Legacy Standard</p>
-                <h4 class="text-3xl font-black mb-4">Bitcoin</h4>
-                <p class="text-xs text-gray-500 leading-relaxed font-medium">Pure consensus energy. High scarcity, but
-                    zero underlying asset anchor. Driven by sentiment.</p>
+        <div class="grid lg:grid-cols-12 gap-12 items-center mb-20">
+            <!-- The FOMO Curve -->
+            <div class="lg:col-span-12 xl:col-span-7" data-aos="zoom-in">
+                <div class="bg-glass p-8 sm:p-12 rounded-[3rem] relative shadow-2xl overflow-hidden min-h-[400px]">
+                    <div class="absolute top-10 left-10 z-10">
+                        <p class="text-neon-cyan text-4xl font-black italic glow-cyan">1000%</p>
+                        <p class="text-gray-600 text-[10px] font-bold uppercase mt-1 tracking-widest">Genesis Multiplier
+                        </p>
+                    </div>
+
+                    <div class="relative h-[300px] w-full mt-12 curve-container">
+                        <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 400">
+                            <defs>
+                                <linearGradient id="decayGradNew" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00fbff;stop-opacity:0.25" />
+                                    <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:0" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M 0 20 C 50 20, 100 380, 1000 380" fill="none" stroke="#00fbff" stroke-width="10"
+                                stroke-linecap="round" class="animate-pulse-slow" />
+                            <path d="M 0 20 C 50 20, 100 380, 1000 380 V 400 H 0 Z" fill="url(#decayGradNew)" />
+                            <g>
+                                <circle cx="20" cy="20" r="25" fill="#00fbff" opacity="0.1" class="animate-ping-slow" />
+                                <circle cx="20" cy="20" r="10" fill="#00fbff" />
+                            </g>
+                        </svg>
+
+                        <div class="absolute top-0 left-4 animate-bounce">
+                            <div
+                                class="bg-neon-cyan text-black px-5 py-2 rounded-xl shadow-2xl font-black text-xs uppercase tracking-tighter">
+                                YOU ARE HERE
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 mt-8">
+                        <div class="p-4 bg-white/5 rounded-xl border border-white/5">
+                            <p class="text-neon-cyan font-black text-[10px] uppercase mb-1">Decay Protocol</p>
+                            <p class="text-gray-500 text-[9px] leading-tight">Reward multipliers diminish as complexity
+                                increases.</p>
+                        </div>
+                        <div class="p-4 bg-white/5 rounded-xl border border-white/5">
+                            <p class="text-red-500 font-black text-[10px] uppercase mb-1">Burn Trigger</p>
+                            <p class="text-gray-500 text-[9px] leading-tight">Every transaction permanently purges
+                                circulating supply.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Stablecoins -->
-            <div
-                class="p-10 bg-glass rounded-[2.5rem] border border-white/5 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-                <p class="text-[10px] font-black text-blue-500 uppercase mb-6 tracking-widest">Transitional Tool</p>
-                <h4 class="text-3xl font-black mb-4">Stablecoins</h4>
-                <p class="text-xs text-gray-500 leading-relaxed font-medium">1:1 Fiat peg. Perfect for settlement, but
-                    zero value capture. Infinite dilution of the underlying fiat.</p>
-            </div>
-            <!-- Mao Protocol -->
-            <div
-                class="p-10 bg-[#121212] rounded-[2.5rem] border-2 border-protocol-green shadow-[0_0_50px_rgba(74,222,128,0.15)] relative scale-105 z-10">
+
+            <!-- The Comparison -->
+            <div class="lg:col-span-12 xl:col-span-5 flex flex-col gap-6" data-aos="fade-left">
                 <div
-                    class="absolute -top-4 left-1/2 -translate-x-1/2 bg-protocol-green text-black px-4 py-1.5 rounded-full text-[10px] font-black uppercase">
-                    Strategic Alpha</div>
-                <p class="text-[10px] font-black text-protocol-green uppercase mb-6 tracking-widest">Algorithmic Premium
-                </p>
-                <h4 class="text-3xl font-black mb-4">$MAO Protocol</h4>
-                <p class="text-xs text-gray-300 leading-relaxed font-bold">Linear Treasury Growth + Exponential Issuance
-                    Halving = Deterministic Mathematical Scarcity.</p>
+                    class="p-8 bg-glass rounded-[2rem] border border-white/5 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                    <h4 class="text-2xl font-black mb-2 italic">Bitcoin</h4>
+                    <p class="text-xs text-gray-500 font-medium">Consensus scarcity. Zero underlying asset anchor.
+                        Sentiment-driven price discovery.</p>
+                </div>
+                <div
+                    class="p-8 bg-glass rounded-[2rem] border border-white/5 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                    <h4 class="text-2xl font-black mb-2 italic">Stablecoins</h4>
+                    <p class="text-xs text-gray-500 font-medium">1:1 Fiat peg. Zero value capture. Tethered to the
+                        infinite dilution of legacy fiat.</p>
+                </div>
+                <div
+                    class="p-8 bg-[#151515] rounded-[2rem] border-2 border-protocol-green shadow-[0_0_40px_rgba(74,222,128,0.1)] relative group">
+                    <div
+                        class="absolute -top-3 right-8 bg-protocol-green text-black px-3 py-0.5 rounded text-[9px] font-black uppercase">
+                        Mathematical Alpha</div>
+                    <h4 class="text-2xl font-black mb-2 text-protocol-green glow-green italic">Mao Protocol</h4>
+                    <p class="text-xs text-gray-300 font-bold leading-relaxed">Linear Treasury Growth (Fiat) +
+                        Exponential Issuance Halving ($MAO) = Deterministic Scarcity.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 6. The Protocol Manifesto (The Grand Finaler) -->
+    <!-- 7. Structural Isolation (The Institutional Trust) -->
+    <section class="py-32 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <div class="text-center mb-20" data-aos="fade-up">
+            <h3 class="text-3xl md:text-5xl font-black mb-4 uppercase tracking-tighter italic">Structural Isolation</h3>
+            <p class="text-gray-500 uppercase tracking-widest text-xs font-bold font-mono">Institutional Trust Framework
+            </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="p-10 bg-glass rounded-3xl border border-white/5 hover:border-neon-cyan/50 transition-all group"
+                data-aos="fade-up">
+                <div
+                    class="w-14 h-14 bg-neon-cyan/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-neon-cyan/20 transition-all">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00fbff" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                </div>
+                <h4 class="text-xl font-black mb-4 uppercase italic">Legally Segregated</h4>
+                <p class="text-gray-500 text-xs leading-relaxed font-medium">Registered in Singapore. Treasury is
+                    legally siloed from operating entities via Non-profit Foundation Law.</p>
+            </div>
+            <div class="p-10 bg-glass rounded-3xl border border-white/5 hover:border-protocol-green/50 transition-all group"
+                data-aos="fade-up" data-aos-delay="100">
+                <div
+                    class="w-14 h-14 bg-protocol-green/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-protocol-green/20 transition-all">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                </div>
+                <h4 class="text-xl font-black mb-4 uppercase italic">Multi-Sig Vaults</h4>
+                <p class="text-gray-500 text-xs leading-relaxed font-medium">On-chain funds secured by Segregated
+                    Witness and hardware-locked Multi-Signature governance protocols.</p>
+            </div>
+            <div class="p-10 bg-glass rounded-3xl border border-white/5 hover:border-white/50 transition-all group sm:col-span-2 lg:col-span-1"
+                data-aos="fade-up" data-aos-delay="200">
+                <div
+                    class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-white/10 transition-all">
+                    <span class="text-white font-black text-xs">SOL</span>
+                </div>
+                <h4 class="text-xl font-black mb-4 uppercase italic">Solana Backbone</h4>
+                <p class="text-gray-500 text-xs leading-relaxed font-medium">Settlement executed on the world's most
+                    performant high-speed ledger. Mathematical finality in <400ms.< /p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. The Protocol Manifesto -->
     <section class="py-40 px-6 bg-black relative overflow-hidden text-center border-t border-white/5">
         <div class="relative z-10 max-w-5xl mx-auto" data-aos="fade-up">
-            <h3 class="text-5xl md:text-8xl font-black text-white mb-16 tracking-tighter leading-[0.95] uppercase">
+            <h3
+                class="text-5xl md:text-8xl font-black text-white mb-16 tracking-tighter leading-[0.95] uppercase italic">
                 When you Buy,<br>You are <span
                     class="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-protocol-green text-glow">Executing
                     Code.</span>
@@ -344,21 +471,15 @@
                     class="px-12 py-5 border-2 border-white/20 text-white/50 font-black uppercase rounded-2xl text-xl hover:text-white transition-all">View
                     MCP Docs</a>
             </div>
-
-            <div
-                class="flex justify-center gap-12 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Solana_logo.svg" class="h-6" alt="Solana">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" class="h-6" alt="BTC">
-            </div>
         </div>
 
         <!-- Background Typography Decal -->
         <div
-            class="absolute -bottom-20 -left-20 text-[20vw] font-black text-white/[0.02] select-none pointer-events-none uppercase">
+            class="absolute -bottom-20 -left-20 text-[25vw] font-black text-white/[0.02] select-none pointer-events-none uppercase italic">
             MANIFESTO</div>
     </section>
 
-    <!-- 7. Global Footer -->
+    <!-- 9. Global Footer -->
     <footer class="py-20 border-t border-white/5 bg-matte-black px-6">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
             <div class="text-center md:text-left">
@@ -369,20 +490,18 @@
                 <p class="text-gray-600 font-mono text-xs uppercase tracking-[0.3em]">Autonomous Protocol. Community
                     Owned.</p>
             </div>
-            <div class="flex gap-12 items-center">
-                <div
-                    class="text-center md:text-right font-mono text-[9px] text-gray-800 uppercase leading-loose tracking-widest">
-                    <p>On-chain decreed since 2026</p>
-                    <p>&copy; Mao Mall Foundation</p>
-                    <p>Settled on Solana Mainnet</p>
-                </div>
+            <div
+                class="text-center md:text-right font-mono text-[9px] text-gray-800 uppercase leading-loose tracking-widest">
+                <p>On-chain decreed since 2026</p>
+                <p>&copy; Mao Mall Foundation</p>
+                <p>Settled on Solana Mainnet</p>
             </div>
         </div>
     </footer>
 
     <script>
         AOS.init({
-            duration: 1000,
+            duration: 1200,
             once: true,
             easing: 'ease-out-expo',
             offset: 100,
@@ -397,14 +516,14 @@
             });
         })();
 
-        // Live Counter Simulation (Injecting Zen-like realism)
+        // Live Counter Simulation
         setInterval(() => {
             const ticker = document.querySelector('.ticker-span');
             if (ticker) {
                 const current = parseFloat(ticker.innerText.replace(/[$,]/g, ''));
-                ticker.innerText = '$' + (current + (Math.random() * 0.5)).toLocaleString(undefined, { minimumFractionDigits: 2 });
+                ticker.innerText = '$' + (current + (Math.random() * 0.8)).toLocaleString(undefined, { minimumFractionDigits: 2 });
             }
-        }, 3000);
+        }, 2000);
     </script>
 </body>
 
