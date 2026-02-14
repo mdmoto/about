@@ -305,61 +305,62 @@
                         <p class="text-gray-600 text-[10px] font-bold uppercase tracking-widest mt-2">Transaction Burn
                         </p>
                     </div>
-                </div>
-            </div>
 
-            <div class="bg-glass p-10 md:p-24 rounded-[4rem] relative shadow-2xl" data-aos="zoom-in">
-                <!-- Smooth Bezier Exponential Decay Curve -->
-                <div class="relative h-[400px] w-full mb-16 curve-container">
-                    <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 400">
-                        <defs>
-                            <linearGradient id="decayGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#00fbff;stop-opacity:0.3" />
-                                <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:0" />
-                                </radialGradient>
-                        </defs>
-                        <!-- Grid Lines -->
-                        <line v-for="i in 4" x1="0" :y1="i*100" x2="1000" :y2="i*100" stroke="rgba(255,255,255,0.03)"
-                            stroke-width="1" />
+                    <div class="bg-glass p-10 md:p-24 rounded-[4rem] relative shadow-2xl" data-aos="zoom-in">
+                        <!-- Fibonacci-inspired Exponential Decay Curve (Reversed/Downward) -->
+                        <div class="relative h-[400px] w-full mb-16 curve-container">
+                            <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 400">
+                                <defs>
+                                    <linearGradient id="decayGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#00fbff;stop-opacity:0.3" />
+                                        <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:0" />
+                                        </radialGradient>
+                                </defs>
+                                <!-- Grid Lines -->
+                                <line v-for="i in 4" x1="0" :y1="i*100" x2="1000" :y2="i*100"
+                                    stroke="rgba(255,255,255,0.03)" stroke-width="1" />
 
-                        <!-- The Curve -->
-                        <path d="M 0 50 C 150 50, 200 350, 1000 350" fill="none" stroke="#00fbff" stroke-width="10"
-                            stroke-linecap="round" />
-                        <path d="M 0 50 C 150 50, 200 350, 1000 350 V 400 H 0 Z" fill="url(#decayGrad)" />
+                                <!-- The Curve: Steep Exponential Drop -->
+                                <path d="M 0 20 C 50 20, 100 380, 1000 380" fill="none" stroke="#00fbff"
+                                    stroke-width="12" stroke-linecap="round" />
+                                <path d="M 0 20 C 50 20, 100 380, 1000 380 V 400 H 0 Z" fill="url(#decayGrad)" />
 
-                        <!-- Pulsing Marker -->
-                        <g>
-                            <circle cx="80" cy="50" r="25" fill="#00fbff" opacity="0.1" class="animate-ping" />
-                            <circle cx="80" cy="50" r="15" fill="#00fbff" opacity="0.3" />
-                            <circle cx="80" cy="50" r="8" fill="#00fbff" />
-                        </g>
-                    </svg>
+                                <!-- Pulsing Marker at the Peak -->
+                                <g>
+                                    <circle cx="20" cy="20" r="25" fill="#00fbff" opacity="0.1" class="animate-ping" />
+                                    <circle cx="20" cy="20" r="15" fill="#00fbff" opacity="0.3" />
+                                    <circle cx="20" cy="20" r="8" fill="#00fbff" />
+                                </g>
+                            </svg>
 
-                    <!-- Floating Tag -->
-                    <div class="absolute top-0 left-20 animate-bounce">
-                        <div
-                            class="bg-neon-cyan text-black px-5 py-2 rounded-2xl shadow-[0_0_40px_rgba(0,251,255,0.4)]">
-                            <span class="text-xs font-black tracking-widest uppercase">YOU ARE HERE</span>
+                            <!-- Floating Tag at the exact peak -->
+                            <div class="absolute top-[-30px] left-[-20px] animate-bounce">
+                                <div
+                                    class="bg-neon-cyan text-black px-5 py-2 rounded-2xl shadow-[0_0_40px_rgba(0,251,255,0.6)]">
+                                    <span class="text-xs font-black tracking-widest uppercase">YOU ARE HERE</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-10">
+                            <div class="p-8 bg-white/5 rounded-3xl border border-white/5">
+                                <h4 class="text-neon-cyan font-black text-xl mb-4 uppercase">Fibonacci Halving</h4>
+                                <p class="text-gray-500 text-sm leading-relaxed font-medium">Early adopters secure 10x
+                                    reward
+                                    efficiency. As the protocol matures, difficulty increases exponentially to protect
+                                    token
+                                    scarcity.</p>
+                            </div>
+                            <div class="p-8 bg-white/5 rounded-3xl border border-white/5">
+                                <h4 class="text-red-500 font-black text-xl mb-4 uppercase">Auto-Deflation</h4>
+                                <p class="text-gray-500 text-sm leading-relaxed font-medium">A dedicated 6-10% of every
+                                    ecosystem transaction is permanently burnt. The protocol protocol is mathematically
+                                    locked
+                                    for appreciation.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="grid grid-cols-2 gap-10">
-                    <div class="p-8 bg-white/5 rounded-3xl border border-white/5">
-                        <h4 class="text-neon-cyan font-black text-xl mb-4 uppercase">Fibonacci Halving</h4>
-                        <p class="text-gray-500 text-sm leading-relaxed font-medium">Early adopters secure 10x reward
-                            efficiency. As the protocol matures, difficulty increases exponentially to protect token
-                            scarcity.</p>
-                    </div>
-                    <div class="p-8 bg-white/5 rounded-3xl border border-white/5">
-                        <h4 class="text-red-500 font-black text-xl mb-4 uppercase">Auto-Deflation</h4>
-                        <p class="text-gray-500 text-sm leading-relaxed font-medium">A dedicated 6-10% of every
-                            ecosystem transaction is permanently burnt. The protocol protocol is mathematically locked
-                            for appreciation.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- 6. Security & Legal -->
