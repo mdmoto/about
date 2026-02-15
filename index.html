@@ -117,9 +117,8 @@
                 <span class="text-white font-black tracking-tighter text-lg uppercase">Mao Mall</span>
             </div>
             <div class="flex items-center gap-6">
-                <a href="https://shop.maollar.com" data-i18n="launch_btn"
-                    class="hidden md:block text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Launch
-                    dApp</a>
+                <a href="https://download.maollar.com" data-i18n="nav_download"
+                    class="hidden md:block text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition-colors">Download</a>
                 <a href="https://shop.maollar.com" data-i18n="init_protocol"
                     class="px-5 py-2 bg-protocol-green text-black font-black text-[10px] uppercase rounded-full shadow-[0_0_15px_rgba(74,222,128,0.3)] hover:scale-105 transition-all">
                     Initialize Protocol
@@ -486,15 +485,15 @@
             </p>
 
             <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-6 mb-24">
-                <a href="https://shop.maollar.com" data-i18n="btn_launch"
-                    class="px-12 py-5 bg-white text-black font-black uppercase rounded-2xl text-xl hover:scale-105 transition-all shadow-2xl">Launch
-                    dApp</a>
+                <a href="https://download.maollar.com" data-i18n="btn_download"
+                    class="px-12 py-5 bg-white text-black font-black uppercase rounded-2xl text-xl hover:scale-105 transition-all shadow-2xl">Download
+                    App</a>
                 <a href="https://fund.maollar.com" data-i18n="btn_treasury"
                     class="px-12 py-5 border-2 border-white/20 text-white font-black uppercase rounded-2xl text-xl hover:bg-white/10 transition-all">Live
                     Treasury</a>
-                <a href="#" data-i18n="btn_docs"
-                    class="px-12 py-5 border-2 border-white/20 text-white/50 font-black uppercase rounded-2xl text-xl hover:text-white transition-all">View
-                    MCP Docs</a>
+                <a href="https://shop.maollar.com" data-i18n="btn_shop"
+                    class="px-12 py-5 border-2 border-white/20 text-white/50 font-black uppercase rounded-2xl text-xl hover:text-white transition-all">Enter
+                    Mall</a>
             </div>
         </div>
 
@@ -564,7 +563,7 @@
     <script>
         const i18n = {
             en: {
-                launch_btn: "Launch dApp",
+                nav_download: "Download",
                 init_protocol: "Initialize Protocol",
                 hero_h1: "Decentralized<br><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-protocol-green\">Supply Chain Protocol.</span>",
                 hero_sub: "Native Decrees for the AI Era.",
@@ -572,16 +571,16 @@
                 ticker_burn: "BURN RATE:",
                 ticker_nodes: "ACTIVE MCP NODES:",
                 tech_h3: "Silicon-First.<br>Interface-Zero.",
-                tech_p: "No UI required. The protocol provides a **Universal Interface** for AI agents to access, verify, and procure from the physical production world.",
+                tech_p: "No UI required. Oracles and Agents access the physical world through protocol decrees.",
                 tech_mcp: "Native MCP (Model Context Protocol) Integration",
                 costco_h3: "Costco Logic.<br>Tokyo Quality.",
                 costco_sub: "Physical Goods, Protocol Prices.",
                 costco_source_h4: "Direct from Source",
-                costco_source_p: "Identical factories as top Japanese labels. Every item is verified for material compliance before entering the protocol stream.",
+                costco_source_p: "Proprietary supply chains bypassing brand inflation. Quality verified by code.",
                 costco_margin_h4: "15% Hard Boundary",
-                costco_margin_p: "Enforced by protocol logic at the code level. No excessive brand markup, ever.",
+                costco_margin_p: "Mathematically capped margins. All surplus flows to the protocol treasury.",
                 value_h3: "The Cycle of Value",
-                value_p: "The 15% is not a platform tax. It is a strict **Protocol Boundary** for structural asset restructuring and community expansion.",
+                value_p: "The 15% is a strict **Protocol Boundary** for structural asset restructuring and community expansion.",
                 value_input_tag: "Economic Input",
                 value_input_sub: "FIAT / STABLE INPUT",
                 value_splitter: "Protocol Splitter",
@@ -600,28 +599,28 @@
                 math_burn_h: "Burn Trigger",
                 math_burn_p: "Every transaction permanently purges circulating supply.",
                 math_btc_h: "Bitcoin",
-                math_btc_p: "Consensus scarcity. Zero underlying asset anchor. Sentiment-driven price discovery.",
+                math_btc_p: "Consensus scarcity. Zero underlying anchor.",
                 math_stable_h: "Stablecoins",
-                math_stable_p: "1:1 Fiat peg. Zero value capture. Tethered to the infinite dilution of legacy fiat.",
+                math_stable_p: "1:1 Fiat peg. Zero value capture.",
                 math_mao_h: "$MAO Protocol",
-                math_mao_p: "Linear Treasury Growth (Fiat) + Exponential Issuance Halving ($MAO) = Deterministic Scarcity.",
+                math_mao_p: "Linear Treasury Growth + Exponential Issuance Halving = Deterministic Scarcity.",
                 sec_h3: "Structural Isolation",
                 sec_sub: "Institutional Trust Framework",
                 sec_legal_h: "Legally Segregated",
-                sec_legal_p: "Registered in Singapore. Treasury is legally siloed from operating entities via Non-profit Foundation Law.",
+                sec_legal_p: "Registered in Singapore. Treasury siloed via Non-profit Foundation Law.",
                 sec_vault_h: "Multi-Sig Vaults",
-                sec_vault_p: "On-chain funds secured by Segregated Witness and hardware-locked Multi-Signature governance protocols.",
+                sec_vault_p: "On-chain funds secured by Segregated Witness and hardware-locked governance.",
                 sec_sol_h: "Solana Backbone",
-                sec_sol_p: "Settlement executed on the world's most performant high-speed ledger. Mathematical finality in <400ms.",
+                sec_sol_p: "High-speed ledger settlement. Finality in <400ms.",
                 manifesto_h3: "When you Buy,<br>You are <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-protocol-green text-glow\">Executing Code.</span>",
-                manifesto_p: "\"When you execute a purchase, you are not consuming. You are exercising your **Asset Sovereignty** through code. Every product is a minted token. Every factory is your node.\"",
-                btn_launch: "Launch dApp",
+                manifesto_p: "\"Exercising Asset Sovereignty through code. Every product is a minted token. Every factory is your node.\"",
+                btn_download: "Download App",
                 btn_treasury: "Live Treasury",
-                btn_docs: "View MCP Docs",
+                btn_shop: "Enter Mall",
                 footer_slogan: "Autonomous Protocol. Community Owned."
             },
             zh: {
-                launch_btn: "进入商城",
+                nav_download: "下载应用",
                 init_protocol: "启动协议",
                 hero_h1: "去中心化<br><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-protocol-green\">供应链协议</span>",
                 hero_sub: "硅基纪元的原生律令",
@@ -629,16 +628,16 @@
                 ticker_burn: "协议销毁率:",
                 ticker_nodes: "活跃节点:",
                 tech_h3: "硅基优先<br>零界面",
-                tech_p: "无需UI。协议为AI智能体提供了**通用接口**，使其能直接访问、验证并从生产实体采购。",
+                tech_p: "无需 UI。预言机与智能体通过协议律令直接与物理世界交互。",
                 tech_mcp: "原生支持 MCP (模型上下文协议)",
                 costco_h3: "极致逻辑<br>东京品质",
                 costco_sub: "物理资产 · 协议定价",
                 costco_source_h4: "溯源止于本真",
-                costco_source_p: "与日本顶尖厂牌同源。每一件商品受协议逻辑受持，去处中间溢价。",
+                costco_source_p: "直连全球工厂，剔除品牌溢价。品质由代码背书。",
                 costco_margin_h4: "15% 律法边界",
-                costco_margin_p: "代码层面的刚性约束。永远封印品牌加价空间。",
+                costco_margin_p: "数学级利润上限。所有盈余自动回流协议金库。",
                 value_h3: "价值裂解周期",
-                value_p: "15% 不是税收，而是为了资产结构性重组与社区扩张而设立的严格**协议边界**。",
+                value_p: "15% 不是税收，而是用于资产结构化重组的硬性边界。",
                 value_input_tag: "经济注入",
                 value_input_sub: "法币 / 稳定币输入",
                 value_splitter: "协议裂解器",
@@ -653,49 +652,49 @@
                 math_multiplier: "创世乘数",
                 math_here: "汝至于此处",
                 math_decay_h: "指数级衰减",
-                math_decay_p: "早期红利随熵增剧烈减损，以捍卫长期的稀缺之法。",
+                math_decay_p: "奖励随熵增剧烈减损，捍卫长期稀缺性。",
                 math_burn_h: "销毁触发器",
-                math_burn_p: "每一笔经济交互的余烬，都将永远从流通界寂灭。",
+                math_burn_p: "每一笔交互的余烬都将从流通界永久寂灭。",
                 math_btc_h: "比特币",
-                math_btc_p: "共识稀缺。无底层资产锚定。随情绪波动。",
+                math_btc_p: "共识稀缺。无底层实物支撑。",
                 math_stable_h: "稳定币",
-                math_stable_p: "1:1法币锚定。无价值捕获。受困于法币的无限稀释。",
+                math_stable_p: "1:1法币锚定。无价值捕获。",
                 math_mao_h: "$MAO 协议",
-                math_mao_p: "法币国库线性增长 + $MAO 指数减半 = 确定性稀缺。",
+                math_mao_p: "国库线性增长 + 发行指数级减半 = 数学确定稀缺。",
                 sec_h3: "结构性圣域",
                 sec_sub: "机构级信任框架",
                 sec_legal_h: "资产法理隔离",
-                sec_legal_p: "注册于新加坡。通过非营利基金会结构，实现资产与商业运行的律法级隔离。",
+                sec_legal_p: "新加坡注册。通过非营利基金会实现资产法理独立。",
                 sec_vault_h: "多签宝库",
-                sec_vault_p: "链上资产由隔离见证（SegWit）与多重签名治理体系受持。",
+                sec_vault_p: "隔离见证与多重签名共同守卫链上资产。",
                 sec_sol_h: "Solana 律令",
-                sec_sol_p: "在全宇宙最高效的分散式账本上执行最终清算。",
+                sec_sol_p: "全球最高效账本执行结算。确定性 <400ms。",
                 manifesto_h3: "当汝购买时<br>汝即在 <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-protocol-green text-glow\">执行代码</span>",
-                manifesto_p: "“当汝执行采购时，汝并非在消费。汝是在通过代码行使你的**资产主权**。每一件商品都是代币。每一座工厂都是你的节点。”",
-                btn_launch: "启动协议",
+                manifesto_p: "“通过代码 exercise 资产主权。商品即代币。工厂即节点。”",
+                btn_download: "获取客户端",
                 btn_treasury: "国库实时流",
-                btn_docs: "查阅文档",
+                btn_shop: "进入商城",
                 footer_slogan: "自主协议 · 众生共有"
             },
             ja: {
-                launch_btn: "モール起動",
+                nav_download: "ダウンロード",
                 init_protocol: "プロトコル起動",
                 hero_h1: "非中央集権<br><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-protocol-green\">供給網プロトコル</span>",
-                hero_sub: "AI紀元の本源的律令",
+                hero_sub: "AI紀員のプロトコル",
                 ticker_val: "注入された価値:",
                 ticker_burn: "焼却率:",
                 ticker_nodes: "稼働ノード:",
                 tech_h3: "シリコン優先<br>ゼロUI",
-                tech_p: "UIは不要。AIエージェントが物理的な製造世界から直接調達するための**ユニバーサル・インターフェース**。",
-                tech_mcp: "MCP (Model Context Protocol) 統合",
+                tech_p: "UIは不要。プロトコルを通じて物理世界へ直結する。",
+                tech_mcp: "MCP (Model Context Protocol) 集積",
                 costco_h3: "論理的価格<br>高品質",
                 costco_sub: "物理資産・プロトコル価格",
                 costco_source_h4: "本源への回帰",
-                costco_source_p: "提携工場から中間コストを排して直結。すべての品はプロトコルにより守護される。",
+                costco_source_p: "ブランド溢価を廃した直接供給。コードによる検証。",
                 costco_margin_h4: "15% の聖域",
-                costco_margin_p: "コードレベルでの強制。ブランド利益を永劫に封印する。",
+                costco_margin_p: "数学的に限定された利益。剰余はすべて財務へ。",
                 value_h3: "価値の循環",
-                value_p: "15% は構造的資産再編のための厳格な**境界**である。",
+                value_p: "15% は資産再編のための厳格な境界である。",
                 value_input_tag: "経済注入",
                 value_input_sub: "法定通貨入力",
                 value_splitter: "分離器",
@@ -706,40 +705,40 @@
                 value_yield: "真の利回り",
                 value_proof: "消費の証明",
                 math_h3: "数学的希少性",
-                math_sub: "数学的確定性 vs 市場感情",
+                math_sub: "確定性 vs 市場感情",
                 math_multiplier: "創世倍率",
                 math_here: "汝、ここに在り",
                 math_decay_h: "指数的減衰",
-                math_decay_p: "初期報酬は指数関数的に減少し、長期的な希少性を守護する。",
+                math_decay_p: "複雑さが増すにつれて報酬は減少する。",
                 math_burn_h: "焼却トリガー",
-                math_burn_p: "あらゆる取引は、流通から永久に抹消される。",
+                math_burn_p: "すべての取引は供給を永久に抹消する。",
                 math_btc_h: "ビットコイン",
-                math_btc_p: "純粋な合意。裏付け資産なし。感情による価格。",
+                math_btc_p: "共識の希少性。裏付けなし。",
                 math_stable_h: "安定通貨",
-                math_stable_p: "1:1法連動。価値保護なし。希釈される貨幣に依存。",
+                math_stable_p: "1:1法連動。価値捕獲なし。",
                 math_mao_h: "$MAO プロトコル",
-                math_mao_p: "線形的財務成長 + 指数的発行減衰 = 確定的な希少性。",
+                math_mao_p: "財務成長 + 発行減衰 = 確定的な希少性。",
                 sec_h3: "構造的隔離",
                 sec_sub: "信頼の枠組み",
                 sec_legal_h: "法的分離",
-                sec_legal_p: "財務資産と運営を法的に完全分離。非営利財団構造。",
+                sec_legal_p: "シンガポール財団による法的隔離。",
                 sec_vault_h: "マルチシグ",
-                sec_vault_p: "オンチェーン資産は、SegWit とマルチシグによって守護される。",
+                sec_vault_p: "SegWit とマルチシグによる守護。",
                 sec_sol_h: "Solana の法",
-                sec_sol_p: "世界最高峰の分散台帳上で執行される最終決済。",
+                sec_sol_p: "高速台帳による清算。確定性 <400ms。",
                 manifesto_h3: "購入するとき<br>汝は <span class=\"text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-protocol-green text-glow\">法を執行している</span>",
-                manifesto_p: "「物品を調達するとき、汝は消費しているのではない。コードを通じて**資産の主権**を行使しているのだ。」",
-                btn_launch: "ｄApp起動",
-                btn_treasury: "財務リアルタイム",
-                btn_docs: "ドキュメント",
+                manifesto_p: "「コードを通じて主権を行使する。ノードしての工場。」",
+                btn_download: "アプリ入手",
+                btn_treasury: "財務表示",
+                btn_shop: "モール入店",
                 footer_slogan: "自律プロトコル · 衆生共有"
             },
-            fr: { launch_btn: "Lancer dApp", hero_h1: "Protocole de Chaîne<br>Logistique Décentralisé", math_h3: "Asymétrie Mathématique", manifesto_h3: "En achetant,<br>vous exécutez du code" },
-            es: { launch_btn: "Iniciar dApp", hero_h1: "Protocolo de Suministro<br>Descentralizado", math_h3: "Asimetría Matemática", manifesto_h3: "Al comprar,<br>ejecutas código" },
-            ko: { launch_btn: "dApp 실행", hero_h1: "탈중앙화 공급망 프로토콜", math_h3: "수학적 비대칭성", manifesto_h3: "구매하는 것은<br>코드를 실행하는 것" },
-            de: { launch_btn: "dApp Starten", hero_h1: "Dezentrales Lieferketten Protokoll", math_h3: "Mathematische Asymmetrie", manifesto_h3: "Beim Kauf führst du<br>Code aus" },
-            th: { launch_btn: "เริ่มใช้งาน", hero_h1: "โปรโตคอลห่วงโซ่อุปทาน<br>แบบไร้ศูนย์กลาง", math_h3: "ความไม่สมมาตรทางคณิตศาสตร์", manifesto_h3: "เมื่อคุณซื้อ<br>คุณกำลังรันโค้ด" },
-            ar: { launch_btn: "إطلاق dApp", hero_h1: "بروتوكول سلاسل التوريد<br>اللامركزي", math_h3: "التناظر الرياضي", manifesto_h3: "عندما تشتري،<br>فأنت تنفذ كودًا" }
+            fr: { nav_download: "Télécharger", init_protocol: "Initialiser", hero_h1: "Protocole Décentralisé", math_h3: "Asymétrie Mathématique", manifesto_h3: "Exécutez du Code", btn_download: "Télécharger App", btn_treasury: "Trésorerie", btn_shop: "Mall" },
+            es: { nav_download: "Descargar", init_protocol: "Iniciar", hero_h1: "Protocolo Descentralizado", math_h3: "Asimetría Matemática", manifesto_h3: "Ejecutas Código", btn_download: "Descargar App", btn_treasury: "Tesorería", btn_shop: "Mall" },
+            ko: { nav_download: "다운로드", init_protocol: "프로토콜 실행", hero_h1: "탈중앙화 프로토콜", math_h3: "수학적 비대칭성", manifesto_h3: "코드를 실행함", btn_download: "앱 다운로드", btn_treasury: "라이브 재무", btn_shop: "상점 입장" },
+            de: { nav_download: "Download", init_protocol: "Initialisieren", hero_h1: "Dezentrales Protokoll", math_h3: "Mathematische Asymmetrie", manifesto_h3: "Code Ausführen", btn_download: "App Laden", btn_treasury: "Treasury", btn_shop: "Zum Mall" },
+            th: { nav_download: "ดาวน์โหลด", init_protocol: "เริ่มใช้งาน", hero_h1: "โปรโตคอลไร้ศูนย์กลาง", math_h3: "ความไม่สมมาตร", manifesto_h3: "กำลังรันโค้ด", btn_download: "โหลดแอป", btn_treasury: "คลังแสง", btn_shop: "มอลล์" },
+            ar: { nav_download: "تحميل", init_protocol: "إطلاق", hero_h1: "بروتوكول لا مركزي", math_h3: "التناظر الرياضي", manifesto_h3: "تنفيذ كود", btn_download: "تحميل التطبيق", btn_treasury: "الخزينة", btn_shop: "المول" }
         };
 
         function switchLang(lang) {
