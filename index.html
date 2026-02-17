@@ -503,13 +503,15 @@
             MANIFESTO</div>
     </section>
 
-    <!-- Language Swapper Trigger (Floating) -->
-    <div class="fixed bottom-6 right-6 z-[100]">
-        <button onclick="toggleLangMenu()"
-            class="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 transition-all shadow-xl">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <!-- Language Swapper (Fixed Floating) -->
+    <div class="fixed bottom-6 right-6 z-[100] group">
+        <button id="langBtn" onclick="toggleLangMenu()"
+            class="w-14 h-14 bg-black/40 backdrop-blur-2xl border border-white/10 rounded-full flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] group-active:scale-95">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
                 <path
-                    d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9c0-2.091-.452-4.068-1.265-5.84M7 20l4-8 4 8M1 13h15.5M19 12h2m-1-5v10">
+                    d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
                 </path>
             </svg>
         </button>
@@ -754,9 +756,21 @@
 
         function toggleLangMenu(force) {
             const menu = document.getElementById('langMenu');
-            if (force === false) menu.classList.add('hidden');
-            else menu.classList.toggle('hidden');
+            if (force === false) {
+                menu.classList.add('hidden');
+            } else {
+                menu.classList.toggle('hidden');
+            }
         }
+
+        // Close menu on click outside
+        window.addEventListener('click', (e) => {
+            const menu = document.getElementById('langMenu');
+            const btn = document.getElementById('langBtn');
+            if (!menu.contains(e.target) && !btn.contains(e.target)) {
+                menu.classList.add('hidden');
+            }
+        });
 
         window.addEventListener('load', () => {
             AOS.init({ duration: 1200, once: true, easing: 'ease-out-expo', offset: 100 });
